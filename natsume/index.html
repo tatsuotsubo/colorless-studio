@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>RISECAFE</title>
+  <link rel="icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/artist-slider.js" defer></script>
+  <!-- WaveSurfer -->
+<script src="https://unpkg.com/wavesurfer.js"></script>
+
+<!-- 音楽プレイヤー -->
+<script src="js/audio-player.js" defer></script>
+</head>
+
+<!-- class以降で背景色指定、style.cssに記載 
+<body class="select_color_bg">
+-->
+  
+  <!-- ヘッダー -->
+  <header id="header">
+
+    <img src="images/logo_only.png" alt="ロゴのみ" class="header-logo">
+
+    <!-- 旧ヘッダ
+    <nav>
+      <ul>
+        <li><a href="#menu">MENU</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#access">ACCESS</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+    -->
+  </header>
+
+  <!-- メインビジュアル（表紙） -->
+ <section id="mainvisual">
+  <img src="images/logo.png" alt="RISECAFEロゴ" class="logo-image">
+</section>
+
+<!-- About us -->
+<section id="about">
+  <!-- <h2>About us</h2> -->
+
+  <div class="about-wrapper">
+    <div class="about-image">
+      <img src="images/aboutUs-square.jpg" alt="About image">
+    </div>
+
+    <div class="about-content">
+      <h2 class="about-title">
+        <small>about us</small>
+      </h2>
+
+      <div class="about-text"> 
+        <!-- <hr> --><!-- ←横線 -->
+        <p>
+          aaa
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Musicセクション（音楽埋め込み） -->
+  <section id="music">
+    <h2>Release</h2>
+
+    <div class="music-card">
+
+      <div class="music-card-top">
+        <span class="product-name">Awake; poetry texture pack vol.1(JPN)</span>
+        <span class="company-name">企業名</span>
+      </div>
+      
+      <div class="music-left">
+        <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
+          <img class="music-art" src="images/Awake;poetry_texture_pack_vol.1(JPN).jpg" alt="アルバム画像">
+        </a>
+      </div>
+
+
+      <!-- 音楽部分(追加するときはliタグを増やして、音声ファイルを追加する)-->
+      <div class="music-info">
+
+        <ul>
+          <li class="track-item" data-src="sounds/CS_AW_natsume_vocode_granulator_humming_random_Amaj.wav">
+            <div class="music-row">
+              <span class="soundBtn">
+                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+              </span>
+
+              <div class="track-right">
+                <span class="track-name">
+                  CS_AW_natsume_vocode_granulator_humming_random_Amaj
+                </span>
+                <!-- ダウンロードするならこれ
+                <a href="sounds/CS_AW_natsume_vocode_granulator_humming_random_Amaj.wav" download="音楽1.wav"> -->
+
+                <!-- <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
+                  <img src="images/download.jpg" alt width="22" height="22">
+                </a> -->
+
+                <div class="wave"></div>
+              </div>
+            </div>
+          </li>
+
+          <li class="track-item" data-src="sounds/CS_AW_natsume_vocode_rhthmic_180_Fmaj.wav">
+            <div class="music-row">
+              <span class="soundBtn">
+                <img class="soundIcon" src="images/play_button.png" alt="再生">
+              </span>
+
+              <div class="track-right">
+                <span class="track-name">
+                  CS_AW_natsume_vocode_rhthmic_180_Fmaj
+                </span>
+
+                <!-- <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
+                  <img src="images/download.jpg" alt width="22" height="22">
+                </a> -->
+
+                <div class="wave"></div>
+              </div>
+            </div>
+          </li>
+
+          <li class="track-item" data-src="sounds/i'm_not_alone_cover.mp3">
+            <div class="music-row">
+              <span class="soundBtn">
+                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+              </span>
+
+              <div class="track-right">
+                <span class="track-name">
+                  i'm not alone cover
+                </span>
+
+                <!-- <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
+                  <img src="images/download.jpg" alt width="22" height="22">
+                </a> -->
+
+              <div class="wave"></div>
+              </div>
+            </div>
+          </li>
+
+          <li class="track-item" data-src="sounds/natsume_spectral.mp3">
+            <div class="music-row">
+              <span class="soundBtn">
+                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+              </span>
+
+              <div class="track-right">
+                <span class="track-name">
+                  natsume_spectral
+                </span>
+
+                <!-- <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
+                  <img src="images/download.jpg" alt width="22" height="22">
+                </a> -->
+
+              <div class="wave"></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+  </section>
+
+<!-- Artist -->
+<section id="artist"  data-slider="artist">
+  <h2>Artist</h2>
+
+  <!-- 左右ボタン -->
+  <button class="artist-nav prev">←</button>
+  <button class="artist-nav next">→</button>
+
+  <!-- 横スクロールエリア -->
+  <div class="artist-slider">
+    <div class="artist-track">
+
+      <!-- 最後(二人目)のコピー -->
+      <div class="artist-item clone">
+        <div class="artist-left">
+          <div class="artist-image">
+            <img src="images/guitar.jpg" alt="guitar">
+          </div>
+        </div>
+
+        <div class="artist-right">
+          <div class="career-box">
+            <p>経歴書く</p>
+          </div>
+        
+
+          <ul class="sns-btn">
+            <li>
+              <a href="https://x.com/xxxx" target="_blank">
+                <img src="images/sns/x-black.png" alt="x">
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/xxxx" target="_blank">
+                <img src="images/sns/instagram.png" alt="Instagram">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 一人目 -->
+      <div class="artist-item">
+        <div class="artist-left">
+          <div class="artist-image">
+            <img src="images/panda.jpg" alt="panda">
+          </div>
+        </div>
+
+        <div class="artist-right">
+          <div class="career-box">
+            <p>経歴書く</p>
+          </div>
+        
+
+          <ul class="sns-btn">
+            <li>
+               <a href="https://x.com/xxxx" target="_blank">
+                <img src="images/sns/x-black.png" alt="x">
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/xxxx" target="_blank">
+                <img src="images/sns/instagram.png" alt="Instagram">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 二人目 -->
+      <div class="artist-item">
+        <div class="artist-left">
+          <div class="artist-image">
+            <img src="images/guitar.jpg" alt="guitar">
+          </div>
+        </div>
+
+        <div class="artist-right">
+          <div class="career-box">
+            <p>経歴書く</p>
+          </div>
+        
+
+          <ul class="sns-btn">
+            <li>
+              <a href="https://x.com/xxxx" target="_blank">
+                <img src="images/sns/x-black.png" alt="x">
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/xxxx" target="_blank">
+                <img src="images/sns/instagram.png" alt="Instagram">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 最初（一人目）のコピー -->
+      <div class="artist-item clone">
+        <div class="artist-left">
+          <div class="artist-image">
+            <img src="images/panda.jpg" alt="panda">
+          </div>
+        </div>
+
+        <div class="artist-right">
+          <div class="career-box">
+            <p>経歴書く</p>
+          </div>
+        
+
+          <ul class="sns-btn">
+            <li>
+              <a href="https://x.com/xxxx" target="_blank">
+                <img src="images/sns/x-black.png" alt="x">
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/xxxx" target="_blank">
+                <img src="images/sns/instagram.png" alt="Instagram">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+    
+</section>
+
+<img src="CS_logo_[tomomi]_1.svg" alt="x">
+
+
+<section class="last">
+  <!-- 左：画像 -->
+  <div class="last-image">
+    <img src="images/leaf-square.jpg" alt="leaf">
+  </div>
+
+  <!-- 右：メニュー -->
+  <nav class="last-menu">
+    <ul>
+      <li class="active"><a href="#about">About us</a></li>
+      <li class="active"><a href="#music">Release us</a></li>
+      <li class="active"><a href="#artist">Artist</a></li>
+    </ul>
+
+    <ul class="sns-btn">
+      <li>
+        <a href="https://x.com/xxxx" target="_blank">
+          <img src="images/sns/x-black.png" alt="x">
+        </a>
+      </li>
+      <li>
+        <a href="https://instagram.com/xxxx" target="_blank">
+          <img src="images/sns/instagram.png" alt="Instagram">
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- 左下ロゴ -->
+  <div class="last-logo">
+    <img src="images/logo.png" alt="RISECAFE">
+  </div>
+
+</section>
+
+  <!-- MENUセクション（背景画像あり） 
+  <section id="menu">
+    <h2>MENU</h2>
+  </section>-->
+
+  <!-- メニュー内容 
+  <section class="menu-contents">
+    <div class="menu-grid">
+
+      <!-- menu_coffee：左カラム（COFFEE） 
+      <div class="menu-column left">
+        <h3>COFFEE</h3>
+        <ul>
+          <li><span>XXXXXXXX</span><span>¥500</span></li>
+          <li><span>XXXXXXXX</span><span>¥500</span></li>
+          <li><span>XXXXXXXX</span><span>¥500</span></li>
+          <li><span>XXXXXXXX</span><span>¥500</span></li>
+          <li><span>XXXXXXXX</span><span>¥500</span></li>
+          <li><span>XXXXXXXX</span><span>¥500</span></li>
+          <li><span>XXXXXXXX</span><span>¥500</span></li>
+          <li><span>XXXXXXXX</span><span>¥500</span></li>
+          <li><span>XXXXXXXX</span><span>¥500</span></li>
+          <li><span>XXXXXXXX</span><span>¥500</span></li>
+        </ul>
+      </div>-->
+
+      <!-- 区切り線 
+      <div class="menu-divider"></div>
+
+      <!-- menu_food_other：右カラム（FOOD + OTHER） 
+      <div class="menu-column right">
+        <!-- menu_food：FOODエリア 
+        <div class="menu-subsection menu_food">
+          <h3>FOOD</h3>
+          <ul>
+            <li><span>XXXXXXXX</span><span>¥500</span></li>
+            <li><span>XXXXXXXX</span><span>¥500</span></li>
+            <li><span>XXXXXXXX</span><span>¥500</span></li>
+          </ul>
+        </div>
+
+        <!-- menu_other：OTHERエリア 
+        <div class="menu-subsection menu_other">
+          <h3>OTHER</h3>
+          <ul>
+            <li><span>XXXXXXXX</span><span>¥500</span></li>
+            <li><span>XXXXXXXX</span><span>¥500</span></li>
+            <li><span>XXXXXXXX</span><span>¥500</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>-->
+  </section>
+
+  <!-- 以下は今後調整 -->
+
+    <!-- Recommend（写真埋め込み） -->
+  <section id="recommend">
+    <h2>おすすめ</h2>
+
+    <div class="recommend-wrapper">
+
+      <!-- ラケット -->
+      <div class="recommend-item" style="opacity: 1;">
+        <a class="click" href="https://www.amazon.co.jp/MIZUNO-FORTIUS-ver-D-%E3%83%95%E3%82%A9%E3%83%AB%E3%83%86%E3%82%A3%E3%82%A6%E3%82%B9-83GTT101/dp/B09D8ND99Q/ref=sr_1_1_sspa?adgrpid=1327113179473325&dib=eyJ2IjoiMSJ9.CUEkZrc_Hv9GPEKcxDtWRctLAhIPMuDPUFvsEvQJJkFx2357LmweMx6hqn8fHdlDUGu5yV_xVI9ierYJzo_fmSdrQZ_TwIhKYIE1cowyyF8J_hrzr15Dzh67StHYuv5KDnsE7_HLvlUEa3bNGfa69A.tVPKR5Ui48aiTniyB_q6AGJ-D4CRR3Yas_iytzGNMMI&dib_tag=se&hvadid=82944816277152&hvbmt=bb&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82945984534153%3Aloc-96&hydadcr=3090_13813502&jp-ad-ap=0&keywords=%E3%83%95%E3%82%A9%E3%83%AB%E3%83%86%E3%82%A3%E3%82%A6%E3%82%B9ft%2Bver.d&mcid=081066227f403365b5b08afc9ee5e27d&msclkid=5f8afe6cdfb01771d41b9743dc0b7133&qid=1764688987&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1" target="_blank" rel="noopener noreferrer">
+          <img src ="images/tabletennis_racket.jpg" alt="卓球ラケット" class="images">
+        </a>
+     </div>
+
+      <!-- ラバー -->
+      <div class="recommend-item" style="opacity: 1;" target="_blank" rel="noopener noreferrer">
+        <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
+          <img src ="images/tabletennis_rubber.jpg" alt="卓球ラバー" class="images">
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="about"><h2>ABOUT</h2></section>
+
+<section id="coffee">
+  <h3 class="section-heading">COFFEE</h3>
+
+  <div class="coffee-images overlap">
+    <img src="images/about_img_1.jpg" alt="Coffee Image 1" class="img-front">
+    <img src="images/about_img_2.jpg" alt="Coffee Image 2" class="img-back">
+  </div>
+</section>
+
+<div class="coffee-text-grid">
+  <div class="text-box">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
+  <div class="text-box">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
+  <div class="text-box">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
+  <div class="text-box">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
+</div>
+
+<div class="read-more-container">
+  <a href="#about" class="read-more-button">
+    <span class="button-text">Read More</span>
+  </a>
+</div>
+
+
+  <section id="access"><h2>ACCESS</h2></section>
+
+<section id="store">
+  <h3 class="section-heading">STORE</h3>
+</section>
+
+<div class="map-container"> <!-- 追加したラッパー -->
+  <div class="map-wrapper">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.3272215169586!2d139.7133469258648!3d35.69356447258329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ce64eef18a7%3A0x5a00ef2cfe121e2c!2z44CSMTYyLTAwNjc!5e0!3m2!1sja!2sjp!4v1753600095139!5m2!1sja!2sjp"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+     class="fixed-square-map"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <div class="map-address">
+    <div class="text-box">
+      <p>X-XX-XX, Tomihisacho, Shinjuku-ku, Tokyo 162-0067<br>
+      東京都新宿区富久町X-XX-XX</p>
+      <p>Open 7 days a week<br>9:00am-10:00pm</p>
+      <p>Tel: 03-XXXX-XXXX</p>
+    </div>
+  </div>
+</div>
+
+  <section id="contact"><h2>CONTACT</h2></section>
+
+  <!-- スムーススクロール -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+  </script>
+
+<section id="form">
+  <form class="contact-form">
+    <label>名前<br>
+      <input type="text" name="name">
+    </label>
+
+    <label>性別<br>
+      <div class="radio-group">
+        <label><input type="radio" name="gender" value="male"> 男</label>
+        <label><input type="radio" name="gender" value="female"> 女</label>
+        <label><input type="radio" name="gender" value="none" checked> 指定なし</label>
+      </div>
+    </label>
+
+    <label>メールアドレス<br>
+      <input type="email" name="email">
+    </label>
+
+
+
+<div class="form-group">
+  <label>来店回数</label>
+  <div class="radio-group">
+    <label><input type="radio" name="visit" value="1"> 初めて</label>
+    <label><input type="radio" name="visit" value="2"> 2回目</label>
+    <label><input type="radio" name="visit" value="3"> 3回目以上</label>
+  </div>
+</div>
+
+<label>今までの来店店舗</label>
+  <div class="checkbox">
+    <label><input type="checkbox" name="visit" value="1"> 新宿店</label>
+    <label><input type="checkbox" name="visit" value="2"> 渋谷店</label>
+    <label><input type="checkbox" name="visit" value="3"> 中野店</label>
+  </div>
+
+    <label>お問い合わせ項目<br>
+      <select name="inquiry">
+        <option>商品について</option>
+        <option>営業時間について</option>
+        <option>その他</option>
+      </select>
+    </label>
+
+    <label>内容<br>
+      <textarea name="message" rows="5"></textarea>
+    </label>
+
+   <button type="button">送信</button>
+  </form>
+</section>
+</body>
+</html>
