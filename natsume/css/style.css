@@ -868,3 +868,93 @@ body {
   font-weight: normal !important;
   font-size: 1rem;
 }
+
+.music-body{
+  display: flex;
+  gap: 40px; /* 好きに */
+  align-items: flex-start;
+}
+
+.release-tabs{
+  display: flex;
+  gap: 12px;
+  justify-content: center; /* 中央寄せ。左寄せなら flex-start */
+  margin: 16px 0 24px;
+  width: 100%;
+}
+
+/* =========================
+   Release（Musicカード）レイアウト修正：上書き用
+   style.css の一番下にコピペ
+========================= */
+
+/* カード全体：flexをやめて普通の流れに戻す */
+.music-card {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px;
+
+  display: block; /* ← ここが重要（既存のflexを上書き） */
+}
+
+/* タイトル行：absoluteをやめて通常フローに */
+.music-card-top {
+  position: static;  /* ← absolute解除 */
+  top: auto;
+  left: auto;
+
+  width: 100%;
+  padding: 0;
+  margin-bottom: 12px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+/* タブ：必ずタイトルの下で横並び */
+.release-tabs {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin: 10px 0 20px;
+  width: 100%;
+}
+
+/* 本体：左＝画像 / 右＝リスト を“表”っぽく */
+.music-body {
+  display: grid;
+  grid-template-columns: 320px 1fr; /* 左固定 / 右可変 */
+  gap: 30px;
+  align-items: start;
+  margin-top: 10px;
+}
+
+.music-left {
+  width: auto; /* 33%指定があるなら無効化 */
+}
+
+.music-right {
+  width: 100%;
+}
+
+/* 表っぽさ（行の見た目） */
+.track-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.track-name {
+  font-size: 14px; /* 好みで調整OK */
+}
+
+/* スマホ：縦並び */
+@media (max-width: 768px) {
+  .music-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tab-panel { display: none; }
+.tab-panel.is-active { display: block; }

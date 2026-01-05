@@ -66,50 +66,46 @@
 
   <!-- Musicセクション（音楽埋め込み） -->
   <section id="music">
-    <h2>Release</h2>
+  <h2>Release</h2>
 
-    <div class="music-card">
+  <!-- ▼ タブは上（music-cardの外） -->
 
-      <div class="music-card-top">
-        <span class="product-name">Awake; poetry texture pack vol.1(JPN)</span>
-        <span class="company-name">colorless studio</span>
-      </div>
-      
-    
-      <div class="music-left">
-        <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
-          <img class="music-art" src="images/Awake;poetry_texture_pack_vol.1(JPN).jpg" alt="アルバム画像">
-        </a>
-      </div>
+  <div class="music-card">
 
+  <div class="music-card-top">
+    <span class="product-name">Awake; poetry texture pack vol.1(JPN)</span>
+    <span class="company-name">colorless studio</span>
+  </div>
 
-      <!-- 音楽部分(追加するときはliタグを増やして、音声ファイルを追加する)-->
-      <div class="music-info">
+  <div class="release-tabs" role="tablist">
+    <button class="tab-btn is-active" type="button" data-tab="demo">demo songs</button>
+    <button class="tab-btn" type="button" data-tab="samples">samples</button>
+  </div>
 
-        <ul>
-          <li class="track-item" data-src="sounds/01_teinu.mp3">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
+  <div class="music-body">
+    <div class="music-left">
+      <!-- ジャケット -->
+      <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
+        <img class="music-art" src="images/Awake;poetry_texture_pack_vol.1(JPN).jpg" alt="アルバム画像">
+       </a>
+    </div>
 
-              <div class="track-right">
-                <span class="track-name">
-                  as usual_ていぬ
-                </span>
-                <!-- ダウンロードするならこれ
-                <a href="sounds/CS_AW_natsume_vocode_granulator_humming_random_Amaj.wav" download="音楽1.wav"> -->
+    <div class="music-right">
+      <div class="tab-panel is-active" data-panel="demo">
+        <div class="music-info">
+          <ul>
+            <!-- track-item たち -->
+             <li class="track-item" data-src="sounds/01_teinu.mp3">
+        <div class="music-row">
+          <span class="soundBtn"><img class="soundIcon" src="images/play_button.png" alt="再生" width="20"></span>
+          <div class="track-right">
+            <span class="track-name">as usual_ていぬ</span>
+            <div class="wave"></div>
+          </div>
+        </div>
+      </li>
 
-                <!-- <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
-                  <img src="images/download.jpg" alt width="22" height="22">
-                </a> -->
-
-                <div class="wave"></div>
-              </div>
-            </div>
-          </li>
-
-          <li class="track-item" data-src="sounds/02_wavfire.mp3">
+      <li class="track-item" data-src="sounds/02_wavfire.mp3">
             <div class="music-row">
               <span class="soundBtn">
                 <img class="soundIcon" src="images/play_button.png" alt="再生">
@@ -119,17 +115,12 @@
                 <span class="track-name">
                   archetype_wavfire
                 </span>
-
-                <!-- <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
-                  <img src="images/download.jpg" alt width="22" height="22">
-                </a> -->
-
                 <div class="wave"></div>
               </div>
             </div>
-          </li>
+       </li>
 
-          <li class="track-item" data-src="sounds/03_ecro.mp3">
+         <li class="track-item" data-src="sounds/03_ecro.mp3">
             <div class="music-row">
               <span class="soundBtn">
                 <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
@@ -139,17 +130,12 @@
                 <span class="track-name">
                   just a dream_ecro
                 </span>
-
-                <!-- <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
-                  <img src="images/download.jpg" alt width="22" height="22">
-                </a> -->
-
               <div class="wave"></div>
               </div>
             </div>
           </li>
 
-          <li class="track-item" data-src="sounds/04_dowfi.mp3">
+           <li class="track-item" data-src="sounds/04_dowfi.mp3">
             <div class="music-row">
               <span class="soundBtn">
                 <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
@@ -159,17 +145,12 @@
                 <span class="track-name">
                   shine_dowfi
                 </span>
-
-                <!-- <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
-                  <img src="images/download.jpg" alt width="22" height="22">
-                </a> -->
-
               <div class="wave"></div>
               </div>
             </div>
           </li>
 
-           <li class="track-item" data-src="sounds/05_nuimi.mp3">
+          <li class="track-item" data-src="sounds/05_nuimi.mp3">
             <div class="music-row">
               <span class="soundBtn">
                 <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
@@ -179,12 +160,7 @@
                 <span class="track-name">
                   mimi_nari_nuimi
                 </span>
-
-                <!-- <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
-                  <img src="images/download.jpg" alt width="22" height="22">
-                </a> -->
-
-              <div class="wave"></div>
+                 <div class="wave"></div>
               </div>
             </div>
           </li>
@@ -199,17 +175,12 @@
                 <span class="track-name">
                   Inconsistent_shimoui
                 </span>
-
-                <!-- <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
-                  <img src="images/download.jpg" alt width="22" height="22">
-                </a> -->
-
-              <div class="wave"></div>
+                 <div class="wave"></div>
               </div>
             </div>
           </li>
 
-           <li class="track-item" data-src="sounds/07_wagataki.mp3">
+          <li class="track-item" data-src="sounds/07_wagataki.mp3">
             <div class="music-row">
               <span class="soundBtn">
                 <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
@@ -219,16 +190,11 @@
                 <span class="track-name">
                   光の記憶_wagataki
                 </span>
-
-                <!-- <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
-                  <img src="images/download.jpg" alt width="22" height="22">
-                </a> -->
-
               <div class="wave"></div>
               </div>
             </div>
           </li>
-
+          
           <li class="track-item" data-src="sounds/08_flawgri.mp3">
             <div class="music-row">
               <span class="soundBtn">
@@ -239,11 +205,6 @@
                 <span class="track-name">
                   waterfowl_flawguri
                 </span>
-
-                <!-- <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
-                  <img src="images/download.jpg" alt width="22" height="22">
-                </a> -->
-
               <div class="wave"></div>
               </div>
             </div>
@@ -259,31 +220,6 @@
                 <span class="track-name">
                   solivagant_jian
                 </span>
-
-                <!-- <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
-                  <img src="images/download.jpg" alt width="22" height="22">
-                </a> -->
-
-              <div class="wave"></div>
-              </div>
-            </div>
-          </li>
-
-          <li class="track-item" data-src="sounds/09_jian.mp3">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
-
-              <div class="track-right">
-                <span class="track-name">
-                  solivagant_jian
-                </span>
-
-                <!-- <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
-                  <img src="images/download.jpg" alt width="22" height="22">
-                </a> -->
-
               <div class="wave"></div>
               </div>
             </div>
@@ -299,11 +235,6 @@
                 <span class="track-name">
                   Evoke_Viznode
                 </span>
-
-                <!-- <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
-                  <img src="images/download.jpg" alt width="22" height="22">
-                </a> -->
-
               <div class="wave"></div>
               </div>
             </div>
@@ -319,19 +250,201 @@
                 <span class="track-name">
                   Awake_natsume & alpha
                 </span>
+              <div class="wave"></div>
+              </div>
+            </div>
+          </li>
+          </ul>
+        </div>
+      </div>
 
-                <!-- <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
-                  <img src="images/download.jpg" alt width="22" height="22">
-                </a> -->
+       <div class="tab-panel" data-panel="samples">
+    <div class="music-info">
+      <ul>
+        <!-- samples の track-item たち -->
+       <li class="track-item" data-src="sounds/CS_AW_teinu_Spectral Riser_Ebmajwav - ていぬ.wav">
+        <div class="music-row">
+          <span class="soundBtn"><img class="soundIcon" src="images/play_button.png" alt="再生" width="20"></span>
+          <div class="track-right">
+            <span class="track-name">CS_AW_teinu_Spectral Riser_Ebmaj</span>
+            <div class="wave"></div>
+          </div>
+        </div>
+      </li>
 
+      <li class="track-item" data-src="sounds/CS_AW_pluckdelay_C#Maj - Wavfire.wav">
+            <div class="music-row">
+              <span class="soundBtn">
+                <img class="soundIcon" src="images/play_button.png" alt="再生">
+              </span>
+
+              <div class="track-right">
+                <span class="track-name">
+                  CS_AW_Wavfire_pluckdelay_C#Maj
+                </span>
+                <div class="wave"></div>
+              </div>
+            </div>
+       </li>
+
+         <li class="track-item" data-src="sounds/CW_AW_ecro_hocket_texture_01_F#maj - Wayne Huang.wav">
+            <div class="music-row">
+              <span class="soundBtn">
+                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+              </span>
+
+              <div class="track-right">
+                <span class="track-name">
+                  CW_AW_ecro_hocket_texture_01_F#maj
+                </span>
               <div class="wave"></div>
               </div>
             </div>
           </li>
 
-        </ul>
+           <li class="track-item" data-src="sounds/CS_AW_dowfi_piano_random_C# .textClipping - Dowfi.wav">
+            <div class="music-row">
+              <span class="soundBtn">
+                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+              </span>
 
-      </div>
+              <div class="track-right">
+                <span class="track-name">
+                  CS_AW_dowfi_piano_random_C#
+                </span>
+              <div class="wave"></div>
+              </div>
+            </div>
+          </li>
+
+          <li class="track-item" data-src="sounds/05_nuimi.mp3">
+            <div class="music-row">
+              <span class="soundBtn">
+                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+              </span>
+
+              <div class="track-right">
+                <span class="track-name">
+                  CS_AW_nu_imi_dmn
+                </span>
+                 <div class="wave"></div>
+              </div>
+            </div>
+          </li>
+
+          <li class="track-item" data-src="sounds/06_shimoui.mp3">
+            <div class="music-row">
+              <span class="soundBtn">
+                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+              </span>
+
+              <div class="track-right">
+                <span class="track-name">
+                  CS_AW_Shimoui_granular_epiano_120_Dmaj
+                </span>
+                 <div class="wave"></div>
+              </div>
+            </div>
+          </li>
+
+          <li class="track-item" data-src="sounds/07_wagataki.mp3">
+            <div class="music-row">
+              <span class="soundBtn">
+                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+              </span>
+
+              <div class="track-right">
+                <span class="track-name">
+                  CS_AW_wagataki_piano_rondom_shimmering_Dmaj
+                </span>
+              <div class="wave"></div>
+              </div>
+            </div>
+          </li>
+          
+          <li class="track-item" data-src="sounds/08_flawgri.mp3">
+            <div class="music-row">
+              <span class="soundBtn">
+                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+              </span>
+
+              <div class="track-right">
+                <span class="track-name">
+                  CS_AW_flawguri_classical_guitar_120_Fmaj
+                </span>
+              <div class="wave"></div>
+              </div>
+            </div>
+          </li>
+
+
+          <li class="track-item" data-src="sounds/CS_AW_jian_spectral-atonal - jian.wav">
+            <div class="music-row">
+              <span class="soundBtn">
+                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+              </span>
+
+              <div class="track-right">
+                <span class="track-name">
+                  CS_AW_jian_spectral
+                </span>
+              <div class="wave"></div>
+              </div>
+            </div>
+          </li>
+
+           <li class="track-item" data-src="sounds/CS_AW_Viznode_Swell_Textural_1_D - V z.wav">
+            <div class="music-row">
+              <span class="soundBtn">
+                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+              </span>
+
+              <div class="track-right">
+                <span class="track-name">
+                  CS_AW_Viznode_Swell_Textural_1_D
+                </span>
+              <div class="wave"></div>
+              </div>
+            </div>
+          </li>
+
+           <li class="track-item" data-src="sounds/CS_AW_alpha_spacy_lofi_granular_G#maj.wav">
+            <div class="music-row">
+              <span class="soundBtn">
+                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+              </span>
+
+              <div class="track-right">
+                <span class="track-name">
+                  CS_AW_alpha_spacy_lofi_granular_G#maj
+                </span>
+              <div class="wave"></div>
+              </div>
+            </div>
+          </li>
+
+          <li class="track-item" data-src="sounds/CS_AW_natsume_vocode_flower_pulse_Fmaj.wav">
+            <div class="music-row">
+              <span class="soundBtn">
+                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+              </span>
+
+              <div class="track-right">
+                <span class="track-name">
+                  CS_AW_natsume_vocode_flower_pulse_Fmaj
+                </span>
+              <div class="wave"></div>
+              </div>
+            </div>
+          </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+   
+
     </div>
 
   </section>
