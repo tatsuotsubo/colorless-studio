@@ -146,7 +146,7 @@ h2 {
 
 /* Aboutセクション全体 */
 #about {
-  background-color: #f3f1e6; /* 薄いベージュ */
+  background-color: #ffffff; /* 薄いベージュ */
   padding: 120px 40px;
 }
 /* 見出し */
@@ -213,7 +213,7 @@ h2 {
   color: black;
   padding: 100px 16px;
   text-align: center;
-  background-color: #dbd9d9;
+  background-color: #ffffff;
 }
 
 /* 見出し */
@@ -372,7 +372,7 @@ h2 {
 
 /* Artistセクション全体 */
 #artist {
-  background-color: #dff5d0; /* 黄緑 */
+  background-color: #ffffff; /* 黄緑 */
   padding: 120px 40px;
   position: relative;   /* ← これを追加 */
 }
