@@ -26,9 +26,9 @@ html, body {
    各セクション共通スタイル
 ==================================== */
 section {
- /* padding: 100px 16px;*/
- /* max-width: 1000px; */
-  margin: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 40px;
 }
 
 h2 {
@@ -1055,11 +1055,11 @@ h2 {
 
 /* ====================================
    フォントと全体の初期設定（リセット）
-==================================== */
+==================================== 
 body {
   font-family: "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   margin: 0;
-}
+}*/
 
 /* ====================================
    スマホ対応のパララックス解除（追加）
