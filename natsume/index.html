@@ -12,6 +12,9 @@
 
 <!-- 音楽プレイヤー -->
 <script src="js/audio-player.js" defer></script>
+
+<!-- ハンバーガーメニュー -->
+<script src="js/hamburger-menu.js" defer></script>
 </head>
 
 <!-- class以降で背景色指定、style.cssに記載 
@@ -20,8 +23,30 @@
   
   <!-- ヘッダー -->
   <header id="header">
+    <div class="header-left">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav class="menu">
+          <ul>
+            <li><a href="#">ホーム</a></li>
+            <li><a href="#">サービス</a></li>
+            <li><a href="#">お問い合わせ</a></li>
+            </ul>
+        </nav>
+      </div>
+    </div>
 
-    <img src="images/CS_logo.png" alt="ロゴ" class="header-logo">
+    <div class="header-center">
+      <img src="images/CS_logo.png" alt="ロゴ" class="header-logo">
+    </div>
+    
+    <div class="header-right">
+      <a href="#contact" class="contact-btn">Contact us</a>
+    </div>
 
     <!-- 旧ヘッダ
     <nav>
