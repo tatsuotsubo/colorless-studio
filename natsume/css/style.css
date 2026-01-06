@@ -26,9 +26,9 @@ html, body {
    各セクション共通スタイル
 ==================================== */
 section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 120px 40px;
+ /* padding: 100px 16px;*/
+ /* max-width: 1000px; */
+  margin: 0;
 }
 
 h2 {
@@ -136,7 +136,7 @@ h2 {
 }
 .logo-image {
   max-width: 600px;
-  width: 100%;
+  width: 80%;
   height: auto;
 }
 
