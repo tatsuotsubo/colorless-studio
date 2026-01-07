@@ -26,9 +26,9 @@ html, body {
    各セクション共通スタイル
 ==================================== */
 section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 120px 40px;
+ /* padding: 100px 16px;*/
+ /* max-width: 1000px; */
+  margin: 0;
 }
 
 h2 {
@@ -72,9 +72,144 @@ h2 {
   align-items: center;     /* 縦方向中央 */
 }
 
+.header-left,
+.header-center,
+.header-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  justify-content: flex-start;
+}
+
+.header-center {
+  justify-content: center;
+}
+
+.header-right {
+  justify-content: flex-end;
+}
+
+/* ハンバーガーアイコン */
+.hamburger-icon {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 30px;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2000;
+  
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  z-index: 2000;
+}
+
+/* ハンバーガーの線 */
+.hamburger-icon span {
+  width: 30px;
+  height: 3px;
+  background: #333;
+  transition: transform 0.3s, opacity 0.3s;
+  position: absolute;
+}
+
+/* 1本目（上の線） */
+.hamburger-icon span:nth-child(1) {
+  top: 0;
+}
+
+/* 2本目（中央の線） */
+.hamburger-icon span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* 3本目（下の線） */
+.hamburger-icon span:nth-child(3) {
+  bottom: 0;
+}
+
+/* フルスクリーンメニュー */
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* メニューが開いたとき */
+.menu.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* メニューのリンク */
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.menu li {
+  margin: 20px 0;
+}
+
+.menu a {
+  color: #fff;
+  font-size: 24px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #ddd;
+}
+.hamburger-menu.active .hamburger-icon span {
+  background: #fff;
+}
+/* ハンバーガーアイコンが「×」に変形 */
+.hamburger-menu.active .hamburger-icon span:nth-child(1) {
+  transform: translateY(12px) rotate(45deg);
+}
+
+.hamburger-menu.active .hamburger-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active .hamburger-icon span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+
 .header-logo {
   width: 60px;   /* 好きなサイズに */
   height: auto;
+}
+
+.contact-btn {
+  background: #dbe6e6;
+  padding: 10px 18px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
 }
 
 /*#header ul {
@@ -136,7 +271,7 @@ h2 {
 }
 .logo-image {
   max-width: 600px;
-  width: 100%;
+  width: 80%;
   height: auto;
 }
 
