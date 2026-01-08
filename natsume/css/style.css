@@ -485,12 +485,41 @@ h2 {
   width: 33%; /* ← すりガラスの1/3にする */
 }
 
-.music-art {
-  margin-top: 20px;   /* タイトルと画像の間の余白 */
+.music-art-wrap {
+  position: relative;
+  margin-top: 20px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* 画像・動画 共通 */
+.music-art,
+.music-video {
+  /*margin-top: 20px;    タイトルと画像の間の余白 */
   width: 100%;
   height: auto;
   border-radius: 15px;
   object-fit: cover;
+}
+
+/* 動画は上に重ねる */
+.music-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none; /* aタグのクリックを邪魔しない */
+}
+
+/* hover演出 */
+.music-art-wrap:hover .music-video {
+  opacity: 1;
+}
+
+.music-art-wrap:hover .music-art {
+  opacity: 0;
 }
 
 .music-art:hover {
