@@ -15,6 +15,8 @@
 
 <!-- ハンバーガーメニュー -->
 <script src="js/hamburger-menu.js" defer></script>
+<script src="js/scatter-modal.js" defer></script>
+
 </head>
 
 <!-- class以降で背景色指定、style.cssに記載 
@@ -82,20 +84,80 @@
       <div class="about-text"> 
         <!-- <hr> --><!-- ←横線 -->
         <p>
-<<<<<<< HEAD
           daaaaaaaaajaojoa
-=======
-          あああ
->>>>>>> 492dbb8 (20250105)
         </p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Scatter Gallery（Releaseの上に表示） -->
+<section id="scatter">
+  <h2>Gallery</h2>
+
+  <div class="scatter-stage">
+    <!-- 画像はここで好きに差し替え -->
+ <a class="scatter-card"
+   style="left:18%; top:30%; --r:-12deg;"
+   href="#"
+   data-title="Awake; poetry texture pack vol.1 (JPN)"
+   data-desc="リリースのコンセプトや、パックの特徴をここに書く。"
+   data-soundcloud="https://embed.music.apple.com/jp/album/lost-lands-beatbox-mix/1860201986?i=1860202172">
+  <img src="images/Awake;poetry_texture_pack_vol.1(JPN).jpg" alt="">
+</a>
+
+   <a class="scatter-card" style="left:40%; top:55%; --r:8deg;" href="#"
+   data-title="ビー玉"
+   data-desc="透明感のある質感。ビジュアルの参考。">
+  <img src="images/bi-dama.jpg" alt="">
+</a>
+
+    <a class="scatter-card" style="left:65%; top:35%; --r:-4deg;" href="#">
+      <img src="images/panda.jpg" alt="">
+    </a>
+
+    <a class="scatter-card" style="left:78%; top:70%; --r:14deg;" href="#">
+      <img src="images/guitar.jpg" alt="">
+    </a>
+
+    <a class="scatter-card" style="left:28%; top:78%; --r:-18deg;" href="#">
+      <img src="images/sky.jpg" alt="">
+    </a>
+  </div>
+</section>
+
+<div class="img-modal" id="imgModal" aria-hidden="true">
+  <div class="img-modal__backdrop" data-close></div>
+
+  <div class="img-modal__panel" role="dialog" aria-modal="true">
+    <button class="img-modal__close" type="button" aria-label="Close" data-close>×</button>
+
+    <div class="img-modal__content">
+      <div class="img-modal__media">
+        <img id="modalImg" src="" alt="">
+      </div>
+
+      <div class="img-modal__text">
+  <h3 id="modalTitle"></h3>
+  <p id="modalDesc"></p>
+
+  <iframe
+    id="modalPlayer"
+    width="100%"
+    height="175"
+    frameborder="0"
+    allow="autoplay *; encrypted-media *;"
+    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation">
+  </iframe>
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+</div>
   <!-- Musicセクション（音楽埋め込み） -->
   <section id="music">
-  <h2>Release</h2>
+  <h2>New Release</h2>
 
   <!-- ▼ タブは上（music-cardの外） -->
 
