@@ -5,6 +5,7 @@ body {
   font-family: "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   margin: 0; /* すべての余白を削除してページ全体のスタイルを初期化 */
   /* background: linear-gradient(135deg, #a7c0ff, #f7d9ff); */
+  padding-top: 80px;
 }
 
 html, body {
@@ -59,7 +60,7 @@ h2 {
    ヘッダー（ナビゲーションバー）
 ==================================== */
 #header {
-  position: absolute;            /* ページ全体に対して絶対位置指定 */
+  position: fixed;            /* ページ全体に対して絶対位置指定 */
   top: 0;                        /* 上端にくっつける */
   right: 0;                      /* 右端にくっつける */
   width: 100%;                   /* 横幅を画面いっぱいに広げる */
@@ -70,6 +71,8 @@ h2 {
   display: flex;
   justify-content: center; /* 横方向中央 */
   align-items: center;     /* 縦方向中央 */
+
+  background-color: #ffffff;
 }
 
 .header-left,
