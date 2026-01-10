@@ -73,6 +73,14 @@ h2 {
   align-items: center;     /* 縦方向中央 */
 
   background-color: #ffffff;
+  backdrop-filter: blur(6px);
+}
+
+/* ヘッダーロゴは最初非表示 */
+.header-logo {
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .header-left,
@@ -272,10 +280,16 @@ h2 {
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* 影をつけて背景に埋もれないようにする */
   margin: 0 auto;                      /* 不要な余白を除去 */
 }
+/* 中央の大きいロゴ */
 .logo-image {
-  max-width: 300px;
-  width: 80%;
-  height: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 220px; /* 初期サイズ */
+  transform: translate(-50%, -50%);
+  z-index: 200;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 /* =========================
