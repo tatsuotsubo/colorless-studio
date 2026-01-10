@@ -391,7 +391,7 @@ h2 {
   display: flex;
   flex-direction: column;    /* ← タイトル → 波形 を縦にする */
   padding: 10px 0;
-  border-bottom: 1px solid #ddd; /* ← 仕切り線 */
+  border-bottom: 1px solid #969696; /* ← 仕切り線 */
 }
 
 /* 右側：タイトル + 波形の縦並び */
@@ -465,6 +465,8 @@ h2 {
   animation: fadeIn linear;
   animation-timeline: view();
   animation-range: entry 0% cover 50%;
+
+  background-color: #dfdbdb;
 }
 
 .product-name {
@@ -479,6 +481,40 @@ h2 {
   font-size: 14px;
   font-weight: 500;
   opacity: 0.7;
+}
+
+.release-tabs {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #9a9a9a;
+  padding: 6px 2px;
+  cursor: pointer;
+  position: relative;
+  letter-spacing: 0.05em;
+}
+
+/* アクティブ状態 */
+.tab-btn.is-active {
+  color: #555;
+}
+
+/* 下線 */
+.tab-btn.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: #777;
 }
 
 .music-left {
@@ -528,9 +564,32 @@ h2 {
 }
 
 .music-info {
-  max-height: 300px;   /* 好きな高さに調整 */
+  max-height: 345px;   /* 好きな高さに調整 */
   overflow-y: auto;    /* 縦スクロールを有効化 */
   padding-right: 8px;  /* スクロールバーで内容が隠れないように余白 */
+
+  
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #b5b5b5 transparent;
+}
+
+/* Chrome / Edge / Safari */
+.music-info::-webkit-scrollbar {
+  width: 6px;
+}
+
+.music-info::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.music-info::-webkit-scrollbar-thumb {
+  background: #b5b5b5;
+  border-radius: 10px;
+}
+
+.music-info::-webkit-scrollbar-thumb:hover {
+  background: #8f8f8f;
 }
 
 /* =========================
