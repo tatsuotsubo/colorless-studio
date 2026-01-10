@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>RISECAFE</title>
-  <link rel="icon" href="images/CS_logo_icon.ico">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/artist-slider.js" defer></script>
-  <!-- WaveSurfer -->
-<script src="https://unpkg.com/wavesurfer.js"></script>
+  <head>
+    <meta charset="UTF-8">
+    <title>RISECAFE</title>
+    <link rel="icon" href="images/CS_logo_icon.ico">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
 
-<!-- 音楽プレイヤー -->
-<script src="js/audio-player.js" defer></script>
+    <script src="js/artist-slider.js" defer></script>
 
-<!-- ハンバーガーメニュー -->
-<script src="js/hamburger-menu.js" defer></script>
-<script src="js/scatter-modal.js" defer></script>
+    <!-- WaveSurfer -->
+    <script src="https://unpkg.com/wavesurfer.js"></script>
 
-<!-- ミュージックプレビュー -->
-<script src="js/music-preview.js" defer></script>
+    <!-- 音楽プレイヤー -->
+    <script src="js/audio-player.js" defer></script>
 
-</head>
+    <!-- ハンバーガーメニュー -->
+    <script src="js/hamburger-menu.js" defer></script>
+    <script src="js/scatter-modal.js" defer></script>
 
-<!-- class以降で背景色指定、style.cssに記載 
-<body class="select_color_bg">
--->
+    <!-- ミュージックプレビュー -->
+    <script src="js/music-preview.js" defer></script>
+
+  </head>
+
+  <!-- class以降で背景色指定、style.cssに記載 
+  <body class="select_color_bg">
+  -->
   
   <!-- ヘッダー -->
   <header id="header">
@@ -66,98 +68,101 @@
   </header>
 
   <!-- メインビジュアル（表紙） -->
- <section id="mainvisual">
-  <img src="images/CS_logo.png" class="logo-image">
-</section>
+  <section id="mainvisual">
+    <img src="images/CS_logo.png" class="logo-image">
+  </section>
 
-<!-- About us -->
-<section id="about">
-  <!-- <h2>About us</h2> -->
+  <!-- About us -->
+  <section id="about">
+    <!-- <h2>About us</h2> -->
 
-  <div class="about-wrapper">
-    <div class="about-image">
-      <img src="images/aboutUs-square.jpg" alt="About image">
+    <div class="about-wrapper">
+      <div class="about-image">
+        <img src="images/aboutUs-square.jpg" alt="About image">
+      </div>
+
+      <div class="about-content">
+        <h2 class="about-title">
+          <small>about us</small>
+        </h2>
+
+        <div class="about-text"> 
+          <!-- <hr> --><!-- ←横線 -->
+          <p>
+            daaaaaaaaajaojoa
+          </p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="about-content">
-      <h2 class="about-title">
-        <small>about us</small>
-      </h2>
+  <!-- Scatter Gallery（Releaseの上に表示） -->
+  <section id="scatter">
+    <h2>Gallery</h2>
 
-      <div class="about-text"> 
-        <!-- <hr> --><!-- ←横線 -->
-        <p>
-          daaaaaaaaajaojoa
-        </p>
+    <div class="scatter-stage">
+      <!-- 画像はここで好きに差し替え -->
+      <a class="scatter-card"
+        style="left:18%; top:30%; --r:-12deg;"
+        href="#"
+        data-title="Awake; poetry texture pack vol.1 (JPN)"
+        data-desc="リリースのコンセプトや、パックの特徴をここに書く。"
+        data-soundcloud="https://embed.music.apple.com/jp/album/lost-lands-beatbox-mix/1860201986?i=1860202172">
+        <img src="images/Awake;poetry_texture_pack_vol.1(JPN).jpg" alt="">
+      </a>
+
+      <a class="scatter-card" style="left:40%; top:55%; --r:8deg;" href="#"
+        data-title="ビー玉"
+        data-desc="透明感のある質感。ビジュアルの参考。">
+        <img src="images/bi-dama.jpg" alt="">
+      </a>
+
+      <a class="scatter-card" style="left:65%; top:35%; --r:-4deg;" href="#">
+        <img src="images/panda.jpg" alt="">
+      </a>
+
+      <a class="scatter-card" style="left:78%; top:70%; --r:14deg;" href="#">
+        <img src="images/guitar.jpg" alt="">
+      </a>
+
+      <a class="scatter-card" style="left:28%; top:78%; --r:-18deg;" href="#">
+        <img src="images/sky.jpg" alt="">
+      </a>
+    </div>
+  </section>
+
+  <div class="img-modal" id="imgModal" aria-hidden="true">
+    <div class="img-modal__backdrop" data-close></div>
+
+    <div class="img-modal__panel" role="dialog" aria-modal="true">
+      <button class="img-modal__close" type="button" aria-label="Close" data-close>×</button>
+
+      <div class="img-modal__content">
+        <div class="img-modal__media">
+          <img id="modalImg" src="" alt="">
+        </div>
+
+        <div class="img-modal__text">
+          <h3 id="modalTitle"></h3>
+          <p id="modalDesc"></p>
+
+          <iframe
+            id="modalPlayer"
+            width="100%"
+            height="175"
+            frameborder="0"
+            allow="autoplay *; encrypted-media *;"
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation">
+          </iframe>
+
+          <h3 id="modalTitle"></h3>
+          <p id="modalDesc"></p>
+
+        </div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- Scatter Gallery（Releaseの上に表示） -->
-<section id="scatter">
-  <h2>Gallery</h2>
-
-  <div class="scatter-stage">
-    <!-- 画像はここで好きに差し替え -->
- <a class="scatter-card"
-   style="left:18%; top:30%; --r:-12deg;"
-   href="#"
-   data-title="Awake; poetry texture pack vol.1 (JPN)"
-   data-desc="リリースのコンセプトや、パックの特徴をここに書く。"
-   data-soundcloud="https://embed.music.apple.com/jp/album/lost-lands-beatbox-mix/1860201986?i=1860202172">
-  <img src="images/Awake;poetry_texture_pack_vol.1(JPN).jpg" alt="">
-</a>
-
-   <a class="scatter-card" style="left:40%; top:55%; --r:8deg;" href="#"
-   data-title="ビー玉"
-   data-desc="透明感のある質感。ビジュアルの参考。">
-  <img src="images/bi-dama.jpg" alt="">
-</a>
-
-    <a class="scatter-card" style="left:65%; top:35%; --r:-4deg;" href="#">
-      <img src="images/panda.jpg" alt="">
-    </a>
-
-    <a class="scatter-card" style="left:78%; top:70%; --r:14deg;" href="#">
-      <img src="images/guitar.jpg" alt="">
-    </a>
-
-    <a class="scatter-card" style="left:28%; top:78%; --r:-18deg;" href="#">
-      <img src="images/sky.jpg" alt="">
-    </a>
-  </div>
-</section>
-
-<div class="img-modal" id="imgModal" aria-hidden="true">
-  <div class="img-modal__backdrop" data-close></div>
-
-  <div class="img-modal__panel" role="dialog" aria-modal="true">
-    <button class="img-modal__close" type="button" aria-label="Close" data-close>×</button>
-
-    <div class="img-modal__content">
-      <div class="img-modal__media">
-        <img id="modalImg" src="" alt="">
-      </div>
-
-      <div class="img-modal__text">
-  <h3 id="modalTitle"></h3>
-  <p id="modalDesc"></p>
-
-  <iframe
-    id="modalPlayer"
-    width="100%"
-    height="175"
-    frameborder="0"
-    allow="autoplay *; encrypted-media *;"
-    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation">
-  </iframe>
-        <h3 id="modalTitle"></h3>
-        <p id="modalDesc"></p>
-      </div>
-    </div>
-  </div>
-</div>
   <!-- Musicセクション（音楽埋め込み） -->
   <section id="music">
   <h2>New Release</h2>
@@ -166,555 +171,555 @@
 
   <div class="music-card">
 
-  <div class="music-card-top">
-    <span class="product-name">Awake; poetry texture pack vol.1(JPN)</span>
-    <span class="company-name">colorless studio</span>
-  </div>
-
-  <div class="release-tabs" role="tablist">
-    <button class="tab-btn is-active" type="button" data-tab="demo">demo songs</button>
-    <button class="tab-btn" type="button" data-tab="samples">samples</button>
-  </div>
-
-  <div class="music-body">
-    <div class="music-left">
-      <!-- ジャケット -->
-      <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
-
-        <div class="music-art-wrap">
-          <img class="music-art" src="images/Awake;poetry_texture_pack_vol.1(JPN).jpg" alt="アルバム画像">
-          <video class="music-video" src="videos/MV_Awake; poetry texture pack vol.1(JPN).mp4" muted loop playsinline></video>
-        </div>
-        
-       </a>
+    <div class="music-card-top">
+      <span class="product-name">Awake; poetry texture pack vol.1(JPN)</span>
+      <span class="company-name">colorless studio</span>
     </div>
 
-    <div class="music-right">
-      <div class="tab-panel is-active" data-panel="demo">
-        <div class="music-info">
-          <ul>
-            <!-- track-item たち -->
-             <li class="track-item" data-src="sounds/01_teinu.mp3">
-        <div class="music-row">
-          <span class="soundBtn"><img class="soundIcon" src="images/play_button.png" alt="再生" width="20"></span>
-          <div class="track-right">
-            <span class="track-name">as usual_ていぬ</span>
-            <div class="wave"></div>
+    <div class="release-tabs" role="tablist">
+      <button class="tab-btn is-active" type="button" data-tab="demo">demo songs</button>
+      <button class="tab-btn" type="button" data-tab="samples">samples</button>
+    </div>
+
+    <div class="music-body">
+      <div class="music-left">
+        <!-- ジャケット -->
+        <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
+
+          <div class="music-art-wrap">
+            <img class="music-art" src="images/Awake;poetry_texture_pack_vol.1(JPN).jpg" alt="アルバム画像">
+            <video class="music-video" src="videos/MV_Awake; poetry texture pack vol.1(JPN).mp4" muted loop playsinline></video>
           </div>
-        </div>
-      </li>
-
-      <li class="track-item" data-src="sounds/02_wavfire.mp3">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生">
-              </span>
-
-              <div class="track-right">
-                <span class="track-name">
-                  archetype_wavfire
-                </span>
-                <div class="wave"></div>
-              </div>
-            </div>
-       </li>
-
-         <li class="track-item" data-src="sounds/03_ecro.mp3">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
-
-              <div class="track-right">
-                <span class="track-name">
-                  just a dream_ecro
-                </span>
-              <div class="wave"></div>
-              </div>
-            </div>
-          </li>
-
-           <li class="track-item" data-src="sounds/04_dowfi.mp3">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
-
-              <div class="track-right">
-                <span class="track-name">
-                  shine_dowfi
-                </span>
-              <div class="wave"></div>
-              </div>
-            </div>
-          </li>
-
-          <li class="track-item" data-src="sounds/05_nuimi.mp3">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
-
-              <div class="track-right">
-                <span class="track-name">
-                  mimi_nari_nuimi
-                </span>
-                 <div class="wave"></div>
-              </div>
-            </div>
-          </li>
-
-          <li class="track-item" data-src="sounds/06_shimoui.mp3">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
-
-              <div class="track-right">
-                <span class="track-name">
-                  Inconsistent_shimoui
-                </span>
-                 <div class="wave"></div>
-              </div>
-            </div>
-          </li>
-
-          <li class="track-item" data-src="sounds/07_wagataki.mp3">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
-
-              <div class="track-right">
-                <span class="track-name">
-                  光の記憶_wagataki
-                </span>
-              <div class="wave"></div>
-              </div>
-            </div>
-          </li>
-          
-          <li class="track-item" data-src="sounds/08_flawgri.mp3">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
-
-              <div class="track-right">
-                <span class="track-name">
-                  waterfowl_flawguri
-                </span>
-              <div class="wave"></div>
-              </div>
-            </div>
-          </li>
-
-          <li class="track-item" data-src="sounds/09_jian.mp3">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
-
-              <div class="track-right">
-                <span class="track-name">
-                  solivagant_jian
-                </span>
-              <div class="wave"></div>
-              </div>
-            </div>
-          </li>
-
-           <li class="track-item" data-src="sounds/10_Viznode.mp3">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
-
-              <div class="track-right">
-                <span class="track-name">
-                  Evoke_Viznode
-                </span>
-              <div class="wave"></div>
-              </div>
-            </div>
-          </li>
-
-           <li class="track-item" data-src="sounds/11_natsume&alpha.mp3">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
-
-              <div class="track-right">
-                <span class="track-name">
-                  Awake_natsume & alpha
-                </span>
-              <div class="wave"></div>
-              </div>
-            </div>
-          </li>
-          </ul>
-        </div>
+        
+         </a>
       </div>
 
-       <div class="tab-panel" data-panel="samples">
-    <div class="music-info">
-      <ul>
+      <div class="music-right">
+        <!-- demo のtrack-item たち -->
+        <div class="tab-panel is-active" data-panel="demo">
+          <div class="music-info">
+            <ul>
+
+              <li class="track-item" data-src="sounds/demo_songs/01_teinu.mp3">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
+
+                  <div class="track-right">
+                    <span class="track-name">
+                      as usual_ていぬ
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="track-item" data-src="sounds/demo_songs/02_wavfire.mp3">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生">
+                  </span>
+
+                  <div class="track-right">
+                    <span class="track-name">
+                      archetype_wavfire
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="track-item" data-src="sounds/demo_songs/03_ecro.mp3">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
+
+                  <div class="track-right">
+                    <span class="track-name">
+                      just a dream_ecro
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="track-item" data-src="sounds/demo_songs/04_dowfi.mp3">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
+
+                  <div class="track-right">
+                    <span class="track-name">
+                      shine_dowfi
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="track-item" data-src="sounds/demo_songs/05_nuimi.mp3">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
+
+                  <div class="track-right">
+                    <span class="track-name">
+                      mimi_nari_nuimi
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="track-item" data-src="sounds/demo_songs/06_shimoui.mp3">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
+
+                  <div class="track-right">
+                    <span class="track-name">
+                      Inconsistent_shimoui
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="track-item" data-src="sounds/demo_songs/07_wagataki.mp3">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
+
+                  <div class="track-right">
+                    <span class="track-name">
+                      光の記憶_wagataki
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
+          
+              <li class="track-item" data-src="sounds/demo_songs/08_flawgri.mp3">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
+
+                  <div class="track-right">
+                    <span class="track-name">
+                      waterfowl_flawguri
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="track-item" data-src="sounds/demo_songs/09_jian.mp3">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
+
+                  <div class="track-right">
+                    <span class="track-name">
+                      solivagant_jian
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="track-item" data-src="sounds/demo_songs/10_Viznode.mp3">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
+
+                  <div class="track-right">
+                    <span class="track-name">
+                      Evoke_Viznode
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="track-item" data-src="sounds/demo_songs/11_natsume&alpha.mp3">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
+
+                  <div class="track-right">
+                    <span class="track-name">
+                      Awake_natsume & alpha
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
         <!-- samples の track-item たち -->
-       <li class="track-item" data-src="sounds/CS_AW_teinu_Spectral Riser_Ebmajwav - ていぬ.wav">
-        <div class="music-row">
-          <span class="soundBtn"><img class="soundIcon" src="images/play_button.png" alt="再生" width="20"></span>
-          <div class="track-right">
-            <span class="track-name">CS_AW_teinu_Spectral Riser_Ebmaj</span>
-            <div class="wave"></div>
-          </div>
-        </div>
-      </li>
+        <div class="tab-panel" data-panel="samples">
+          <div class="music-info">
+            <ul>
+            
+              <li class="track-item" data-src="sounds/samples/01_CS_AW_teinu_Spectral Riser_Ebmajwav-teinu.wav">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
 
-      <li class="track-item" data-src="sounds/CS_AW_pluckdelay_C#Maj - Wavfire.wav">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生">
-              </span>
+                  <div class="track-right">
+                    <span class="track-name">
+                      CS_AW_teinu_Spectral Riser_Ebmaj
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
 
-              <div class="track-right">
-                <span class="track-name">
-                  CS_AW_Wavfire_pluckdelay_C#Maj
-                </span>
-                <div class="wave"></div>
-              </div>
-            </div>
-       </li>
+              <li class="track-item" data-src="sounds/samples/02_CS_AW_pluckdelay_CMaj-Wavfire.wav">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生">
+                  </span>
 
-         <li class="track-item" data-src="sounds/CW_AW_ecro_hocket_texture_01_F#maj - Wayne Huang.wav">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
+                  <div class="track-right">
+                    <span class="track-name">
+                      CS_AW_Wavfire_pluckdelay_C#Maj
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
 
-              <div class="track-right">
-                <span class="track-name">
-                  CW_AW_ecro_hocket_texture_01_F#maj
-                </span>
-              <div class="wave"></div>
-              </div>
-            </div>
-          </li>
+              <li class="track-item" data-src="sounds/samples/03_CW_AW_ecro_hocket_texture_01_Fmaj-Wayne Huang.wav">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
 
-           <li class="track-item" data-src="sounds/CS_AW_dowfi_piano_random_C# .textClipping - Dowfi.wav">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
+                  <div class="track-right">
+                    <span class="track-name">
+                      CW_AW_ecro_hocket_texture_01_F#maj
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
 
-              <div class="track-right">
-                <span class="track-name">
-                  CS_AW_dowfi_piano_random_C#
-                </span>
-              <div class="wave"></div>
-              </div>
-            </div>
-          </li>
+              <li class="track-item" data-src="sounds/CS_AW_dowfi_piano_random_C# .textClipping - Dowfi.wav">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
 
-          <li class="track-item" data-src="sounds/05_nuimi.mp3">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
+                  <div class="track-right">
+                    <span class="track-name">
+                      CS_AW_dowfi_piano_random_C#
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
 
-              <div class="track-right">
-                <span class="track-name">
-                  CS_AW_nu_imi_dmn
-                </span>
-                 <div class="wave"></div>
-              </div>
-            </div>
-          </li>
+              <li class="track-item" data-src="sounds/samples/05_CS_AW_nu_imi_dmn.wav">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
 
-          <li class="track-item" data-src="sounds/06_shimoui.mp3">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
+                  <div class="track-right">
+                    <span class="track-name">
+                      CS_AW_nu_imi_dmn
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
 
-              <div class="track-right">
-                <span class="track-name">
-                  CS_AW_Shimoui_granular_epiano_120_Dmaj
-                </span>
-                 <div class="wave"></div>
-              </div>
-            </div>
-          </li>
+              <li class="track-item" data-src="sounds/samples/06_CS_AW_Shimoui_granular_epiano_120_Dmaj-Shimoui.wav">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
 
-          <li class="track-item" data-src="sounds/07_wagataki.mp3">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
+                  <div class="track-right">
+                    <span class="track-name">
+                      CS_AW_Shimoui_granular_epiano_120_Dmaj
+                    </span>
+                   <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
 
-              <div class="track-right">
-                <span class="track-name">
-                  CS_AW_wagataki_piano_rondom_shimmering_Dmaj
-                </span>
-              <div class="wave"></div>
-              </div>
-            </div>
-          </li>
+              <li class="track-item" data-src="sounds/samples/07_CS_AW_wagataki_piano_rondom_shimmering_Dmaj-wagataki.wav">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
+
+                  <div class="track-right">
+                    <span class="track-name">
+                      CS_AW_wagataki_piano_rondom_shimmering_Dmaj
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
           
-          <li class="track-item" data-src="sounds/08_flawgri.mp3">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
+              <li class="track-item" data-src="sounds/samples/08_CS_AW_flawguri_classical_guitar_120_Fmaj-gua hogo.wav">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
 
-              <div class="track-right">
-                <span class="track-name">
-                  CS_AW_flawguri_classical_guitar_120_Fmaj
-                </span>
-              <div class="wave"></div>
-              </div>
+                  <div class="track-right">
+                    <span class="track-name">
+                      CS_AW_flawguri_classical_guitar_120_Fmaj
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="track-item" data-src="sounds/samples/09_CS_AW_jian_spectral-atonal-jian.wav">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
+
+                  <div class="track-right">
+                    <span class="track-name">
+                      CS_AW_jian_spectral
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="track-item" data-src="sounds/samples/10_CS_AW_Viznode_Swell_Textural_1_D-Vz.wav">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
+
+                  <div class="track-right">
+                    <span class="track-name">
+                      CS_AW_Viznode_Swell_Textural_1_D
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="track-item" data-src="sounds/samples/11_CS_AW_alpha_spacy_lofi_granular_Gmaj.wav">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
+
+                  <div class="track-right">
+                    <span class="track-name">
+                      CS_AW_alpha_spacy_lofi_granular_G#maj
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="track-item" data-src="sounds/samples/12_CS_AW_natsume_vocode_flower_pulse_Fmaj.wav">
+                <div class="music-row">
+                  <span class="soundBtn">
+                    <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
+                  </span>
+
+                  <div class="track-right">
+                    <span class="track-name">
+                      CS_AW_natsume_vocode_flower_pulse_Fmaj
+                    </span>
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Artist -->
+  <section id="artist"  data-slider="artist">
+    <h2>Artist</h2>
+
+    <!-- 左右ボタン -->
+    <button class="artist-nav prev">←</button>
+    <button class="artist-nav next">→</button>
+
+    <!-- 横スクロールエリア -->
+    <div class="artist-slider">
+      <div class="artist-track">
+
+        <!-- 最後(二人目)のコピー -->
+        <div class="artist-item clone">
+          <div class="artist-left">
+            <div class="artist-image">
+              <img src="images/guitar.jpg" alt="guitar">
             </div>
-          </li>
+          </div>
 
-
-          <li class="track-item" data-src="sounds/CS_AW_jian_spectral-atonal - jian.wav">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
-
-              <div class="track-right">
-                <span class="track-name">
-                  CS_AW_jian_spectral
-                </span>
-              <div class="wave"></div>
-              </div>
+          <div class="artist-right">
+            <div class="career-box">
+              <p>経歴書く</p>
             </div>
-          </li>
+            <ul class="sns-btn">
+              <li>
+                <a href="https://x.com/xxxx" target="_blank">
+                  <img src="images/sns/x-black.png" alt="x">
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com/xxxx" target="_blank">
+                  <img src="images/sns/instagram.png" alt="Instagram">
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-           <li class="track-item" data-src="sounds/CS_AW_Viznode_Swell_Textural_1_D - V z.wav">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
-
-              <div class="track-right">
-                <span class="track-name">
-                  CS_AW_Viznode_Swell_Textural_1_D
-                </span>
-              <div class="wave"></div>
-              </div>
+        <!-- 一人目 -->
+        <div class="artist-item">
+          <div class="artist-left">
+            <div class="artist-image">
+              <img src="images/panda.jpg" alt="panda">
             </div>
-          </li>
+          </div>
 
-           <li class="track-item" data-src="sounds/CS_AW_alpha_spacy_lofi_granular_G#maj.wav">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
-
-              <div class="track-right">
-                <span class="track-name">
-                  CS_AW_alpha_spacy_lofi_granular_G#maj
-                </span>
-              <div class="wave"></div>
-              </div>
+          <div class="artist-right">
+            <div class="career-box">
+              <p>経歴書く</p>
             </div>
-          </li>
+          
+            <ul class="sns-btn">
+              <li>
+                <a href="https://x.com/xxxx" target="_blank">
+                  <img src="images/sns/x-black.png" alt="x">
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com/xxxx" target="_blank">
+                  <img src="images/sns/instagram.png" alt="Instagram">
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-          <li class="track-item" data-src="sounds/CS_AW_natsume_vocode_flower_pulse_Fmaj.wav">
-            <div class="music-row">
-              <span class="soundBtn">
-                <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
-              </span>
-
-              <div class="track-right">
-                <span class="track-name">
-                  CS_AW_natsume_vocode_flower_pulse_Fmaj
-                </span>
-              <div class="wave"></div>
-              </div>
+        <!-- 二人目 -->
+        <div class="artist-item">
+          <div class="artist-left">
+            <div class="artist-image">
+              <img src="images/guitar.jpg" alt="guitar">
             </div>
-          </li>
+          </div>
+
+          <div class="artist-right">
+            <div class="career-box">
+              <p>経歴書く</p>
+            </div>
+          
+            <ul class="sns-btn">
+              <li>
+                <a href="https://x.com/xxxx" target="_blank">
+                  <img src="images/sns/x-black.png" alt="x">
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com/xxxx" target="_blank">
+                  <img src="images/sns/instagram.png" alt="Instagram">
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 最初（一人目）のコピー -->
+        <div class="artist-item clone">
+          <div class="artist-left">
+            <div class="artist-image">
+              <img src="images/panda.jpg" alt="panda">
+            </div>
+          </div>
+
+          <div class="artist-right">
+            <div class="career-box">
+              <p>経歴書く</p>
+            </div>
+          
+            <ul class="sns-btn">
+              <li>
+                <a href="https://x.com/xxxx" target="_blank">
+                  <img src="images/sns/x-black.png" alt="x">
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com/xxxx" target="_blank">
+                  <img src="images/sns/instagram.png" alt="Instagram">
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="last">
+    <!-- 左：画像 -->
+    <div class="last-image">
+      <img src="images/leaf-square.jpg" alt="leaf">
+    </div>
+
+    <!-- 右：メニュー -->
+    <nav class="last-menu">
+      <ul>
+        <li class="active"><a href="#about">About us</a></li>
+        <li class="active"><a href="#music">Release us</a></li>
+        <li class="active"><a href="#artist">Artist</a></li>
       </ul>
-    </div>
-  </div>
-</div>
 
+      <ul class="sns-btn">
+        <li>
+          <a href="https://x.com/xxxx" target="_blank">
+            <img src="images/sns/x-black.png" alt="x">
+          </a>
+        </li>
+        <li>
+          <a href="https://instagram.com/xxxx" target="_blank">
+            <img src="images/sns/instagram.png" alt="Instagram">
+          </a>
+        </li>
+      </ul>
+    </nav>
 
-   
-
-    </div>
-
+    <!-- 左下ロゴ -->
   </section>
 
-<!-- Artist -->
-<section id="artist"  data-slider="artist">
-  <h2>Artist</h2>
-
-  <!-- 左右ボタン -->
-  <button class="artist-nav prev">←</button>
-  <button class="artist-nav next">→</button>
-
-  <!-- 横スクロールエリア -->
-  <div class="artist-slider">
-    <div class="artist-track">
-
-      <!-- 最後(二人目)のコピー -->
-      <div class="artist-item clone">
-        <div class="artist-left">
-          <div class="artist-image">
-            <img src="images/guitar.jpg" alt="guitar">
-          </div>
-        </div>
-
-        <div class="artist-right">
-          <div class="career-box">
-            <p>経歴書く</p>
-          </div>
-        
-
-          <ul class="sns-btn">
-            <li>
-              <a href="https://x.com/xxxx" target="_blank">
-                <img src="images/sns/x-black.png" alt="x">
-              </a>
-            </li>
-            <li>
-              <a href="https://instagram.com/xxxx" target="_blank">
-                <img src="images/sns/instagram.png" alt="Instagram">
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- 一人目 -->
-      <div class="artist-item">
-        <div class="artist-left">
-          <div class="artist-image">
-            <img src="images/panda.jpg" alt="panda">
-          </div>
-        </div>
-
-        <div class="artist-right">
-          <div class="career-box">
-            <p>経歴書く</p>
-          </div>
-        
-
-          <ul class="sns-btn">
-            <li>
-               <a href="https://x.com/xxxx" target="_blank">
-                <img src="images/sns/x-black.png" alt="x">
-              </a>
-            </li>
-            <li>
-              <a href="https://instagram.com/xxxx" target="_blank">
-                <img src="images/sns/instagram.png" alt="Instagram">
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- 二人目 -->
-      <div class="artist-item">
-        <div class="artist-left">
-          <div class="artist-image">
-            <img src="images/guitar.jpg" alt="guitar">
-          </div>
-        </div>
-
-        <div class="artist-right">
-          <div class="career-box">
-            <p>経歴書く</p>
-          </div>
-        
-
-          <ul class="sns-btn">
-            <li>
-              <a href="https://x.com/xxxx" target="_blank">
-                <img src="images/sns/x-black.png" alt="x">
-              </a>
-            </li>
-            <li>
-              <a href="https://instagram.com/xxxx" target="_blank">
-                <img src="images/sns/instagram.png" alt="Instagram">
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- 最初（一人目）のコピー -->
-      <div class="artist-item clone">
-        <div class="artist-left">
-          <div class="artist-image">
-            <img src="images/panda.jpg" alt="panda">
-          </div>
-        </div>
-
-        <div class="artist-right">
-          <div class="career-box">
-            <p>経歴書く</p>
-          </div>
-        
-
-          <ul class="sns-btn">
-            <li>
-              <a href="https://x.com/xxxx" target="_blank">
-                <img src="images/sns/x-black.png" alt="x">
-              </a>
-            </li>
-            <li>
-              <a href="https://instagram.com/xxxx" target="_blank">
-                <img src="images/sns/instagram.png" alt="Instagram">
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </div>
-    
-</section>
-
-
-<section class="last">
-  <!-- 左：画像 -->
-  <div class="last-image">
-    <img src="images/leaf-square.jpg" alt="leaf">
-  </div>
-
-  <!-- 右：メニュー -->
-  <nav class="last-menu">
-    <ul>
-      <li class="active"><a href="#about">About us</a></li>
-      <li class="active"><a href="#music">Release us</a></li>
-      <li class="active"><a href="#artist">Artist</a></li>
-    </ul>
-
-    <ul class="sns-btn">
-      <li>
-        <a href="https://x.com/xxxx" target="_blank">
-          <img src="images/sns/x-black.png" alt="x">
-        </a>
-      </li>
-      <li>
-        <a href="https://instagram.com/xxxx" target="_blank">
-          <img src="images/sns/instagram.png" alt="Instagram">
-        </a>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- 左下ロゴ -->
-
-</section>
-
-  </section>
 
   <!-- 以下は今後調整 -->
 

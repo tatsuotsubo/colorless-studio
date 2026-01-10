@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // trackItem -> { ws, icon }
   const waveMap = new Map();
 
-  // ✅ 波形をまだ作ってなければ作る
+  // ================================
+  // 波形をまだ作ってなければ作る
+  // ================================
   function ensureWave(trackItem) {
     if (waveMap.has(trackItem)) return waveMap.get(trackItem);
 
@@ -16,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!src || !waveContainer || !btn || !icon) return null;
 
-    // 念のためクリア（再生成時のゴミ防止）
+    // 念のため初期化
     waveContainer.innerHTML = "";
 
     const ws = WaveSurfer.create({
@@ -24,9 +26,21 @@ document.addEventListener("DOMContentLoaded", () => {
       waveColor: "#888",
       progressColor: "#333",
       height: 20,
+      backend: "MediaElement", // ← 安定化
+      normalize: true,
+      cursorWidth: 0,
     });
 
-    ws.load(src);
+    // ★ # 対策（最重要）
+    ws.load(encodeURI(src));
+
+    // ★ 読み込み完了後に描画保証
+    ws.on("ready", () => {
+      try {
+        ws.drawer?.setWidth?.(waveContainer.clientWidth);
+        ws.drawBuffer?.();
+      } catch (e) {}
+    });
 
     // 再生ボタン
     btn.addEventListener("click", () => {
@@ -35,17 +49,23 @@ document.addEventListener("DOMContentLoaded", () => {
         if (otherWs !== ws) {
           otherWs.pause();
           otherIcon.src = "images/play_button.png";
+          otherTrack.classList.remove("is-playing");
         }
       });
 
       ws.playPause();
-      icon.src = ws.isPlaying()
+
+      const playing = ws.isPlaying();
+      icon.src = playing
         ? "images/pause_button.png"
         : "images/play_button.png";
+
+      trackItem.classList.toggle("is-playing", playing);
     });
 
     ws.on("finish", () => {
       icon.src = "images/play_button.png";
+      trackItem.classList.remove("is-playing");
     });
 
     const obj = { ws, icon };
@@ -53,31 +73,37 @@ document.addEventListener("DOMContentLoaded", () => {
     return obj;
   }
 
-  // ✅ パネルをアクティブにした時：波形を作って、描画し直す
+  // ================================
+  // パネルをアクティブにしたとき
+  // ================================
   function activatePanel(panel) {
     const items = panel.querySelectorAll(".track-item");
 
-    // 1) まだ作ってない波形を作る
+    // まだ作ってない波形を生成
     items.forEach((item) => ensureWave(item));
 
-    // 2) 表示後に再描画（display切替直後は幅が確定してないことがある）
+    // 表示後の再描画（display切替対策）
     requestAnimationFrame(() => {
       items.forEach((item) => {
         const data = waveMap.get(item);
         if (!data) return;
 
         const { ws } = data;
+        const wave = item.querySelector(".wave");
 
-        // WaveSurferの描画を強制更新（内部APIだけど実用的）
+        if (!wave || !wave.clientWidth) return;
+
         try {
-          ws.drawer?.setWidth?.(item.querySelector(".wave").clientWidth);
+          ws.drawer?.setWidth?.(wave.clientWidth);
           ws.drawBuffer?.();
         } catch (e) {}
       });
     });
   }
 
-  // ✅ タブ切替
+  // ================================
+  // タブ切り替え
+  // ================================
   function switchTab(tabName) {
     tabs.forEach((btn) => {
       btn.classList.toggle("is-active", btn.dataset.tab === tabName);
@@ -92,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const activePanel = document.querySelector(
       `.tab-panel[data-panel="${tabName}"]`
     );
+
     if (activePanel) activatePanel(activePanel);
   }
 
@@ -102,7 +129,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 初期表示（demo を表示）
-  const initial = document.querySelector(".tab-btn.is-active")?.dataset.tab || "demo";
+  // 初期表示
+  const initial =
+    document.querySelector(".tab-btn.is-active")?.dataset.tab || "demo";
+
   switchTab(initial);
 });
