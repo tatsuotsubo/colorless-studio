@@ -80,5 +80,17 @@ document.addEventListener('DOMContentLoaded', () => {
       ticking = true;
       requestAnimationFrame(update);
     }
+
+    // ヘッダーロゴクリックでトップへ戻る
+    headerLogo.style.cursor = 'pointer';
+
+    headerLogo.addEventListener('click', () => {
+       if (window.scrollY > 10) {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+    });
   });
 });
