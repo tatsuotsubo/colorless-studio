@@ -64,9 +64,11 @@ h2 {
   top: 0;                        /* 上端にくっつける */
   right: 0;                      /* 右端にくっつける */
   width: 100%;                   /* 横幅を画面いっぱいに広げる */
-  padding: 10px;            /* 上下20pxの余白を追加 */
+  padding: 0;           /* 上下20pxの余白を追加 */
   box-sizing: border-box;        /* パディングも含めて100%の幅にする */
   z-index: 1000;                 /* 他の要素の上に表示されるように */
+
+  height: 64px;          /* ← ヘッダーの高さを決める */
 
   display: flex;
   justify-content: center; /* 横方向中央 */
@@ -100,6 +102,9 @@ h2 {
 }
 
 .header-right {
+  height: 100%;
+  display: flex;
+  align-items: stretch; /* ← 中身を縦いっぱいに */
   justify-content: flex-end;
 }
 
@@ -221,11 +226,17 @@ h2 {
 }
 
 .contact-btn {
-  background: #ffffff;
+  height: 100%;
+  display: flex;
+  align-items: center;      /* テキストを中央 */
+  padding: 0 24px;      /* 横だけ余白 */
+  margin-right: 0;      /* 念のため */
+  background: #aec0c5ef;
   padding: 10px 18px;
   text-decoration: none;
   color: #333;
   font-size: 14px;
+  border-left: 1px solid #ddd;
 }
 
 /*#header ul {
