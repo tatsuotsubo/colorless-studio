@@ -15,15 +15,6 @@ html, body {
 }
 
 /* ====================================
-   背景（※追加）
-==================================== 
-.select_color_bg {
-    background-color: #ffedd7ff;
-    background-attachment: fixed;
-    background-repeat: repeat;
-}*/
-
-/* ====================================
    各セクション共通スタイル
 ==================================== */
 section {

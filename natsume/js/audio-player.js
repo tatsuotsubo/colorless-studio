@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       waveMap.forEach(({ ws: otherWs, icon: otherIcon }, otherTrack) => {
         if (otherWs !== ws) {
           otherWs.pause();
-          otherIcon.src = "images/play_button.png";
+          otherIcon.src = "images/button/play_button.png";
           otherTrack.classList.remove("is-playing");
         }
       });
@@ -57,14 +57,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const playing = ws.isPlaying();
       icon.src = playing
-        ? "images/pause_button.png"
-        : "images/play_button.png";
+        ? "images/button/pause_button.png"
+        : "images/button/play_button.png";
 
       trackItem.classList.toggle("is-playing", playing);
     });
 
     ws.on("finish", () => {
-      icon.src = "images/play_button.png";
+      icon.src = "images/button/play_button.png";
       trackItem.classList.remove("is-playing");
     });
 
