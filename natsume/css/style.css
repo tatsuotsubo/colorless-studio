@@ -1216,7 +1216,7 @@ body {
 /* 散りばめる“ステージ” */
 .scatter-stage{
   position: relative;
-  height: min(70vh, 640px);
+  height: min(120vh, 1100px);
   overflow: hidden;
   border-radius: 24px;
   /* 背景はお好みで */
@@ -1226,8 +1226,8 @@ body {
 /* 画像カード */
 .scatter-card{
   position: absolute;
-  width: 220px;
-  aspect-ratio: 4 / 3;
+  width: 150px;
+  aspect-ratio: 1 / 1;
   border-radius: 18px;
   overflow: hidden;
   cursor: pointer;
@@ -1365,4 +1365,292 @@ body {
 #scatter h2{
   text-align: center;
   margin: 0 0 24px; /* 好きに調整 */
+}
+
+.img-modal__panel{
+  position: relative;
+}
+
+.img-modal__artist{
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 10px;
+  opacity: .9;
+  box-shadow: 0 6px 20px rgba(0,0,0,.15);
+}
+/* =========================
+   Sushi Belt Gallery
+========================= */
+
+.scatter-stage.sushi{
+  position: relative;
+  height: auto;          /* 高さ固定やめる */
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 18px 0;
+}
+
+.sushi-viewport{
+  overflow: hidden;
+  width: 100%;
+}
+
+.sushi-track{
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+  animation: sushiMove 35s linear infinite; /* 速度はここ */
+}
+.sushi-track{
+  margin-bottom: 20px;  /* ← レーン間の縦スキマ */
+}
+.sushi-track:last-child{
+  margin-bottom: 0;
+}
+
+/* hoverで止めたいなら */
+.scatter-stage.sushi:hover .sushi-track{
+  animation-play-state: paused;
+}
+
+/* 回転寿司アニメ */
+@keyframes sushiMove{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* JSで複製する前提 */
+}
+
+.sushi-track.reverse{
+  animation-direction: reverse;
+}
+/* カードを“整列用”に作り直す（absolute解除） */
+.scatter-stage.sushi .scatter-card{
+  position: relative;
+  width: 200px;          /* ← ここがカードサイズ */
+  aspect-ratio: 1 /1;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+
+  transform: none;       /* 回転なし */
+  opacity: 1;
+  box-shadow: none;
+  flex: 0 0 auto;
+}
+
+.scatter-stage.sushi .scatter-card:hover{
+  transform: translateY(-6px);
+}
+
+/* スマホ */
+@media (max-width: 700px){
+  .scatter-stage.sushi .scatter-card{ width: 160px; }
+}
+
+body.modal-open .sushi-track {
+  animation-play-state: paused !important;
+}
+
+body.modal-open .scatter-stage.sushi:hover .sushi-track {
+  animation-play-state: paused !important;
+}
+/* パネルからはみ出して表示できるように */
+.img-modal__panel{
+  position: relative;
+  overflow: visible; /* ← これ重要（hiddenだと外に出せない） */
+}
+
+/* 矢印：パネルの外側に配置 */
+.img-modal__nav{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+
+  font-size: 44px;
+  font-weight: 900;
+  color: #fff;          /* 外側に出すなら白が見やすい */
+  cursor: pointer;
+  z-index: 10;
+  line-height: 1;
+  text-shadow: 0 6px 18px rgba(0,0,0,.35); /* 背景に埋もれない */
+  transition: transform .18s ease, opacity .18s ease;
+}
+
+.img-modal__nav.prev{ left: -60px; }
+.img-modal__nav.next{ right: -60px; }
+
+.img-modal__nav.prev:hover{
+  transform: translate(-6px, -50%);
+  opacity: .75;
+}
+.img-modal__nav.next:hover{
+  transform: translate(6px, -50%);
+  opacity: .75;
+}
+
+/* スマホははみ出し量を減らす */
+@media (max-width: 640px){
+  .img-modal__nav.prev{ left: -34px; }
+  .img-modal__nav.next{ right: -34px; }
+  .img-modal__nav{ font-size: 34px; }
+}
+
+.img-modal__nav.prev{ left: 12px; }
+.img-modal__nav.next{ right: 12px; }
+
+.img-modal__nav:hover{ filter: brightness(.95); }
+
+/* 一覧ボタン */
+.img-modal__thumbBtn{
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  height: 34px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255,255,255,.9);
+  cursor: pointer;
+  z-index: 3;
+  font-size: 13px;
+}
+
+/* 一覧パネル（モーダル下に出す） */
+.img-modal__thumbs{
+  display: none;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0,0,0,.08);
+}
+
+.img-modal__thumbs.is-open{
+  display: block;
+}
+
+.img-modal__thumbsGrid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
+  gap: 10px;
+  max-height: 220px;
+  overflow: auto;
+  padding-right: 6px;
+}
+
+.img-modal__thumb{
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  outline: none;
+}
+
+.img-modal__thumb img{
+  width: 100%;
+  height: 86px;
+  object-fit: cover;
+  display: block;
+}
+
+.img-modal__thumb.is-active{
+  box-shadow: 0 0 0 2px rgba(0,0,0,.35);
+}
+
+/* モーダル全体を基準にする */
+.img-modal{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+/* ✅ 矢印は画面固定＝絶対に切れない */
+.img-modal__nav{
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+
+  font-size: 48px;
+  font-weight: 900;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10000; /* パネルより前 */
+  line-height: 1;
+  text-shadow: 0 6px 18px rgba(0,0,0,.35);
+  transition: transform .18s ease, opacity .18s ease;
+  user-select: none;
+}
+
+.img-modal__nav.prev{ left: 24px; }
+.img-modal__nav.next{ right: 24px; }
+
+.img-modal__nav.prev:hover{
+  transform: translate(-6px, -50%);
+  opacity: .75;
+}
+.img-modal__nav.next:hover{
+  transform: translate(6px, -50%);
+  opacity: .75;
+}
+
+/* スマホ */
+@media (max-width: 640px){
+  .img-modal__nav{ font-size: 36px; }
+  .img-modal__nav.prev{ left: 10px; }
+  .img-modal__nav.next{ right: 10px; }
+}
+
+/* 一覧グリッド */
+.img-modal__thumbsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 12px;
+}
+
+/* サムネ枠の比率を決める */
+.img-modal__thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* ← ここで比率を指定 */
+  padding: 0;
+  border: none;
+  background: none;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 20px; 
+}
+
+/* 中の画像を枠にフィットさせる */
+.img-modal__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* はみ出す分はトリミング */
+  display: block;
+}
+
+.gallery-actions{
+  display:flex;
+  justify-content:center;
+  margin:24px 0 0;
+}
+.gallery-seeall{
+  padding:10px 18px;
+  border:1px solid currentColor;
+  background:transparent;
+  cursor:pointer;
+  letter-spacing:.08em;
+}
+.gallery-seeall:hover{
+  opacity:.75;
 }

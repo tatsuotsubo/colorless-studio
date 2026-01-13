@@ -2,7 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
-    <title>RISECAFE</title>
+    <title>colorless studio</title>
     <link rel="icon" href="images/CS_logo_icon.ico">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
@@ -42,7 +42,7 @@
         <nav class="menu">
           <ul>
             <li class="active"><a href="#about">About us</a></li>
-            <li class="active"><a href="#scatter">Gallery</a></li>
+            <li class="active"><a href="#scatter" data-open-gallery>Gallery</a></li>
             <li class="active"><a href="#music">New Release</a></li>
             <li class="active"><a href="#artist">Artist</a></li>
            </ul>
@@ -100,50 +100,261 @@
   </section>
 
   <!-- Scatter Gallery（Releaseの上に表示） -->
-  <section id="scatter">
-    <h2>Gallery</h2>
+ <section id="scatter">
+  <h2>Gallery</h2>
 
-    <div class="scatter-stage">
-      <!-- 画像はここで好きに差し替え -->
+<div class="scatter-stage sushi">
+  <div class="sushi-viewport">
+    <div class="sushi-track" id="sushiSource">
+
       <a class="scatter-card"
-        style="left:18%; top:30%; --r:-12deg;"
         href="#"
         data-title="Awake; poetry texture pack vol.1 (JPN)"
         data-desc="リリースのコンセプトや、パックの特徴をここに書く。"
+        data-artist-img="images/panda.jpg"
         data-soundcloud="https://embed.music.apple.com/jp/album/lost-lands-beatbox-mix/1860201986?i=1860202172">
-        <img src="images/Awake;poetry_texture_pack_vol.1(JPN).jpg" alt="">
+        <img src="images/release/artwork/Awake;poetry_texture_pack_vol.1(JPN).jpg" alt="">
       </a>
 
-      <a class="scatter-card" style="left:40%; top:55%; --r:8deg;" href="#"
-        data-title="ビー玉"
-        data-desc="透明感のある質感。ビジュアルの参考。">
-        <img src="images/bi-dama.jpg" alt="">
+      <!-- releases -->
+      <a class="scatter-card"
+        href="#"
+        data-title="anything"
+        data-artist-img="images/panda.jpg"
+        data-soundcloud="https://alphanium.bandcamp.com/track/anything">
+        <img src="images/release/artwork/anything.PNG" alt="">
       </a>
 
-      <a class="scatter-card" style="left:65%; top:35%; --r:-4deg;" href="#">
-        <img src="images/panda.jpg" alt="">
+      <a class="scatter-card"
+        href="#"
+        data-title="flora"
+        data-artist-img="images/panda.jpg"
+        data-soundcloud="https://linkco.re/Eag7a1tV">
+        <img src="images/release/artwork/flora.png" alt="">
       </a>
 
-      <a class="scatter-card" style="left:78%; top:70%; --r:14deg;" href="#">
-        <img src="images/guitar.jpg" alt="">
+      <a class="scatter-card"
+        href="#"
+        data-title="mira"
+        data-artist-img="images/panda.jpg"
+        data-soundcloud="https://linkco.re/NxVPSmye">
+        <img src="images/release/artwork/mira.jpg" alt="">
       </a>
 
-      <a class="scatter-card" style="left:28%; top:78%; --r:-18deg;" href="#">
-        <img src="images/sky.jpg" alt="">
+      <a class="scatter-card"
+        href="#"
+        data-title="kawaii pop assort 4"
+        data-artist-img="images/panda.jpg"
+        data-soundcloud="https://linkco.re/6DrUaDYp">
+        <img src="images/release/artwork/kawaii%20pop%20assort%204.png" alt="">
       </a>
+
+      <a class="scatter-card"
+        href="#"
+        data-title="everything"
+        data-artist-img="images/panda.jpg"
+        data-soundcloud="https://linkco.re/Ps8gxBT2">
+        <img src="images/release/artwork/everything.jpg" alt="">
+      </a>
+
+      <a class="scatter-card"
+        href="#"
+        data-title="frost"
+        data-artist-img="images/panda.jpg"
+        data-soundcloud="https://linkco.re/mn8mEeUZ">
+        <img src="images/release/artwork/frost.png" alt="">
+      </a>
+
+      <a class="scatter-card"
+        href="#"
+        data-title="kawaii pop assort 3"
+        data-artist-img="images/panda.jpg"
+        data-soundcloud="https://linkco.re/DvS1UhVv">
+        <img src="images/release/artwork/kawaii%20pop%20assort%203.PNG" alt="">
+      </a>
+
+      <a class="scatter-card"
+        href="#"
+        data-title="citrus"
+        data-artist-img="images/panda.jpg"
+        data-soundcloud="https://linkco.re/x5YprmNp">
+        <img src="images/release/artwork/citrus.png" alt="">
+      </a>
+
+      <a class="scatter-card"
+        href="#"
+        data-title="scenery of"
+        data-artist-img="images/panda.jpg"
+        data-soundcloud="https://linkco.re/ZH0ZGRxB">
+        <img src="images/release/artwork/scenery%20of.png" alt="">
+      </a>
+
+      <a class="scatter-card"
+        href="#"
+        data-title="colorize"
+        data-artist-img="images/panda.jpg"
+        data-soundcloud="https://linkco.re/B7CZZ8YE">
+        <img src="images/release/artwork/colorize.PNG" alt="">
+      </a>
+
+      <a class="scatter-card"
+        href="#"
+        data-title="flowering"
+        data-artist-img="images/panda.jpg"
+        data-soundcloud="https://linkco.re/PMYypY5H">
+        <img src="images/release/artwork/flowering.png" alt="">
+      </a>
+
+      <a class="scatter-card"
+        href="#"
+        data-title="kawaii pop assort 2"
+        data-artist-img="images/panda.jpg"
+        data-soundcloud="https://linkco.re/98BpfrRC">
+        <img src="images/release/artwork/kawaii%20pop%20assort%202.PNG" alt="">
+      </a>
+
+      <a class="scatter-card"
+        href="#"
+        data-title="pale"
+        data-artist-img="images/panda.jpg"
+        data-soundcloud="https://linkco.re/TEAEt5b2">
+        <img src="images/release/artwork/pale.PNG" alt="">
+      </a>
+
+      <a class="scatter-card"
+        href="#"
+        data-title="may"
+        data-artist-img="images/panda.jpg"
+        data-soundcloud="https://linkco.re/Bce0nHPR">
+        <img src="images/release/artwork/may.jpeg" alt="">
+      </a>
+
+      <a class="scatter-card"
+        href="#"
+        data-title="kawaii pop assort"
+        data-artist-img="images/panda.jpg"
+        data-soundcloud="https://linkco.re/E27Xfaqg">
+        <img src="images/release/artwork/kawaii%20pop%20assort.PNG" alt="">
+      </a>
+
+      <a class="scatter-card" href="#" data-title="shinkiro"
+      data-artist-img="images/guitar.jpg">
+  <img src="images/release/natsume/Amo.PNG" alt="">
+</a>
+
+<a class="scatter-card" href="#" data-title="あのゆめ"
+data-artist-img="images/guitar.jpg">
+  <img src="images/release/natsume/anoyume.png" alt="">
+</a>
+
+<a class="scatter-card" href="#" data-title="anywhere"
+data-artist-img="images/guitar.jpg">
+  <img src="images/release/natsume/anywhere.JPG" alt="">
+</a>
+
+<a class="scatter-card" href="#" data-title="cobalt w/Hare"
+data-artist-img="images/guitar.jpg">
+  <img src="images/release/natsume/cobalt.JPG" alt="">
+</a>
+
+<a class="scatter-card" href="#" data-title="dazzling w/Kizuari"
+data-artist-img="images/guitar.jpg">
+  <img src="images/release/natsume/dazzling.JPG" alt="">
+</a>
+
+<a class="scatter-card" href="#" data-title="flat"
+data-artist-img="images/guitar.jpg">
+  <img src="images/release/natsume/flat.jpg" alt="">
+</a>
+
+<a class="scatter-card" href="#" data-title="flawless"
+data-artist-img="images/guitar.jpg">
+  <img src="images/release/natsume/flawless.jpg" alt="">
+</a>
+
+<a class="scatter-card" href="#" data-title="Florets"
+data-artist-img="images/CS_logo.png">
+  <img src="images/release/natsume/Florets.png" alt="">
+</a>
+
+<a class="scatter-card" href="#" data-title="fragment"
+data-artist-img="images/guitar.jpg">
+  <img src="images/release/natsume/fragment.png" alt="">
+</a>
+
+<a class="scatter-card" href="#" data-title="イデア"
+data-artist-img="images/CS_logo.png">
+  <img src="images/release/natsume/idea.jpg" alt="">
+</a>
+
+<a class="scatter-card" href="#" data-title="Learn To Swim(natsume_remix)"
+data-artist-img="images/guitar.jpg">
+  <img src="images/release/natsume/lts.jpg" alt="">
+</a>
+
+<a class="scatter-card" href="#" data-title="maight"
+data-artist-img="images/guitar.jpg">
+  <img src="images/release/natsume/maight.jpg" alt="">
+</a>
+
+<a class="scatter-card" href="#" data-title="meltylandnightmare Remix natsume&alpha"
+data-artist-img="images/CS_logo.png">
+  <img src="images/release/natsume/melty.png" alt="">
+</a>
+
+<a class="scatter-card" href="#" data-title="fade"
+data-artist-img="images/guitar.jpg">
+  <img src="images/release/natsume/nxrealm.png" alt="">
+</a>
+
+<a class="scatter-card" href="#" data-title="solitary w/Wa!ter"
+data-artist-img="images/guitar.jpg">
+  <img src="images/release/natsume/soli.JPG" alt="">
+</a>
+
+<a class="scatter-card" href="#" data-title="ひかり"
+data-artist-img="images/CS_logo.png">
+  <img src="images/release/natsume/toumei.png" alt="">
+</a>
+
+<a class="scatter-card" href="#" data-title="水鏡に雫(natsume _remix)"
+data-artist-img="images/guitar.jpg">
+  <img src="images/release/natsume/vivia.jpg" alt="">
+</a>
+
+
+
+
     </div>
-  </section>
+  </div>
+  <div class="gallery-actions">
+  <button type="button" class="gallery-seeall" data-open-gallery>
+    See all
+  </button>
+</div>
+</div>
+</section>
+
+
 
   <div class="img-modal" id="imgModal" aria-hidden="true">
     <div class="img-modal__backdrop" data-close></div>
 
     <div class="img-modal__panel" role="dialog" aria-modal="true">
       <button class="img-modal__close" type="button" aria-label="Close" data-close>×</button>
+      <button class="img-modal__nav prev" type="button" aria-label="Prev">←</button>
+<button class="img-modal__nav next" type="button" aria-label="Next">→</button>
+<button class="img-modal__thumbBtn" type="button" aria-label="Thumbnails">ALL</button>
+
+<div class="img-modal__thumbs" aria-label="Thumbnails">
+  <div class="img-modal__thumbsGrid" id="modalThumbs"></div>
+</div>
 
       <div class="img-modal__content">
         <div class="img-modal__media">
           <img id="modalImg" src="" alt="">
         </div>
+        
 
         <div class="img-modal__text">
           <h3 id="modalTitle"></h3>
@@ -162,6 +373,7 @@
           <p id="modalDesc"></p>
 
         </div>
+           <img class="img-modal__artist" id="modalArtistImg" src="" alt="artist">
       </div>
     </div>
   </div>
@@ -421,7 +633,7 @@
                 </div>
               </li>
 
-              <li class="track-item" data-src="sounds/CS_AW_dowfi_piano_random_C# .textClipping - Dowfi.wav">
+              <li class="track-item" data-src="natsume/sounds/samples/CS_AW_dowfi_piano_random_C#.wav">
                 <div class="music-row">
                   <span class="soundBtn">
                     <img class="soundIcon" src="images/play_button.png" alt="再生" width="20">
@@ -724,43 +936,7 @@
   </section>
 
 
-  <!-- 以下は今後調整 -->
 
-    <!-- Recommend（写真埋め込み） -->
-  <section id="recommend">
-    <h2>おすすめ</h2>
-
-    <div class="recommend-wrapper">
-
-      <!-- ラケット -->
-      <div class="recommend-item" style="opacity: 1;">
-        <a class="click" href="https://www.amazon.co.jp/MIZUNO-FORTIUS-ver-D-%E3%83%95%E3%82%A9%E3%83%AB%E3%83%86%E3%82%A3%E3%82%A6%E3%82%B9-83GTT101/dp/B09D8ND99Q/ref=sr_1_1_sspa?adgrpid=1327113179473325&dib=eyJ2IjoiMSJ9.CUEkZrc_Hv9GPEKcxDtWRctLAhIPMuDPUFvsEvQJJkFx2357LmweMx6hqn8fHdlDUGu5yV_xVI9ierYJzo_fmSdrQZ_TwIhKYIE1cowyyF8J_hrzr15Dzh67StHYuv5KDnsE7_HLvlUEa3bNGfa69A.tVPKR5Ui48aiTniyB_q6AGJ-D4CRR3Yas_iytzGNMMI&dib_tag=se&hvadid=82944816277152&hvbmt=bb&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82945984534153%3Aloc-96&hydadcr=3090_13813502&jp-ad-ap=0&keywords=%E3%83%95%E3%82%A9%E3%83%AB%E3%83%86%E3%82%A3%E3%82%A6%E3%82%B9ft%2Bver.d&mcid=081066227f403365b5b08afc9ee5e27d&msclkid=5f8afe6cdfb01771d41b9743dc0b7133&qid=1764688987&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1" target="_blank" rel="noopener noreferrer">
-          <img src ="images/tabletennis_racket.jpg" alt="卓球ラケット" class="images">
-        </a>
-     </div>
-
-      <!-- ラバー -->
-      <div class="recommend-item" style="opacity: 1;" target="_blank" rel="noopener noreferrer">
-        <a class="click" href="https://www.amazon.co.jp/%E3%83%90%E3%82%BF%E3%83%95%E3%83%A9%E3%82%A4-Butterfly-%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC-%E8%A3%8F%E3%82%BD%E3%83%95%E3%83%88-05050/dp/B000AS87LG/ref=sr_1_1_sspa?adgrpid=1320516110864279&dib=eyJ2IjoiMSJ9._U2pvp-w-WSNAnGR_uRgHlfFF4yVKL5E_GmCM-uI-L_HDJFxyVOrO8zwO_jhwWrJ8FJEuffkcwYN9JK6UKW_7ORGuOJpU5_PmS3-EADJkx2GkPmXH47j-Z_bN8y2tW9yUxds7YHInfhHhkHYf3mKkUWZMQSFVdMTgGsqFBpaFN9pC9dqZ1eDgMouJ5KGHPvuA2qDYN7kScfdBjGncQcwZ-8q7pH0sW7s8MPRW3gF48TiiXF4DPGH9JiYxFyVQ3Yo8FWHLuwl45yQES6gIemiteigigNoOizrmBJXSags9tI.F5cZkQWV0nAe3hUMG-l5k2zSOahwBLCToDxKtYMt8GA&dib_tag=se&hvadid=82532499620507&hvbmt=bp&hvdev=c&hvlocphy=140278&hvnetw=o&hvqmt=p&hvtargid=kwd-82533670838957%3Aloc-96&hydadcr=27359_14894072&jp-ad-ap=0&keywords=%E3%82%B9%E3%83%AC%E3%82%A4%E3%83%90%E3%83%BC&mcid=c562f2e125033aaba2c69cf7d262cef2&msclkid=38b2f2db1c8110299a2b9beb15cfdeaf&qid=1764755791&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1" target="_blank" rel="noopener noreferrer">
-          <img src ="images/tabletennis_rubber.jpg" alt="卓球ラバー" class="images">
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- スムーススクロール -->
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener("click", function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute("href"));
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth" });
-        }
-      });
-    });
-  </script>
 
 </body>
 </html>
