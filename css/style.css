@@ -230,6 +230,23 @@ h2 {
   border-left: 1px solid #ddd;
 }
 
+@media (max-width: 768px) {
+
+  #header {
+    height: 56px;
+  }
+
+  .header-logo {
+    width: 44px;
+  }
+
+  /* 中央固定ロゴはスマホでは非表示 */
+  .logo-image {
+    display: none;
+  }
+}
+
+
 /*#header ul {
 /*  display: flex;                 /* メニュー項目を横並びにする */
 /*  justify-content: center;    /* メニューを中央揃えに配置 */
@@ -364,6 +381,19 @@ h2 {
   line-height: 1.8;
   color: #333;
 }
+
+@media (max-width: 768px) {
+
+  .about-wrapper {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .about-text hr {
+    width: 100%;
+  }
+}
+
 
 /* ====================================
    Musicセクション（タイトル）
@@ -613,6 +643,35 @@ h2 {
   background: #8f8f8f;
 }
 
+@media (max-width: 768px) {
+
+  .music-card {
+    padding: 20px;
+  }
+
+  .music-body {
+    grid-template-columns: 1fr; /* ← 縦並び */
+  }
+
+  .music-left {
+    width: 100%;
+  }
+
+  .music-art-wrap {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .track-name {
+    font-size: 13px;
+  }
+
+  .wave {
+    height: 16px;
+  }
+}
+
+
 /* =========================
    Artist セクション
 ========================= */
@@ -793,6 +852,29 @@ h2 {
     justify-content: center;
   }
 }
+
+@media (max-width: 768px) {
+
+  .artist-item {
+    min-width: 100%;
+    padding: 32px 20px;
+  }
+
+  .artist-image img {
+    width: 70%;
+  }
+
+  .career-box p {
+    font-size: 1.1rem;
+  }
+
+  .artist-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+}
+
 
 /* ====================================
    lastセクション
@@ -1231,6 +1313,22 @@ body {
   opacity: .9;
   box-shadow: 0 6px 20px rgba(0,0,0,.15);
 }
+
+@media (max-width: 640px) {
+
+  .img-modal__panel {
+    padding: 16px;
+  }
+
+  .img-modal__media img {
+    max-width: 80vw;
+  }
+
+  .img-modal__nav {
+    font-size: 32px;
+  }
+}
+
 /* =========================
    Sushi Belt Gallery
 ========================= */
@@ -1502,4 +1600,39 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
 }
 .gallery-seeall:hover{
   opacity:.75;
+}
+
+@media (max-width: 700px) {
+
+  .scatter-card {
+    width: 120px;
+  }
+
+  .scatter-stage {
+    height: 60vh;
+  }
+
+  .sushi-track {
+    gap: 20px;
+  }
+}
+
+
+/* =========================
+   スマホ用
+========================= */
+
+@media (max-width: 768px) {
+
+  body {
+    padding-top: 64px; /* ヘッダー分だけ */
+  }
+
+  section {
+    padding: 80px 16px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
 }
