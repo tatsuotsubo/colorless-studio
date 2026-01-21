@@ -393,13 +393,19 @@ h2 {
     width: 100%;
   }
 
+  .about-content {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
   .about-image {
     max-width: 90%;
     margin: 0 auto;
   }
 
   .about-image img {
-    aspect-ratio: 1 / 1;   /* 正方形を保つ */
+    width: 100%;
+    max-height: 42vh;   /* ← ここが重要 */
     object-fit: cover;
   }
 }
