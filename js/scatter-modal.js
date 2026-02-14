@@ -1,12 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   /* =========================================================
-     0) 参照取得（元データを先に確保する）
+     0) 元データ取得
   ========================================================= */
   const source = document.getElementById("sushiSource");
   const modal = document.getElementById("imgModal");
   if (!source || !modal) return;
 
-  // 元カード一覧（順番の確定データ）※sourceを消す前に作る！
   const items = Array.from(source.querySelectorAll(".scatter-card")).map((el) => ({
     title: el.dataset.title || "",
     desc: el.dataset.desc || "",
@@ -16,20 +15,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }));
 
   /* =========================================================
-     1) Sushi レーン生成（“見た目が二重”にならないように作る）
-        - sourceはテンプレとして使い、表示用のtrackを新規生成
-        - 各レーンは「1回だけ複製（=2セット）」→ 無限ループ前提
+     1) 寿司トラック生成
   ========================================================= */
-  const viewport = source.parentElement; // .sushi-viewport
+  const viewport = source.parentElement;
+
   const lanes = [
     { speed: 50, reverse: false },
     { speed: 50, reverse: true },
   ];
 
-  // テンプレの中身（カード群）を取り出して使う
   const templateCards = Array.from(source.querySelectorAll(".scatter-card"));
-
-  // テンプレ要素自体は消す（表示に使わない）
   source.remove();
 
   lanes.forEach((lane) => {
@@ -38,17 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (lane.reverse) track.classList.add("reverse");
     track.style.animationDuration = lane.speed + "s";
 
-    // 1周分：元カード
-    templateCards.forEach((card) => {
-      track.appendChild(card.cloneNode(true));
-    });
+    templateCards.forEach((card) => track.appendChild(card.cloneNode(true)));
+    templateCards.forEach((card) => track.appendChild(card.cloneNode(true)));
 
-    // ループ用：もう1周分（合計2セット）
-    templateCards.forEach((card) => {
-      track.appendChild(card.cloneNode(true));
-    });
-
-    // 開始位置ランダム（マイナス遅延で“途中から”開始）
     const delay = Math.random() * lane.speed;
     track.style.animationDelay = `-${delay}s`;
 
@@ -56,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* =========================================================
-     2) Modal（矢印 + 一覧）
+     2) Modal
   ========================================================= */
   const modalImg = document.getElementById("modalImg");
   const modalTitle = document.getElementById("modalTitle");
@@ -73,10 +60,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentIndex = 0;
 
+  /* =========================
+     モーダル表示
+  ========================= */
   const openByIndex = (idx) => {
     if (!items.length) return;
+
     currentIndex = (idx + items.length) % items.length;
     const d = items[currentIndex];
+
+    modal.classList.remove("is-gallery-only"); // ← 詳細モード
 
     if (modalImg) modalImg.src = d.imgSrc || "";
     if (modalTitle) modalTitle.textContent = d.title || "";
@@ -88,14 +81,12 @@ document.addEventListener("DOMContentLoaded", () => {
         artistImg.src = d.artistImg;
         artistImg.style.display = "";
       } else {
-        artistImg.src = "";
         artistImg.style.display = "none";
       }
     }
 
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("modal-open");
     document.body.style.overflow = "hidden";
 
     buildThumbs();
@@ -103,34 +94,32 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const closeModal = () => {
-    modal.classList.remove("is-open");
+    modal.classList.remove("is-open", "is-gallery-only");
     modal.setAttribute("aria-hidden", "true");
 
     if (modalImg) modalImg.src = "";
     if (player) player.src = "";
-    if (artistImg) {
-      artistImg.src = "";
-      artistImg.style.display = "none";
-    }
 
-    document.body.classList.remove("modal-open");
     document.body.style.overflow = "";
-
-    if (thumbsWrap) thumbsWrap.classList.remove("is-open");
+    thumbsWrap?.classList.remove("is-open");
   };
 
+  /* =========================
+     カード→index
+  ========================= */
   const findIndexFromCard = (card) => {
     const title = card.dataset.title || "";
-    const imgSrc = card.querySelector("img") ? card.querySelector("img").src : "";
+    const imgSrc = card.querySelector("img")?.src || "";
 
-    let idx = -1;
-    if (title) idx = items.findIndex((x) => x.title === title);
-    if (idx === -1 && imgSrc) idx = items.findIndex((x) => x.imgSrc === imgSrc);
+    let idx = items.findIndex((x) => x.title === title);
+    if (idx === -1) idx = items.findIndex((x) => x.imgSrc === imgSrc);
 
     return idx >= 0 ? idx : 0;
   };
 
-  // カードクリック（寿司トラックは複製してるので “document” 委譲で拾う）
+  /* =========================
+     カードクリック
+  ========================= */
   document.addEventListener("click", (e) => {
     const card = e.target.closest(".scatter-card");
     if (!card) return;
@@ -139,33 +128,39 @@ document.addEventListener("DOMContentLoaded", () => {
     openByIndex(findIndexFromCard(card));
   });
 
-  // 矢印
-  if (prevBtn) prevBtn.addEventListener("click", () => openByIndex(currentIndex - 1));
-  if (nextBtn) nextBtn.addEventListener("click", () => openByIndex(currentIndex + 1));
+  /* =========================
+     ナビ
+  ========================= */
+  prevBtn?.addEventListener("click", () => openByIndex(currentIndex - 1));
+  nextBtn?.addEventListener("click", () => openByIndex(currentIndex + 1));
 
-  // 閉じる
+  /* =========================
+     閉じる
+  ========================= */
   modal.querySelectorAll("[data-close]").forEach((btn) => {
     btn.addEventListener("click", closeModal);
   });
 
-  // キーボード
   document.addEventListener("keydown", (e) => {
     if (!modal.classList.contains("is-open")) return;
+
     if (e.key === "Escape") closeModal();
     if (e.key === "ArrowLeft") openByIndex(currentIndex - 1);
     if (e.key === "ArrowRight") openByIndex(currentIndex + 1);
   });
 
-  /* ===== サムネ一覧 ===== */
+  /* =========================
+     サムネ一覧
+  ========================= */
   const buildThumbs = () => {
-    if (!thumbsGrid || thumbsGrid.dataset.built || !items.length) return;
-    thumbsGrid.dataset.built = "1";
+    if (!thumbsGrid || thumbsGrid.dataset.built) return;
 
+    thumbsGrid.dataset.built = "1";
     thumbsGrid.innerHTML = items
       .map(
         (x, i) => `
-        <button class="img-modal__thumb" type="button" data-idx="${i}" aria-label="${x.title || "thumb"}">
-          <img src="${x.imgSrc}" alt="">
+        <button class="img-modal__thumb" data-idx="${i}">
+          <img src="${x.imgSrc}">
         </button>
       `
       )
@@ -173,56 +168,48 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const setActiveThumb = (idx) => {
-    if (!thumbsGrid) return;
-    thumbsGrid.querySelectorAll(".img-modal__thumb").forEach((b) => {
+    thumbsGrid?.querySelectorAll(".img-modal__thumb").forEach((b) => {
       b.classList.toggle("is-active", Number(b.dataset.idx) === idx);
     });
   };
 
-  if (thumbsBtn && thumbsWrap) {
-    thumbsBtn.addEventListener("click", () => {
-      thumbsWrap.classList.toggle("is-open");
-      buildThumbs();
-      setActiveThumb(currentIndex);
-    });
-  }
+  /* =========================
+     サムネクリック → 詳細表示
+  ========================= */
+  thumbsGrid?.addEventListener("click", (e) => {
+    const btn = e.target.closest(".img-modal__thumb");
+    if (!btn) return;
 
-  if (thumbsGrid) {
-    thumbsGrid.addEventListener("click", (e) => {
-      const btn = e.target.closest(".img-modal__thumb");
-      if (!btn) return;
-      openByIndex(Number(btn.dataset.idx));
-    });
-  }
+    const idx = Number(btn.dataset.idx);
 
-    // ✅ ヘッダーの「Gallery」クリックで、モーダルを開いて一覧表示
+    modal.classList.remove("is-gallery-only");
+    thumbsWrap?.classList.remove("is-open");
+
+    openByIndex(idx);
+  });
+
+  /* =========================
+     サムネボタン（トグル）
+  ========================= */
+  thumbsBtn?.addEventListener("click", () => {
+    thumbsWrap?.classList.toggle("is-open");
+    buildThumbs();
+    setActiveThumb(currentIndex);
+  });
+
+  /* =========================
+     See all / Galleryクリック
+  ========================= */
   document.addEventListener("click", (e) => {
-    const g = e.target.closest('[data-open-gallery]');
+    const g = e.target.closest("[data-open-gallery]");
     if (!g) return;
 
     e.preventDefault();
 
-    // モーダルを開く → その中で buildThumbs() も呼ばれる
     openByIndex(0);
 
-    // 一覧を強制で開く
-    if (thumbsWrap) thumbsWrap.classList.add("is-open");
-    setActiveThumb(currentIndex);
+    // 一覧だけ表示モード
+    modal.classList.add("is-gallery-only");
+    thumbsWrap?.classList.add("is-open");
   });
-
-  // ✅ "See all" ボタンで、モーダルを開いて一覧(サムネ)を表示
-document.addEventListener("click", (e) => {
-  const g = e.target.closest("[data-open-gallery]");
-  if (!g) return;
-
-  e.preventDefault();
-
-  // モーダルを開く（中で buildThumbs & setActiveThumb される）
-  openByIndex(0);
-
-  // 一覧を強制で開く
-  if (thumbsWrap) thumbsWrap.classList.add("is-open");
-  setActiveThumb(currentIndex);
 });
-});
-
