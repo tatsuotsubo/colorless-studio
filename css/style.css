@@ -281,7 +281,7 @@ h2 {
   height: 100vh;             /* 画面の高さ70%（ビューポートの高さ） */
   
   /* 背景画像の設定 */
-  background: url('../images/top.jpg') no-repeat center center / cover;
+  background: url('../images/top.jpg') repeat center center / cover;
   background-size: cover;    /* 縦横比を保ちつつ全面を覆う */
   background-position: top;   /* 画像の中央を基準に表示 */
   background-repeat: no-repeat; /* 画像の繰り返しなし */
@@ -1653,3 +1653,4 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
     font-size: 1.5rem;
   }
 }
+

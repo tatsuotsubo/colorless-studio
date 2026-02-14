@@ -70,9 +70,15 @@
   </header>
 
   <!-- メインビジュアル（表紙） -->
-  <section id="mainvisual">
-    <img src="images/logo/CS_logo.png" class="logo-image">
-  </section>
+ <section id="mainvisual">
+  <!-- 背景動画 -->
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="videos/colorless_bg.mp4" type="video/mp4">
+  </video>
+
+  <!-- ロゴ -->
+  <img src="images/logo/CS_logo.png" class="logo-image">
+</section>
 
   <!-- About us -->
   <section id="about">
@@ -782,6 +788,56 @@
                 </li>
 
               </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="music-card">
+
+      <div class="music-card-top">
+        <span class="product-name">CS_HarmonyRack1.0</span>
+        <span class="company-name">colorless studio</span>
+      </div>
+
+      <div class="music-body">
+        <div class="music-left">
+          <!-- ジャケット -->
+          <a class="click" href="https://colorlessstudio.gumroad.com/l/cs_aw_samplepack" target="_blank" rel="noopener noreferrer">
+
+            <div class="music-art-wrap">
+              <img class="music-art" src="images/jacket.png" alt="アルバム画像">
+              <video class="music-video" src="videos/MV_Awake; poetry texture pack vol.1(JPN).mp4" muted loop playsinline></video>
+            </div>
+          
+          </a>
+        </div>
+
+        <div class="music-right">
+          <!-- demo のtrack-item たち -->
+          <div class="tab-panel is-active" data-panel="demo">
+            <div class="music-info">
+              <ul>
+
+                <li class="track-item" data-src="sounds/demo_songs/11_natsume&alpha.mp3">
+                  <div class="music-row">
+                    <span class="soundBtn">
+                      <img class="soundIcon" src="images/button/play_button.png" alt="再生" width="20">
+                    </span>
+
+                    <div class="track-right">
+                      <span class="track-name">
+                        Awake_natsume & alpha
+                      </span>
+                      <div class="wave"></div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
             </div>
           </div>
         </div>
