@@ -11,7 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
     desc: el.dataset.desc || "",
     soundcloud: el.dataset.soundcloud || "",
     artistImg: el.dataset.artistImg || "",
-    imgSrc: el.querySelector("img") ? el.querySelector("img").src : "",
+    imgSrc: el.querySelector("img")?.src || "",
+
+    buyBooth: el.dataset.buyBooth || "",
+    buyPayhip: el.dataset.buyPayhip || "",
+    buyBandcamp: el.dataset.buyBandcamp || "",
+    listen: el.dataset.listen || ""
   }));
 
   /* =========================================================
@@ -91,7 +96,116 @@ document.addEventListener("DOMContentLoaded", () => {
 
     buildThumbs();
     setActiveThumb(currentIndex);
+
+    const buyBtn = document.getElementById("modalBuy");
+    const listenBtn = document.getElementById("modalListen");
+
+    const chooser = document.getElementById("buyChooser");
+    const boothLink = document.getElementById("buyBooth");
+    const payhipLink = document.getElementById("buyPayhip");
+    const bandcampLink = document.getElementById("buyBandcamp");
+
+    // chooser 初期化
+    chooser?.classList.remove("is-open");
+    chooser?.setAttribute("aria-hidden", "true");
+
+    // Listen
+    if (listenBtn) {
+      if (d.listen) {
+        listenBtn.href = d.listen;
+        listenBtn.style.display = "inline-flex";
+      } else {
+        listenBtn.removeAttribute("href");
+        listenBtn.style.display = "none";
+      }
+    }
+
+    // Buy（Booth/Payhip）
+    const hasBooth = !!d.buyBooth;
+    const hasPayhip = !!d.buyPayhip;
+    const hasBandcamp = !!d.buyBandcamp;
+
+    if (boothLink) {
+      if (hasBooth) {
+        boothLink.href = d.buyBooth;
+        boothLink.style.display = "";
+      } else {
+        boothLink.removeAttribute("href");
+        boothLink.style.display = "none";
+      }
+    }
+
+    if (payhipLink) {
+      if (hasPayhip) {
+        payhipLink.href = d.buyPayhip;
+        payhipLink.style.display = "";
+      } else {
+        payhipLink.removeAttribute("href");
+        payhipLink.style.display = "none";
+      }
+    }
+
+    if (bandcampLink) {
+      if (hasBandcamp) {
+        bandcampLink.href = d.buyBandcamp;
+        bandcampLink.style.display = "";
+      } else {
+        bandcampLink.removeAttribute("href");
+        bandcampLink.style.display = "none";
+      }
+    }
+
+    // Buyボタン表示/非表示
+    // Buyボタン表示/非表示
+    if (buyBtn) {
+      if (!hasBooth && !hasPayhip && !hasBandcamp) {
+        buyBtn.style.display = "none";
+      } else {
+        buyBtn.style.display = "inline-flex";
+      }
+    }
+
   };
+  const buyBtn = document.getElementById("modalBuy");
+  const chooser = document.getElementById("buyChooser");
+
+  const closeChooser = () => {
+    chooser?.classList.remove("is-open");
+    chooser?.setAttribute("aria-hidden", "true");
+  };
+
+  buyBtn?.addEventListener("click", () => {
+    const d = items[currentIndex];
+    const hasBooth = !!d.buyBooth;
+    const hasPayhip = !!d.buyPayhip;
+    const hasBandcamp = !!d.buyBandcamp;
+
+    const urls = [
+      hasBooth ? d.buyBooth : "",
+      hasPayhip ? d.buyPayhip : "",
+      hasBandcamp ? d.buyBandcamp : ""
+    ].filter(Boolean);
+
+    // 1個だけなら直接飛ぶ
+    if (urls.length === 1) {
+      window.open(urls[0], "_blank", "noopener");
+      return;
+    }
+
+    // 2個以上なら選択メニュー
+    if (chooser) {
+      const open = chooser.classList.toggle("is-open");
+      chooser.setAttribute("aria-hidden", open ? "false" : "true");
+    }
+  });
+
+  // chooserの外を押したら閉じる
+  modal?.addEventListener("click", (e) => {
+    if (!chooser?.classList.contains("is-open")) return;
+
+    const isInside = e.target.closest("#buyChooser") || e.target.closest("#modalBuy");
+    if (!isInside) closeChooser();
+  });
 
   const closeModal = () => {
     modal.classList.remove("is-open", "is-gallery-only");
@@ -213,3 +327,4 @@ document.addEventListener("DOMContentLoaded", () => {
     thumbsWrap?.classList.add("is-open");
   });
 });
+

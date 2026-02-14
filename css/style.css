@@ -3,12 +3,14 @@
 ==================================== */
 body {
   font-family: "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-  margin: 0; /* すべての余白を削除してページ全体のスタイルを初期化 */
+  margin: 0;
+  /* すべての余白を削除してページ全体のスタイルを初期化 */
   /* background: linear-gradient(135deg, #a7c0ff, #f7d9ff); */
   padding-top: 80px;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -18,8 +20,8 @@ html, body {
    各セクション共通スタイル
 ==================================== */
 section {
- /* padding: 100px 16px;*/
- /* max-width: 1000px; */
+  /* padding: 100px 16px;*/
+  /* max-width: 1000px; */
   margin: 0;
 }
 
@@ -33,6 +35,7 @@ h2 {
     opacity: 0;
     transform: translateY(2rem);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -51,19 +54,29 @@ h2 {
    ヘッダー（ナビゲーションバー）
 ==================================== */
 #header {
-  position: fixed;            /* ページ全体に対して絶対位置指定 */
-  top: 0;                        /* 上端にくっつける */
-  right: 0;                      /* 右端にくっつける */
-  width: 100%;                   /* 横幅を画面いっぱいに広げる */
-  padding: 0;           /* 上下20pxの余白を追加 */
-  box-sizing: border-box;        /* パディングも含めて100%の幅にする */
-  z-index: 1000;                 /* 他の要素の上に表示されるように */
+  position: fixed;
+  /* ページ全体に対して絶対位置指定 */
+  top: 0;
+  /* 上端にくっつける */
+  right: 0;
+  /* 右端にくっつける */
+  width: 100%;
+  /* 横幅を画面いっぱいに広げる */
+  padding: 0;
+  /* 上下20pxの余白を追加 */
+  box-sizing: border-box;
+  /* パディングも含めて100%の幅にする */
+  z-index: 1000;
+  /* 他の要素の上に表示されるように */
 
-  height: 64px;          /* ← ヘッダーの高さを決める */
+  height: 64px;
+  /* ← ヘッダーの高さを決める */
 
   display: flex;
-  justify-content: center; /* 横方向中央 */
-  align-items: center;     /* 縦方向中央 */
+  justify-content: center;
+  /* 横方向中央 */
+  align-items: center;
+  /* 縦方向中央 */
 
   background-color: #ffffff;
   backdrop-filter: blur(6px);
@@ -95,7 +108,8 @@ h2 {
 .header-right {
   height: 100%;
   display: flex;
-  align-items: stretch; /* ← 中身を縦いっぱいに */
+  align-items: stretch;
+  /* ← 中身を縦いっぱいに */
   justify-content: flex-end;
 }
 
@@ -111,7 +125,7 @@ h2 {
   align-items: center;
   position: relative;
   z-index: 2000;
-  
+
   position: absolute;
   top: 50%;
   left: 20px;
@@ -189,9 +203,11 @@ h2 {
 .menu a:hover {
   color: #ddd;
 }
+
 .hamburger-menu.active .hamburger-icon span {
   background: #fff;
 }
+
 /* ハンバーガーアイコンが「×」に変形 */
 .hamburger-menu.active .hamburger-icon span:nth-child(1) {
   transform: translateY(12px) rotate(45deg);
@@ -207,7 +223,8 @@ h2 {
 
 
 .header-logo {
-  width: 60px;   /* 好きなサイズに */
+  width: 60px;
+  /* 好きなサイズに */
   height: auto;
   cursor: pointer;
 }
@@ -219,9 +236,12 @@ h2 {
 .contact-btn {
   height: 100%;
   display: flex;
-  align-items: center;      /* テキストを中央 */
-  padding: 0 24px;      /* 横だけ余白 */
-  margin-right: 0;      /* 念のため */
+  align-items: center;
+  /* テキストを中央 */
+  padding: 0 24px;
+  /* 横だけ余白 */
+  margin-right: 0;
+  /* 念のため */
   background: #ffffffef;
   padding: 10px 18px;
   text-decoration: none;
@@ -274,42 +294,61 @@ h2 {
    表紙として使う全画面の背景画像＋中央に大きなタイトル
 ==================================== */
 #mainvisual {
-  width: 100%;               /* 画面いっぱいの横幅に広げる */
-  max-width: none;           /* 最大幅の制限を解除（親の制約を打ち消す） */
-  padding: 0;                /* 内側の余白なし */
-  margin: 0;                 /* 外側の余白なし */
-  height: 100vh;             /* 画面の高さ70%（ビューポートの高さ） */
-  
+  width: 100%;
+  /* 画面いっぱいの横幅に広げる */
+  max-width: none;
+  /* 最大幅の制限を解除（親の制約を打ち消す） */
+  padding: 0;
+  /* 内側の余白なし */
+  margin: 0;
+  /* 外側の余白なし */
+  height: 100vh;
+  /* 画面の高さ70%（ビューポートの高さ） */
+
   /* 背景画像の設定 */
   /*background: url('../images/top.jpg') repeat center center / cover;*/
-  background-size: cover;    /* 縦横比を保ちつつ全面を覆う */
-  background-position: top;   /* 画像の中央を基準に表示 */
-  background-repeat: no-repeat; /* 画像の繰り返しなし */
+  background-size: cover;
+  /* 縦横比を保ちつつ全面を覆う */
+  background-position: top;
+  /* 画像の中央を基準に表示 */
+  background-repeat: no-repeat;
+  /* 画像の繰り返しなし */
 
   /* 中央揃えのためのFlexbox */
-  display: flex;                /* 子要素をFlexで配置 */
-  align-items: center;         /* 縦方向に中央揃え */
-  justify-content: center;     /* 横方向に中央揃え */
+  display: flex;
+  /* 子要素をFlexで配置 */
+  align-items: center;
+  /* 縦方向に中央揃え */
+  justify-content: center;
+  /* 横方向に中央揃え */
 
-  color: white;                /* テキストの色を白にする（背景に対して視認性UP） */
-  text-align: center;          /* テキストを中央寄せにする */
+  color: white;
+  /* テキストの色を白にする（背景に対して視認性UP） */
+  text-align: center;
+  /* テキストを中央寄せにする */
 }
 
 /* ====================================
    メインビジュアル内の大見出し（RISECAFE）
 ==================================== */
 #mainvisual h1 {
-  font-size: 4rem;                 /* 大きめの文字サイズ */
-  letter-spacing: 4px;            /* 文字間隔をあけて洗練された印象に */
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* 影をつけて背景に埋もれないようにする */
-  margin: 0 auto;                      /* 不要な余白を除去 */
+  font-size: 4rem;
+  /* 大きめの文字サイズ */
+  letter-spacing: 4px;
+  /* 文字間隔をあけて洗練された印象に */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  /* 影をつけて背景に埋もれないようにする */
+  margin: 0 auto;
+  /* 不要な余白を除去 */
 }
+
 /* 中央の大きいロゴ */
 .logo-image {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 220px; /* 初期サイズ */
+  width: 220px;
+  /* 初期サイズ */
   transform: translate(-50%, -50%);
   z-index: 200;
   transition: opacity 0.3s ease;
@@ -322,9 +361,11 @@ h2 {
 
 /* Aboutセクション全体 */
 #about {
-  background-color: #ffffff; /* 薄いベージュ */
+  background-color: #ffffff;
+  /* 薄いベージュ */
   padding: 120px 40px;
 }
+
 /* 見出し */
 #about h2 {
   text-align: center;
@@ -361,7 +402,7 @@ h2 {
   flex: 1;
 }
 
-.about-title{
+.about-title {
   flex: 1;
 }
 
@@ -374,7 +415,7 @@ h2 {
   border: none;
   border-top: 2px solid #444;
   margin-bottom: 30px;
-} 
+}
 
 .about-text p {
   font-size: 0.9rem;
@@ -406,7 +447,8 @@ h2 {
 
   .about-image img {
     width: 100%;
-    max-height: 40vh;   /* ← ここが重要 */
+    max-height: 40vh;
+    /* ← ここが重要 */
     object-fit: cover;
   }
 }
@@ -432,20 +474,23 @@ h2 {
 }
 
 #music ul>li span {
-    cursor: pointer;
-    color: black;
-    font-size: 13px;   /* 曲名の大きさ */
-    transition: all 0.2s;
+  cursor: pointer;
+  color: black;
+  font-size: 13px;
+  /* 曲名の大きさ */
+  transition: all 0.2s;
 }
 
 #music ul>li span img {
-  width: 30px;     /* ← ここで再生ボタンの大きさ調整 */
+  width: 30px;
+  /* ← ここで再生ボタンの大きさ調整 */
   height: 30px;
   cursor: pointer;
 }
 
 #music ul>li span.active img {
-  filter: brightness(1.5); /* 明るくする */
+  filter: brightness(1.5);
+  /* 明るくする */
 }
 
 .music-row {
@@ -457,9 +502,11 @@ h2 {
 
 .track-item {
   display: flex;
-  flex-direction: column;    /* ← タイトル → 波形 を縦にする */
+  flex-direction: column;
+  /* ← タイトル → 波形 を縦にする */
   padding: 10px 0;
-  border-bottom: 1px solid #969696; /* ← 仕切り線 */
+  border-bottom: 1px solid #969696;
+  /* ← 仕切り線 */
 }
 
 /* 右側：タイトル + 波形の縦並び */
@@ -473,37 +520,42 @@ h2 {
 .track-name {
   text-align: left;
   font-size: 20px;
-  margin-bottom: 5px; /* タイトルの下に余白 */
+  margin-bottom: 5px;
+  /* タイトルの下に余白 */
   display: block;
 }
 
 
 #s li {
-    padding: 10px 65px 10px 15px;
-    border-bottom: 1px solid #eee;
-    color: #646464;
-    font-weight: 400;
-    text-align: left;
-    font-size: 11px;
-    position: relative;
-    line-height: 150%;
+  padding: 10px 65px 10px 15px;
+  border-bottom: 1px solid #eee;
+  color: #646464;
+  font-weight: 400;
+  text-align: left;
+  font-size: 11px;
+  position: relative;
+  line-height: 150%;
 }
 
 /* 波形 */
 .wave {
-  height: 20px;  /* ← 小さめ波形 */
+  height: 20px;
+  /* ← 小さめ波形 */
   width: 100%;
 }
 
 /* タイトル行 */
 .music-card-top {
   position: absolute;
-  top: 10px;            /* すりガラス内の上位置（調整OK） */
+  top: 10px;
+  /* すりガラス内の上位置（調整OK） */
   left: 0;
   width: 100%;
-  padding: 0 22px;       /* 左右余白 */
-  padding-bottom: 12px; /* タイトル全体の下に余白を追加 */
-  
+  padding: 0 22px;
+  /* 左右余白 */
+  padding-bottom: 12px;
+  /* タイトル全体の下に余白を追加 */
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -529,7 +581,7 @@ h2 {
   border-radius: 25px;
   border: 1px solid rgba(255, 255, 255, 0.3);
 
-    /* スクロール連動アニメーション(ふわっと表示させたいクラスに入れる) */
+  /* スクロール連動アニメーション(ふわっと表示させたいクラスに入れる) */
   animation: fadeIn linear;
   animation-timeline: view();
   animation-range: entry 0% cover 50%;
@@ -586,7 +638,8 @@ h2 {
 }
 
 .music-left {
-  width: 33%; /* ← すりガラスの1/3にする */
+  width: 33%;
+  /* ← すりガラスの1/3にする */
 }
 
 .music-art-wrap {
@@ -614,7 +667,8 @@ h2 {
   height: 100%;
   opacity: 0;
   transition: opacity 0.4s ease;
-  pointer-events: none; /* aタグのクリックを邪魔しない */
+  pointer-events: none;
+  /* aタグのクリックを邪魔しない */
 }
 
 /* hover演出 */
@@ -632,11 +686,14 @@ h2 {
 }
 
 .music-info {
-  max-height: 345px;   /* 好きな高さに調整 */
-  overflow-y: auto;    /* 縦スクロールを有効化 */
-  padding-right: 8px;  /* スクロールバーで内容が隠れないように余白 */
+  max-height: 345px;
+  /* 好きな高さに調整 */
+  overflow-y: auto;
+  /* 縦スクロールを有効化 */
+  padding-right: 8px;
+  /* スクロールバーで内容が隠れないように余白 */
 
-  
+
   /* Firefox */
   scrollbar-width: thin;
   scrollbar-color: #b5b5b5 transparent;
@@ -667,7 +724,8 @@ h2 {
   }
 
   .music-body {
-    grid-template-columns: 1fr; /* ← 縦並び */
+    grid-template-columns: 1fr;
+    /* ← 縦並び */
   }
 
   .music-left {
@@ -695,10 +753,13 @@ h2 {
 
 /* Artistセクション全体 */
 #artist {
-  background-color: #ffffff; /* 黄緑 */
+  background-color: #ffffff;
+  /* 黄緑 */
   padding: 120px 40px;
-  position: relative;   /* ← これを追加 */
+  position: relative;
+  /* ← これを追加 */
 }
+
 /* 見出し */
 #artist h2 {
   text-align: center;
@@ -737,7 +798,7 @@ h2 {
   gap: 40px;
 
   padding: 60px;
-  background: rgba(255,255,255,0.4);
+  background: rgba(255, 255, 255, 0.4);
   border-radius: 40px;
 
   opacity: 0.4;
@@ -767,7 +828,7 @@ h2 {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.8);
   border: none;
   border-radius: 50%;
   width: 48px;
@@ -811,8 +872,10 @@ h2 {
 
 .sns-btn {
   display: flex;
-  justify-content: center;   /* 横中央 */
-  gap: 24px;                 /* アイコン間隔 */
+  justify-content: center;
+  /* 横中央 */
+  gap: 24px;
+  /* アイコン間隔 */
   margin-top: 20px;
   list-style: none;
   padding: 0;
@@ -898,7 +961,8 @@ h2 {
 ==================================== */
 /* 全体 */
 .last {
-  position: relative;          /* ← ロゴ配置の基準 */
+  position: relative;
+  /* ← ロゴ配置の基準 */
   display: flex;
   align-items: center;
   gap: 80px;
@@ -910,7 +974,8 @@ h2 {
 .last-menu {
   display: flex;
   flex-direction: column;
-  align-items: center;   /* ← これが一番重要 */
+  align-items: center;
+  /* ← これが一番重要 */
   gap: 56px;
 }
 
@@ -947,7 +1012,8 @@ h2 {
 }
 
 .last-logo img {
-  width: 160px;   /* ロゴサイズ調整 */
+  width: 160px;
+  /* ロゴサイズ調整 */
   height: auto;
 }
 
@@ -978,21 +1044,26 @@ h2 {
 .sns-links {
   display: flex;
   align-items: center;
-  justify-content: center;   /* ← 中央に寄せる */
+  justify-content: center;
+  /* ← 中央に寄せる */
   gap: 0px;
   flex-wrap: wrap;
 
   font-size: 0.9rem;
   letter-spacing: 0.08em;
 
-  margin: 0 auto;            /* ← ブロック自体を中央へ */
-  text-align: center;        /* ← 改行時も中央 */
+  margin: 0 auto;
+  /* ← ブロック自体を中央へ */
+  text-align: center;
+  /* ← 改行時も中央 */
 
-  max-width: 420px;   /* ← 横に広がりすぎない */
+  max-width: 420px;
+  /* ← 横に広がりすぎない */
 }
 
 .sns-links .label {
-  width: 100%;        /* ← 1行使う */
+  width: 100%;
+  /* ← 1行使う */
   text-align: center;
   color: #888;
   margin-bottom: 8px;
@@ -1037,11 +1108,13 @@ body {
    スマホ対応のパララックス解除（追加）
 ==================================== */
 @media (max-width: 768px) {
+
   #menu,
   #about,
   #access,
   #contact {
-    background-attachment: scroll; /* ← スマホ時は背景固定を解除 */
+    background-attachment: scroll;
+    /* ← スマホ時は背景固定を解除 */
   }
 }
 
@@ -1057,16 +1130,18 @@ body {
   font-size: 1rem;
 }
 
-.music-body{
+.music-body {
   display: flex;
-  gap: 40px; /* 好きに */
+  gap: 40px;
+  /* 好きに */
   align-items: flex-start;
 }
 
-.release-tabs{
+.release-tabs {
   display: flex;
   gap: 12px;
-  justify-content: center; /* 中央寄せ。左寄せなら flex-start */
+  justify-content: center;
+  /* 中央寄せ。左寄せなら flex-start */
   margin: 16px 0 24px;
   width: 100%;
 }
@@ -1083,12 +1158,14 @@ body {
   margin: 0 auto;
   padding: 30px;
 
-  display: block; /* ← ここが重要（既存のflexを上書き） */
+  display: block;
+  /* ← ここが重要（既存のflexを上書き） */
 }
 
 /* タイトル行：absoluteをやめて通常フローに */
 .music-card-top {
-  position: static;  /* ← absolute解除 */
+  position: static;
+  /* ← absolute解除 */
   top: auto;
   left: auto;
 
@@ -1113,14 +1190,16 @@ body {
 /* 本体：左＝画像 / 右＝リスト を“表”っぽく */
 .music-body {
   display: grid;
-  grid-template-columns: 320px 1fr; /* 左固定 / 右可変 */
+  grid-template-columns: 320px 1fr;
+  /* 左固定 / 右可変 */
   gap: 30px;
   align-items: start;
   margin-top: 10px;
 }
 
 .music-left {
-  width: auto; /* 33%指定があるなら無効化 */
+  width: auto;
+  /* 33%指定があるなら無効化 */
 }
 
 .music-right {
@@ -1134,7 +1213,8 @@ body {
 }
 
 .track-name {
-  font-size: 14px; /* 好みで調整OK */
+  font-size: 14px;
+  /* 好みで調整OK */
 }
 
 /* スマホ：縦並び */
@@ -1144,8 +1224,13 @@ body {
   }
 }
 
-.tab-panel { display: none; }
-.tab-panel.is-active { display: block; }
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.is-active {
+  display: block;
+}
 
 /* =========================
    Scatter Gallery
@@ -1162,7 +1247,7 @@ body {
 }
 
 /* 散りばめる“ステージ” */
-.scatter-stage{
+.scatter-stage {
   position: relative;
   height: min(120vh, 1100px);
   overflow: hidden;
@@ -1172,7 +1257,7 @@ body {
 }
 
 /* 画像カード */
-.scatter-card{
+.scatter-card {
   position: absolute;
   width: 150px;
   aspect-ratio: 1 / 1;
@@ -1190,7 +1275,7 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-.scatter-card img{
+.scatter-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1199,7 +1284,7 @@ body {
 }
 
 /* ホバーで手前に */
-.scatter-card:hover{
+.scatter-card:hover {
   z-index: 999;
   opacity: 1;
   transform: translate(-50%, -50%) rotate(var(--r)) scale(1.08);
@@ -1207,15 +1292,21 @@ body {
 }
 
 /* “見つける感”：ステージ内でホバー中は他を少し暗く */
-.scatter-stage:hover .scatter-card:not(:hover){
+.scatter-stage:hover .scatter-card:not(:hover) {
   opacity: .45;
   transform: translate(-50%, -50%) rotate(var(--r)) scale(.98);
 }
 
 /* スマホ調整 */
-@media (max-width: 700px){
-  .scatter-stage{ height: min(60vh, 520px); }
-  .scatter-card{ width: 160px; border-radius: 14px; }
+@media (max-width: 700px) {
+  .scatter-stage {
+    height: min(60vh, 520px);
+  }
+
+  .scatter-card {
+    width: 160px;
+    border-radius: 14px;
+  }
 }
 
 /* =========================
@@ -1254,7 +1345,7 @@ body {
   width: 90%;
   max-height: 80vh;
 
- box-shadow: none;
+  box-shadow: none;
 }
 
 /* 中身レイアウト */
@@ -1267,7 +1358,8 @@ body {
 
 /* 画像 */
 .img-modal__media img {
-  max-width: 320px;   /* ← 散らばってる画像と同じくらい */
+  max-width: 320px;
+  /* ← 散らばってる画像と同じくらい */
   width: 100%;
   height: auto;
   border-radius: 14px;
@@ -1310,16 +1402,17 @@ body {
   }
 }
 
-#scatter h2{
+#scatter h2 {
   text-align: center;
-  margin: 0 0 24px; /* 好きに調整 */
+  margin: 0 0 24px;
+  /* 好きに調整 */
 }
 
-.img-modal__panel{
+.img-modal__panel {
   position: relative;
 }
 
-.img-modal__artist{
+.img-modal__artist {
   position: absolute;
   right: 12px;
   bottom: 10px;
@@ -1328,7 +1421,7 @@ body {
   object-fit: cover;
   border-radius: 10px;
   opacity: .9;
-  box-shadow: 0 6px 20px rgba(0,0,0,.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .15);
 }
 
 @media (max-width: 640px) {
@@ -1350,70 +1443,87 @@ body {
    Sushi Belt Gallery
 ========================= */
 
-.scatter-stage.sushi{
+.scatter-stage.sushi {
   position: relative;
-  height: auto;          /* 高さ固定やめる */
+  height: auto;
+  /* 高さ固定やめる */
   overflow: hidden;
   border-radius: 24px;
   padding: 18px 0;
 }
 
-.sushi-viewport{
+.sushi-viewport {
   overflow: hidden;
   width: 100%;
 }
 
-.sushi-track{
+.sushi-track {
   display: flex;
   gap: 40px;
   align-items: center;
   width: max-content;
   will-change: transform;
-  animation: sushiMove 35s linear infinite; /* 速度はここ */
+  animation: sushiMove 35s linear infinite;
+  /* 速度はここ */
 }
-.sushi-track{
-  margin-bottom: 20px;  /* ← レーン間の縦スキマ */
+
+.sushi-track {
+  margin-bottom: 20px;
+  /* ← レーン間の縦スキマ */
 }
-.sushi-track:last-child{
+
+.sushi-track:last-child {
   margin-bottom: 0;
 }
 
 /* hoverで止めたいなら */
-.scatter-stage.sushi:hover .sushi-track{
+.scatter-stage.sushi:hover .sushi-track {
   animation-play-state: paused;
 }
 
 /* 回転寿司アニメ */
-@keyframes sushiMove{
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); } /* JSで複製する前提 */
+@keyframes sushiMove {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+
+  /* JSで複製する前提 */
 }
 
-.sushi-track.reverse{
+.sushi-track.reverse {
   animation-direction: reverse;
 }
+
 /* カードを“整列用”に作り直す（absolute解除） */
-.scatter-stage.sushi .scatter-card{
+.scatter-stage.sushi .scatter-card {
   position: relative;
-  width: 200px;          /* ← ここがカードサイズ */
+  width: 200px;
+  /* ← ここがカードサイズ */
   aspect-ratio: 1 /1;
   border-radius: 18px;
   overflow: hidden;
   cursor: pointer;
 
-  transform: none;       /* 回転なし */
+  transform: none;
+  /* 回転なし */
   opacity: 1;
   box-shadow: none;
   flex: 0 0 auto;
 }
 
-.scatter-stage.sushi .scatter-card:hover{
+.scatter-stage.sushi .scatter-card:hover {
   transform: translateY(-6px);
 }
 
 /* スマホ */
-@media (max-width: 700px){
-  .scatter-stage.sushi .scatter-card{ width: 160px; }
+@media (max-width: 700px) {
+  .scatter-stage.sushi .scatter-card {
+    width: 160px;
+  }
 }
 
 body.modal-open .sushi-track {
@@ -1423,57 +1533,94 @@ body.modal-open .sushi-track {
 body.modal-open .scatter-stage.sushi:hover .sushi-track {
   animation-play-state: paused !important;
 }
+
 /* パネルからはみ出して表示できるように */
-.img-modal__panel{
+.img-modal__panel {
   position: relative;
-  overflow: visible; /* ← これ重要（hiddenだと外に出せない） */
+  overflow: visible;
+  /* ← これ重要（hiddenだと外に出せない） */
 }
 
 /* 矢印：パネルの外側に配置 */
-.img-modal__nav{
+.img-modal__nav {
   position: absolute;
+  /* ← fixedやめる */
   top: 50%;
   transform: translateY(-50%);
-  background: none;
-  border: none;
-  padding: 0;
 
-  font-size: 44px;
-  font-weight: 900;
-  color: #fff;          /* 外側に出すなら白が見やすい */
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+  font-weight: 600;
+
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+
   cursor: pointer;
-  z-index: 10;
-  line-height: 1;
-  text-shadow: 0 6px 18px rgba(0,0,0,.35); /* 背景に埋もれない */
-  transition: transform .18s ease, opacity .18s ease;
+  z-index: 5;
+
+  transition: all 0.2s ease;
 }
 
-.img-modal__nav.prev{ left: -60px; }
-.img-modal__nav.next{ right: -60px; }
 
-.img-modal__nav.prev:hover{
+
+/* 左 */
+.img-modal__nav.prev {
+  left: 10px;
+}
+
+/* 右 */
+.img-modal__nav.next {
+  right: 10px;
+}
+
+.img-modal__nav.prev:hover {
   transform: translate(-6px, -50%);
   opacity: .75;
 }
-.img-modal__nav.next:hover{
+
+.img-modal__nav.next:hover {
   transform: translate(6px, -50%);
   opacity: .75;
 }
 
 /* スマホははみ出し量を減らす */
-@media (max-width: 640px){
-  .img-modal__nav.prev{ left: -34px; }
-  .img-modal__nav.next{ right: -34px; }
-  .img-modal__nav{ font-size: 34px; }
+@media (max-width: 640px) {
+  .img-modal__nav.prev {
+    left: -34px;
+  }
+
+  .img-modal__nav.next {
+    right: -34px;
+  }
+
+  .img-modal__nav {
+    font-size: 34px;
+  }
 }
 
-.img-modal__nav.prev{ left: 12px; }
-.img-modal__nav.next{ right: 12px; }
+.img-modal__nav.prev {
+  left: 12px;
+}
 
-.img-modal__nav:hover{ filter: brightness(.95); }
+.img-modal__nav.next {
+  right: 12px;
+}
+
+.img-modal__nav:hover {
+  filter: brightness(.95);
+}
 
 /* 一覧ボタン */
-.img-modal__thumbBtn{
+.img-modal__thumbBtn {
   position: absolute;
   top: 12px;
   left: 12px;
@@ -1481,25 +1628,25 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
   padding: 0 12px;
   border: none;
   border-radius: 999px;
-  background: rgba(255,255,255,.9);
+  background: rgba(255, 255, 255, .9);
   cursor: pointer;
   z-index: 3;
   font-size: 13px;
 }
 
 /* 一覧パネル（モーダル下に出す） */
-.img-modal__thumbs{
+.img-modal__thumbs {
   display: none;
   margin-top: 16px;
   padding-top: 14px;
-  border-top: 1px solid rgba(0,0,0,.08);
+  border-top: 1px solid rgba(0, 0, 0, .08);
 }
 
-.img-modal__thumbs.is-open{
+.img-modal__thumbs.is-open {
   display: block;
 }
 
-.img-modal__thumbsGrid{
+.img-modal__thumbsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
   gap: 10px;
@@ -1508,7 +1655,7 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
   padding-right: 6px;
 }
 
-.img-modal__thumb{
+.img-modal__thumb {
   border: none;
   background: transparent;
   padding: 0;
@@ -1518,26 +1665,26 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
   outline: none;
 }
 
-.img-modal__thumb img{
+.img-modal__thumb img {
   width: 100%;
   height: 86px;
   object-fit: cover;
   display: block;
 }
 
-.img-modal__thumb.is-active{
-  box-shadow: 0 0 0 2px rgba(0,0,0,.35);
+.img-modal__thumb.is-active {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, .35);
 }
 
 /* モーダル全体を基準にする */
-.img-modal{
+.img-modal {
   position: fixed;
   inset: 0;
   z-index: 9999;
 }
 
 /* ✅ 矢印は画面固定＝絶対に切れない */
-.img-modal__nav{
+.img-modal__nav {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
@@ -1549,36 +1696,52 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
   font-weight: 900;
   color: #fff;
   cursor: pointer;
-  z-index: 10000; /* パネルより前 */
+  z-index: 10000;
+  /* パネルより前 */
   line-height: 1;
-  text-shadow: 0 6px 18px rgba(0,0,0,.35);
+  text-shadow: 0 6px 18px rgba(0, 0, 0, .35);
   transition: transform .18s ease, opacity .18s ease;
   user-select: none;
 }
 
-.img-modal__nav.prev{ left: 24px; }
-.img-modal__nav.next{ right: 24px; }
+.img-modal__nav.prev {
+  left: 24px;
+}
 
-.img-modal__nav.prev:hover{
+.img-modal__nav.next {
+  right: 24px;
+}
+
+.img-modal__nav.prev:hover {
   transform: translate(-6px, -50%);
   opacity: .75;
 }
-.img-modal__nav.next:hover{
+
+.img-modal__nav.next:hover {
   transform: translate(6px, -50%);
   opacity: .75;
 }
 
 /* スマホ */
-@media (max-width: 640px){
-  .img-modal__nav{ font-size: 36px; }
-  .img-modal__nav.prev{ left: 10px; }
-  .img-modal__nav.next{ right: 10px; }
+@media (max-width: 640px) {
+  .img-modal__nav {
+    font-size: 36px;
+  }
+
+  .img-modal__nav.prev {
+    left: 10px;
+  }
+
+  .img-modal__nav.next {
+    right: 10px;
+  }
 }
 
 /* 一覧グリッド */
 .img-modal__thumbs-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* ← ここが5枚 */
+  grid-template-columns: repeat(5, 1fr);
+  /* ← ここが5枚 */
   gap: 12px;
 }
 
@@ -1593,30 +1756,34 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
 .img-modal__thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* はみ出す分はトリミング */
+  object-fit: cover;
+  /* はみ出す分はトリミング */
   display: block;
 }
 
 .img-modal__thumb {
-  aspect-ratio: 1 / 1; /* 正方形 */
+  aspect-ratio: 1 / 1;
+  /* 正方形 */
   overflow: hidden;
   border-radius: 12px;
 }
 
-.gallery-actions{
-  display:flex;
-  justify-content:center;
-  margin:24px 0 0;
+.gallery-actions {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0 0;
 }
-.gallery-seeall{
-  padding:10px 18px;
-  border:1px solid currentColor;
-  background:transparent;
-  cursor:pointer;
-  letter-spacing:.08em;
+
+.gallery-seeall {
+  padding: 10px 18px;
+  border: 1px solid currentColor;
+  background: transparent;
+  cursor: pointer;
+  letter-spacing: .08em;
 }
-.gallery-seeall:hover{
-  opacity:.75;
+
+.gallery-seeall:hover {
+  opacity: .75;
 }
 
 @media (max-width: 700px) {
@@ -1642,7 +1809,8 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
 @media (max-width: 768px) {
 
   body {
-    padding-top: 64px; /* ヘッダー分だけ */
+    padding-top: 64px;
+    /* ヘッダー分だけ */
   }
 
   section {
@@ -1654,19 +1822,20 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
   }
 }
 
-#mainvisual{
+#mainvisual {
   position: relative;
   height: 100vh;
   overflow: hidden;
   background: none !important;
 }
 
-#mainvisual .bg-video{
+#mainvisual .bg-video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;     /* 画面いっぱいに。はみ出しはトリミング */
+  object-fit: cover;
+  /* 画面いっぱいに。はみ出しはトリミング */
   z-index: 0;
 }
 
@@ -1677,11 +1846,13 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
 
 /* See all モードのときは「一覧だけ」見せる */
 .img-modal.is-gallery-only .img-modal__content {
-  display: none;          /* でかい画像＋説明＋プレイヤーを隠す */
+  display: none;
+  /* でかい画像＋説明＋プレイヤーを隠す */
 }
 
 .img-modal.is-gallery-only .img-modal__thumbs {
-  display: block;         /* 一覧パネルを常に表示 */
+  display: block;
+  /* 一覧パネルを常に表示 */
   margin-top: 0;
   padding-top: 0;
   border-top: none;
@@ -1717,18 +1888,20 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
    ※ class名は thumbsGrid（G大文字）に合わせる
 ========================= */
 
-.img-modal__thumbsGrid{
+.img-modal__thumbsGrid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5枚/行 */
+  grid-template-columns: repeat(5, 1fr);
+  /* 5枚/行 */
   gap: 12px;
 
-  max-height: 70vh;       /* 一覧が長くなるので少し広げる */
+  max-height: 70vh;
+  /* 一覧が長くなるので少し広げる */
   overflow: auto;
   padding-right: 6px;
 }
 
 /* サムネ枠（正方形） */
-.img-modal__thumb{
+.img-modal__thumb {
   width: 100%;
   aspect-ratio: 1 / 1;
   padding: 0;
@@ -1740,7 +1913,7 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
 }
 
 /* サムネ画像を枠にフィット */
-.img-modal__thumb img{
+.img-modal__thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1748,8 +1921,8 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
 }
 
 /* スマホは3枚/行に */
-@media (max-width: 768px){
-  .img-modal__thumbsGrid{
+@media (max-width: 768px) {
+  .img-modal__thumbsGrid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -1759,7 +1932,7 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
 ========================= */
 
 /* グリッド本体 */
-.img-modal__thumbsGrid{
+.img-modal__thumbsGrid {
   display: grid !important;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 12px;
@@ -1773,13 +1946,14 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
 }
 
 /* サムネの箱：正方形を固定（ここが重なり防止の肝） */
-.img-modal__thumb{
+.img-modal__thumb {
   display: block !important;
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
 
-  margin: 0 !important;          /* ← 以前の margin-bottom を潰す */
+  margin: 0 !important;
+  /* ← 以前の margin-bottom を潰す */
   padding: 0 !important;
 
   border: none;
@@ -1789,7 +1963,7 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
 }
 
 /* 画像は箱にピッタリ敷き詰める */
-.img-modal__thumb img{
+.img-modal__thumb img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -1804,9 +1978,289 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
 }
 
 /* スマホは3列くらいが見やすい */
-@media (max-width: 768px){
-  .img-modal__thumbsGrid{
+@media (max-width: 768px) {
+  .img-modal__thumbsGrid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
+.modal-links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 10px 0 12px;
+}
+
+.modal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, .28);
+  background: rgba(255, 255, 255, .9);
+  color: #222;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: .06em;
+
+  cursor: pointer;
+  user-select: none;
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+.modal-btn:hover {
+  opacity: .75;
+  transform: translateY(-1px);
+}
+
+/* ✅ モーダル中身を縦並びに */
+.img-modal__content {
+  display: flex !important;
+  flex-direction: column;
+  gap: 14px;
+  align-items: stretch;
+}
+
+/* タイトル＋ボタンエリア */
+.img-modal__text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* タイトル */
+.img-modal__text h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Buy/Listen */
+.modal-links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ✅ ジャケは横長でも高さを稼いで見せる */
+.img-modal__media img {
+  width: 100%;
+  max-width: none;
+  /* 以前の max-width:320px を潰す */
+  max-height: 52vh;
+  /* 画面の半分くらいまで */
+  height: auto;
+  object-fit: contain;
+  /* 横長でも切れない。切りたいなら cover */
+  border-radius: 14px;
+}
+
+/* 説明文 */
+#modalDesc {
+  margin: 0;
+  font-size: .9rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+/* プレイヤー */
+#modalPlayer {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* 右下のアーティスト画像（今まで通り） */
+.img-modal__artist {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 10px;
+  opacity: .9;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .15);
+}
+
+/* =========================
+   タイトル中央 & サイズUP
+========================= */
+.img-modal__text {
+  text-align: center;
+  /* 中央揃え */
+}
+
+#modalTitle {
+  font-size: 20px;
+  /* ← 好みで 22px とかもOK */
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+}
+
+
+/* =========================
+   Buy / Listen ボタン中央配置
+========================= */
+.modal-links {
+  display: flex;
+  justify-content: center;
+  /* ← 横中央 */
+  gap: 14px;
+  /* ボタン間の余白 */
+  margin-bottom: 16px;
+}
+
+
+/* =========================
+   ボタンデザイン
+========================= */
+.modal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 18px;
+  font-size: 14px;
+  /* ← 少し大きめ */
+  letter-spacing: 0.08em;
+
+  transition: all 0.3s ease;
+}
+
+/* hover */
+.modal-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+.modal-btn {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Buy chooser */
+.buy-chooser {
+  display: none;
+  margin: 10px auto 0;
+  width: fit-content;
+
+
+  gap: 10px;
+}
+
+.buy-chooser.is-open {
+  display: flex;
+  justify-content: center;
+}
+
+.buy-chooser__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 14px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 999px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.85);
+  background: transparent;
+
+  transition: all 0.25s ease;
+}
+
+.buy-chooser__item:hover {
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+}
+
+/* =========================
+   Modal Nav (FINAL)  ←これだけ残す
+========================= */
+
+/* モーダルが開いてる時だけ表示＆クリックできる */
+.img-modal.is-open .img-modal__nav{
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  background: none;
+  padding: 0;
+
+  font-size: 48px;
+  font-weight: 900;
+  color: #fff;
+
+  cursor: pointer;
+  user-select: none;
+
+  z-index: 10001;           /* パネル/バックドロップより前 */
+  pointer-events: auto;     /* クリック死んでたらこれで復活 */
+  text-shadow: 0 6px 18px rgba(0,0,0,.35);
+
+  transition: transform .18s ease, opacity .18s ease;
+}
+
+.img-modal.is-open .img-modal__nav.prev { left: 24px; }
+.img-modal.is-open .img-modal__nav.next { right: 24px; }
+
+.img-modal.is-open .img-modal__nav.prev:hover{
+  transform: translate(-6px, -50%);
+  opacity: .75;
+}
+.img-modal.is-open .img-modal__nav.next:hover{
+  transform: translate(6px, -50%);
+  opacity: .75;
+}
+
+/* スマホ */
+@media (max-width: 640px){
+  .img-modal.is-open .img-modal__nav{
+    font-size: 36px;
+  }
+  .img-modal.is-open .img-modal__nav.prev{ left: 10px; }
+  .img-modal.is-open .img-modal__nav.next{ right: 10px; }
+}
+
+.img-modal.is-gallery-only .img-modal__content{
+  display: none;
+}
+/* See all（一覧）では詳細を完全に消す：!importantで勝つ */
+.img-modal.is-gallery-only .img-modal__content{
+  display: none !important;
+}
+
+/* 念のため：See allでは矢印も消すなら */
+.img-modal.is-gallery-only .img-modal__nav{
+  display: none !important;
+}
+
+/* See all（一覧）ではサムネ一覧を必ず表示 */
+.img-modal.is-gallery-only .img-modal__thumbs{
+  display: block !important;
+}
+
+.img-modal.is-gallery-only .img-modal__thumbsGrid{
+  display: grid !important;
+}
+
+/* ついでに：一覧モードでは詳細は必ず非表示 */
+.img-modal.is-gallery-only .img-modal__content{
+  display: none !important;
+}
