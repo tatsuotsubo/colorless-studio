@@ -2384,3 +2384,11 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
   line-height: 1.6;    /* 行間も少し調整 */
   display: inline-block;
 }
+
+.artist-name{
+  display: block;
+  text-align: center;
+  font-size:40px;   /* ←ここを好きなサイズに */
+  font-weight: 600;  /* お好みで */
+  letter-spacing: .02em; /* お好みで */
+}
