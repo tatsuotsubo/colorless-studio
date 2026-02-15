@@ -2424,7 +2424,7 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
   position: absolute;
   top: 50%;
   width: 30vw;
-  max-width: 320px;
+  max-width: 200px;
   height: 1px;
   background: rgba(0,0,0,.12);
 }
