@@ -2187,7 +2187,7 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
 ========================= */
 
 /* モーダルが開いてる時だけ表示＆クリックできる */
-.img-modal.is-open .img-modal__nav{
+.img-modal.is-open .img-modal__nav {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
@@ -2210,57 +2210,177 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
   cursor: pointer;
   user-select: none;
 
-  z-index: 10001;           /* パネル/バックドロップより前 */
-  pointer-events: auto;     /* クリック死んでたらこれで復活 */
-  text-shadow: 0 6px 18px rgba(0,0,0,.35);
+  z-index: 10001;
+  /* パネル/バックドロップより前 */
+  pointer-events: auto;
+  /* クリック死んでたらこれで復活 */
+  text-shadow: 0 6px 18px rgba(0, 0, 0, .35);
 
   transition: transform .18s ease, opacity .18s ease;
 }
 
-.img-modal.is-open .img-modal__nav.prev { left: 24px; }
-.img-modal.is-open .img-modal__nav.next { right: 24px; }
+.img-modal.is-open .img-modal__nav.prev {
+  left: 24px;
+}
 
-.img-modal.is-open .img-modal__nav.prev:hover{
+.img-modal.is-open .img-modal__nav.next {
+  right: 24px;
+}
+
+.img-modal.is-open .img-modal__nav.prev:hover {
   transform: translate(-6px, -50%);
   opacity: .75;
 }
-.img-modal.is-open .img-modal__nav.next:hover{
+
+.img-modal.is-open .img-modal__nav.next:hover {
   transform: translate(6px, -50%);
   opacity: .75;
 }
 
 /* スマホ */
-@media (max-width: 640px){
-  .img-modal.is-open .img-modal__nav{
+@media (max-width: 640px) {
+  .img-modal.is-open .img-modal__nav {
     font-size: 36px;
   }
-  .img-modal.is-open .img-modal__nav.prev{ left: 10px; }
-  .img-modal.is-open .img-modal__nav.next{ right: 10px; }
+
+  .img-modal.is-open .img-modal__nav.prev {
+    left: 10px;
+  }
+
+  .img-modal.is-open .img-modal__nav.next {
+    right: 10px;
+  }
 }
 
-.img-modal.is-gallery-only .img-modal__content{
+.img-modal.is-gallery-only .img-modal__content {
   display: none;
 }
+
 /* See all（一覧）では詳細を完全に消す：!importantで勝つ */
-.img-modal.is-gallery-only .img-modal__content{
+.img-modal.is-gallery-only .img-modal__content {
   display: none !important;
 }
 
 /* 念のため：See allでは矢印も消すなら */
-.img-modal.is-gallery-only .img-modal__nav{
+.img-modal.is-gallery-only .img-modal__nav {
   display: none !important;
 }
 
 /* See all（一覧）ではサムネ一覧を必ず表示 */
-.img-modal.is-gallery-only .img-modal__thumbs{
+.img-modal.is-gallery-only .img-modal__thumbs {
   display: block !important;
 }
 
-.img-modal.is-gallery-only .img-modal__thumbsGrid{
+.img-modal.is-gallery-only .img-modal__thumbsGrid {
   display: grid !important;
 }
 
 /* ついでに：一覧モードでは詳細は必ず非表示 */
-.img-modal.is-gallery-only .img-modal__content{
+.img-modal.is-gallery-only .img-modal__content {
   display: none !important;
+}
+
+.music-art-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+/* 中身を完全フィット */
+.music-art,
+.music-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* ←重要 */
+}
+
+/* CS_HarmonyRack だけ正方形 */
+.music-art-wrap.is-square {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 15px;
+  /* 既存に合わせるなら */
+}
+
+/* 中身をフィット */
+.music-art-wrap.is-square .music-art,
+.music-art-wrap.is-square .music-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* デフォは正方形にしない */
+.music-art-wrap {
+  aspect-ratio: auto;
+}
+
+/* =========================
+   CS_HarmonyRack だけ正方形（強制）
+========================= */
+.music-card.is-harmony .music-left {
+  width: 320px;
+  /* 好きなサイズに */
+  max-width: 100%;
+}
+
+.music-card.is-harmony .music-art-wrap {
+  width: 100% !important;
+  aspect-ratio: 1 / 1 !important;
+  height: auto !important;
+  overflow: hidden;
+  border-radius: 15px;
+  display: block;
+}
+
+.music-card.is-harmony .music-art,
+.music-card.is-harmony .music-video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  display: block;
+}
+
+.about-natsume-btn {
+  display: inline-flex;
+  /* 中身幅で決まる */
+  width: fit-content;
+  /* ←これ重要：横長防止 */
+  max-width: max-content;
+  /* 念のため */
+  align-self: flex-start;
+  /* 親がflexでも伸びない */
+
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 20px;
+  padding: 10px 18px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, .28);
+  background: rgba(255, 255, 255, .9);
+
+  color: #222;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: .08em;
+
+   margin-left:auto; margin-right:auto; 
+
+  transition: opacity .2s ease, transform .2s ease, background .2s ease;
+}
+
+.about-natsume-btn:hover {
+  opacity: .8;
+  transform: translateY(-1px);
+  background: rgba(0, 0, 0, .85);
+  color: #fff;
+}
+
+.works-small {
+  font-size: 0.5em;   /* 好みで 0.75〜0.9 くらい */
+  line-height: 1.6;    /* 行間も少し調整 */
+  display: inline-block;
 }
