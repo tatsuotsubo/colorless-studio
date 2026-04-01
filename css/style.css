@@ -2470,6 +2470,7 @@ body.modal-open .scatter-stage.sushi:hover .sushi-track {
   #artist h2::before,
   #artist h2::after {
     width: 24vw;
+    max-width: 120px;
   }
 }
 
@@ -2564,6 +2565,7 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    grid-template-columns: 1fr;
   }
 
   .music-left {
@@ -2584,6 +2586,7 @@ h2 {
   .artist-item {
     grid-template-columns: 1fr;
     padding: 24px 16px;
+    min-width: 100%;
   }
 
   .artist-name {
@@ -2638,7 +2641,4 @@ h2 {
     width: 120px;
   }
 
-  * {
-  outline: 1px solid red;
-}
 }
