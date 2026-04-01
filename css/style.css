@@ -2519,3 +2519,121 @@ h2 {
     font-size: 1.5rem;
   }
 }
+
+
+
+/* =========================
+   📱 スマホ最適化（強化版）
+========================= */
+@media (max-width: 768px) {
+
+  /* 余白調整 */
+  section {
+    padding: 60px 16px;
+  }
+
+  /* 見出し */
+  h2 {
+    font-size: 1.6rem;
+    margin-bottom: 32px;
+  }
+
+  /* =========================
+     About
+  ========================= */
+  .about-wrapper {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .about-content,
+  .about-image {
+    max-width: 100%;
+  }
+
+  .about-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  /* =========================
+     Music
+  ========================= */
+  .music-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .music-left {
+    width: 100%;
+  }
+
+  .music-card {
+    padding: 20px 16px;
+  }
+
+  .track-name {
+    font-size: 13px;
+  }
+
+  /* =========================
+     Artist
+  ========================= */
+  .artist-item {
+    grid-template-columns: 1fr;
+    padding: 24px 16px;
+  }
+
+  .artist-name {
+    font-size: 24px;
+  }
+
+  .career-box {
+    padding: 20px;
+  }
+
+  .career-box p {
+    font-size: 1rem;
+  }
+
+  /* =========================
+     Gallery
+  ========================= */
+  .scatter-card {
+    width: 110px;
+  }
+
+  .scatter-stage {
+    height: 55vh;
+  }
+
+  /* =========================
+     モーダル
+  ========================= */
+  .img-modal__panel {
+    width: 94%;
+    padding: 16px;
+  }
+
+  .img-modal__media img {
+    max-height: 40vh;
+  }
+
+  /* =========================
+     フッター
+  ========================= */
+  .last {
+    flex-direction: column;
+    gap: 40px;
+    padding: 80px 20px;
+  }
+
+  .last-image img {
+    width: 100%;
+  }
+
+  .last-logo img {
+    width: 120px;
+  }
+}
