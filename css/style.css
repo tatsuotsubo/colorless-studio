@@ -2637,4 +2637,8 @@ h2 {
   .last-logo img {
     width: 120px;
   }
+
+  * {
+  outline: 1px solid red;
+}
 }
