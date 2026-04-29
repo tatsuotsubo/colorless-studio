@@ -328,3 +328,105 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+window.addEventListener("load", () => {
+  const cards = document.querySelectorAll(".music-card");
+
+  cards.forEach((card) => {
+    const tabButtons = card.querySelectorAll(".tab-btn");
+    const panels = card.querySelectorAll(".tab-panel");
+
+    if (!tabButtons.length || !panels.length) {
+      initWavesIn(card);
+      return;
+    }
+
+    const showPanel = (target) => {
+      tabButtons.forEach((btn) => {
+        btn.classList.toggle("is-active", btn.dataset.tab === target);
+      });
+
+      panels.forEach((panel) => {
+        const active = panel.dataset.panel === target;
+        panel.classList.toggle("is-active", active);
+        panel.hidden = !active;
+        panel.style.display = active ? "block" : "none";
+      });
+
+      const activePanel = card.querySelector(`.tab-panel[data-panel="${target}"]`);
+      initWavesIn(activePanel);
+    };
+
+    tabButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        showPanel(btn.dataset.tab);
+      });
+    });
+
+    const firstTab =
+      card.querySelector(".tab-btn.is-active") ||
+      tabButtons[0];
+
+    showPanel(firstTab.dataset.tab);
+  });
+});
+let currentWave = null;
+let currentIcon = null;
+
+function initWavesIn(scope) {
+  if (!scope) return;
+
+  scope.querySelectorAll(".track-item").forEach((item) => {
+    if (item.dataset.waveReady === "1") return;
+
+    const waveEl = item.querySelector(".wave");
+    const audioSrc = item.dataset.src;
+    const btn = item.querySelector(".soundBtn");
+    const icon = item.querySelector(".soundIcon");
+
+    if (!waveEl || !audioSrc || !window.WaveSurfer) return;
+
+    const wavesurfer = WaveSurfer.create({
+      container: waveEl,
+      waveColor: "#b8b8b8",
+      progressColor: "#555",
+      cursorColor: "transparent",
+      barWidth: 2,
+      barGap: 2,
+      barRadius: 2,
+      height: 32,
+      responsive: true
+    });
+
+    wavesurfer.load(audioSrc);
+
+    btn?.addEventListener("click", () => {
+      if (currentWave && currentWave !== wavesurfer) {
+        currentWave.pause();
+
+        if (currentIcon) {
+          currentIcon.src = "images/button/play_button.png";
+        }
+      }
+
+      currentWave = wavesurfer;
+      currentIcon = icon;
+
+       wavesurfer.seekTo(0);
+      wavesurfer.playPause();
+    });
+
+    wavesurfer.on("play", () => {
+      if (icon) icon.src = "images/button/pause_button.png";
+    });
+
+    wavesurfer.on("pause", () => {
+      if (icon) icon.src = "images/button/play_button.png";
+    });
+
+    wavesurfer.on("finish", () => {
+      if (icon) icon.src = "images/button/play_button.png";
+    });
+
+    item.dataset.waveReady = "1";
+  });
+}
