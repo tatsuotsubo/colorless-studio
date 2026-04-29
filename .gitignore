@@ -1,2 +1,6 @@
 HTMLメモ.txt
 natsume/.vscode/launch.json
+videos/*.mp4
+videos/*.mov
+echo "videos/*.mp4" >> .gitignore
+echo "videos/*.mov" >> .gitignore
