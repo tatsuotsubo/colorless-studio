@@ -1,0 +1,346 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  background: #fbfbfa;
+  color: #2d2d2d;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Noto Serif JP", serif;
+  letter-spacing: 0.18em;
+}
+
+body {
+  border-top: 2px solid #2f3742;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 24px 36px;
+}
+
+.hero {
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+  transform: translateY(-6px);
+}
+
+.logo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 22px;
+  margin-bottom: 74px;
+  color: #2b2b2b;
+}
+
+.logo-main {
+  position: relative;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.22em;
+}
+
+.logo-sub {
+  position: relative;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+  padding-top: 9px;
+  letter-spacing: 0.42em;
+}
+
+.ruby {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.wave-mark {
+  margin-bottom: 72px;
+  font-size: 36px;
+  line-height: 0.62;
+  letter-spacing: 0.02em;
+  color: #2d2d2d;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.catch {
+  margin-bottom: 58px;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 2.65;
+  color: #252525;
+  letter-spacing: 0.24em;
+}
+
+.lead {
+  margin-bottom: 64px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 2.35;
+  color: #404040;
+  letter-spacing: 0.22em;
+}
+
+.quote {
+  margin-bottom: 64px;
+  font-size: 14px;
+  line-height: 2.45;
+  color: #4f4f4f;
+  letter-spacing: 0.2em;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  margin-bottom: 88px;
+}
+
+.start-btn {
+  appearance: none;
+  border: none;
+  min-width: 168px;
+  padding: 17px 30px 16px;
+  border-radius: 999px;
+  background: #303030;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  letter-spacing: 0.24em;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.start-btn:hover {
+  opacity: 0.86;
+  transform: translateY(-1px);
+}
+
+/*  モーダルのスタイル */
+#modal:popover-open {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+  border: 1px solid #ccc;
+  text-align: center;
+  min-width: 300px;
+}
+
+/* モーダルの背景スタイル */
+#modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.start_btn_2 {
+  appearance: none;
+  border: none;
+  min-width: 168px;
+  padding: 17px 30px 16px;
+  border-radius: 999px;
+  background: #303030;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  letter-spacing: 0.24em;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.start_btn_2:hover {
+  opacity: 0.86;
+  transform: translateY(-1px);
+}
+
+.modal-close {
+  background: white;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  /* pointer-events: none; を追加するとホバーも無効になる */
+}
+
+/* 活性化時にトランジションでなめらかに変化 */
+button {
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+.checkbox_label {
+  display: flex;
+  justify-content: center;
+  /*　中央揃え */
+  gap: 8px;
+  /* チェックボックスとテキストの間のスペース */
+  margin: 28px 0 4px;
+  /* 上下のスペース */
+}
+
+.sub-link {
+  color: #5d5d5d;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  transition: color 0.2s ease;
+}
+
+.sub-link:hover {
+  color: #222;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #7a7a7a;
+  text-decoration: none;
+  font-size: 15px;
+  letter-spacing: 0.2em;
+}
+
+.more::before {
+  content: "▶";
+  font-size: 11px;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  body {
+    border-top-width: 1px;
+  }
+
+  .page {
+    padding: 56px 20px 32px;
+    align-items: flex-start;
+  }
+
+  .hero {
+    max-width: 360px;
+    transform: none;
+  }
+
+  .logo {
+    margin-bottom: 58px;
+    gap: 18px;
+  }
+
+  .logo-main {
+    font-size: 30px;
+  }
+
+  .logo-sub {
+    font-size: 15px;
+  }
+
+  .wave-mark {
+    margin-bottom: 56px;
+    font-size: 32px;
+  }
+
+  .catch {
+    margin-bottom: 44px;
+    font-size: 18px;
+    line-height: 2.35;
+  }
+
+  .lead,
+  .quote {
+    font-size: 13px;
+  }
+
+  .lead {
+    margin-bottom: 48px;
+  }
+
+  .quote {
+    margin-bottom: 48px;
+  }
+
+  .actions {
+    margin-bottom: 70px;
+  }
+}
+
+/*-------------------------
+  ヘッダー
+-------------------------*/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  border-bottom: 1px solid #e0e0e0;
+  background: #fbfbfa;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header .logo {
+  font-size: 1.05em;
+  letter-spacing: 0.3em;
+  color: #2d2d2d;
+  margin-bottom: 0;
+}
+
+.header a {
+  color: #2d2d2d;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+/*-------------------------
+  投稿ボタン
+-------------------------*/
+.fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #fbfbfa;
+  border: 1px solid #e1e1de;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
