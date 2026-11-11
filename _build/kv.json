@@ -1,0 +1,80 @@
+{
+ "gallery": {
+  "layout": "triptych",
+  "sub": "ジャケットとアートワークのアーカイブ",
+  "videos": [
+   {
+    "src": "videos/kv/gallery_1.mp4",
+    "poster": "images/kv/gallery_1.jpg"
+   },
+   {
+    "src": "videos/kv/gallery_2.mp4",
+    "poster": "images/kv/gallery_2.jpg"
+   },
+   {
+    "src": "videos/kv/gallery_3.mp4",
+    "poster": "images/kv/gallery_3.jpg"
+   }
+  ]
+ },
+ "release": {
+  "layout": "mosaic",
+  "sub": "アルバム・サンプルパック・ツール・ライブ",
+  "videos": [
+   {
+    "src": "videos/kv/release_1.mp4",
+    "poster": "images/kv/release_1.jpg"
+   },
+   {
+    "src": "videos/kv/release_2.mp4",
+    "poster": "images/kv/release_2.jpg"
+   },
+   {
+    "src": "videos/kv/release_3.mp4",
+    "poster": "images/kv/release_3.jpg"
+   }
+  ]
+ },
+ "visualiser": {
+  "layout": "mosaic",
+  "sub": "ブラウザで動くグラニュラー / ビジュアライザー",
+  "videos": [
+   {
+    "src": "videos/kv/visualiser_1.mp4",
+    "poster": "images/kv/visualiser_1.jpg"
+   },
+   {
+    "src": "videos/kv/visualiser_2.mp4",
+    "poster": "images/kv/visualiser_2.jpg"
+   },
+   {
+    "src": "videos/kv/visualiser_3.mp4",
+    "poster": "images/kv/visualiser_3.jpg"
+   }
+  ]
+ },
+ "artist": {
+  "layout": "split",
+  "sub": "colorless studio のメンバー",
+  "videos": [
+   {
+    "src": "videos/kv/artist_1.mp4",
+    "poster": "images/kv/artist_1.jpg"
+   },
+   {
+    "src": "videos/kv/artist_2.mp4",
+    "poster": "images/kv/artist_2.jpg"
+   }
+  ]
+ },
+ "contact": {
+  "layout": "single",
+  "sub": "お仕事のご依頼・ご相談はこちらから",
+  "videos": [
+   {
+    "src": "videos/kv/contact_1.mp4",
+    "poster": "images/kv/contact_1.jpg"
+   }
+  ]
+ }
+}

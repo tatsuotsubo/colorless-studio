@@ -1,0 +1,43 @@
+<div class="img-modal" id="imgModal" aria-hidden="true">
+  <div class="img-modal__backdrop" data-close></div>
+
+  <div class="img-modal__panel" role="dialog" aria-modal="true">
+    <button class="img-modal__close" type="button" aria-label="Close" data-close>×</button>
+    <button class="img-modal__nav prev" type="button" aria-label="Prev">←</button>
+    <button class="img-modal__nav next" type="button" aria-label="Next">→</button>
+
+    <div class="img-modal__thumbs" aria-label="Thumbnails">
+      <div class="img-modal__thumbsGrid" id="modalThumbs"></div>
+    </div>
+
+    <!-- ✅ See allで隠したいものは全部この中に入れる -->
+    <div class="img-modal__content">
+      <div class="img-modal__text">
+        <h3 id="modalTitle"></h3>
+
+        <div class="modal-links">
+          <a id="modalBuy" class="modal-btn" target="_blank" rel="noopener noreferrer">Buy</a>
+          <a id="modalListen" class="modal-btn" target="_blank" rel="noopener noreferrer">Listen</a>
+        </div>
+
+        <div class="buy-chooser" id="buyChooser" aria-hidden="true">
+          <a id="buyBooth" class="buy-chooser__item" target="_blank" rel="noopener noreferrer">Booth</a>
+          <a id="buyPayhip" class="buy-chooser__item" target="_blank" rel="noopener noreferrer">Payhip</a>
+          <a id="buyBandcamp" class="buy-chooser__item" target="_blank" rel="noopener noreferrer">Bandcamp</a>
+        </div>
+      </div>
+
+      <div class="img-modal__media">
+        <img id="modalImg" src="" alt="">
+      </div>
+
+      <p id="modalDesc"></p>
+
+      <iframe id="modalPlayer" width="100%" height="175" frameborder="0" allow="autoplay *; encrypted-media *;"
+        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation">
+      </iframe>
+
+      <img class="img-modal__artist" id="modalArtistImg" src="" alt="artist">
+    </div>
+  </div>
+</div>

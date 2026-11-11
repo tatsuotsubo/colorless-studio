@@ -1,0 +1,34 @@
+<section id="visualiser">
+  <h2>Visualiser</h2>
+
+  <div class="vis-panel">
+    <div class="vis-head">
+      <div class="vis-brand">
+        <img class="vis-mark" src="images/logo/CS_logo.png" alt="">
+        <div>
+          <p class="vis-title">colorless visualiser</p>
+          <p class="vis-sub">granular · midi · audio — ブラウザで動くグラニュラー / ビジュアライザー</p>
+        </div>
+      </div>
+      <div class="vis-actions">
+        <button type="button" class="vis-btn primary" id="visLaunch">▶ Launch</button>
+        <button type="button" class="vis-btn" id="visClose" hidden>Close</button>
+        <a class="vis-btn" href="visualiser/index.html" target="_blank" rel="noopener">新しいタブで開く ↗</a>
+      </div>
+    </div>
+
+    <div class="vis-stage" id="visStage">
+      <!-- 起動前のプレビュー（重いので、Launch を押すまで本体は読み込まない） -->
+      <div class="vis-cover" id="visCover">
+        <video class="vis-cover__video" src="visualiser/v/sky_1.mp4" muted loop playsinline autoplay preload="metadata"></video>
+        <button type="button" class="vis-cover__play" id="visCoverPlay" aria-label="Visualiser を起動">
+          <span class="vis-cover__icon">▶</span>
+          <span>Launch visualiser</span>
+        </button>
+        <p class="vis-cover__note">音声ファイルのドラッグ＆ドロップ・MIDI・カメラに対応。全機能（タブ録画など）は「新しいタブで開く」から。</p>
+      </div>
+      <iframe class="vis-frame" id="visFrame" title="colorless visualiser" hidden
+        allow="autoplay; microphone; camera; midi; fullscreen; display-capture; clipboard-write"></iframe>
+    </div>
+  </div>
+</section>

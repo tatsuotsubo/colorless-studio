@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#EAEFF1">
+  <title>Visualiser — colorless studio</title>
+  <meta name="description" content="colorless studio — 透明感・淡い色彩・光の屈折や反射をテーマにした音と映像の活動組織。ambient / IDM / botanica / petal core.">
+  <link rel="icon" href="images/logo/CS_logo_icon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css?v=20261111f">
+  <link rel="stylesheet" href="css/style.css?v=20261111f">
+  <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('cs-pt'))document.documentElement.classList.add('pt-enter')}catch(e){}</script>
+  <script src="js/site.js?v=20261111f" defer></script>
+  <script src="js/hamburger-menu.js?v=20261111f" defer></script>
+  <script src="js/visualiser-tab.js?v=20261111f" defer></script>
+</head>
+<body class="page-visualiser">
+<!-- 背景：visualiser と同じ「ぼかした動画＋淡いスカイ」 -->
+<div class="backdrop" aria-hidden="true">
+  <video autoplay muted loop playsinline preload="auto" src="videos/kv/visualiser_1.mp4"></video>
+</div>
+
+<!-- ページ遷移の幕 -->
+<div class="pt" aria-hidden="true">
+  <div class="pt__panel"></div>
+  <img class="pt__logo" src="images/logo/CS_logo.png" alt="">
+</div>
+
+<!-- ヘッダー -->
+<header id="header">
+  <div class="header-left">
+    <div class="hamburger-menu">
+      <div class="hamburger-icon" role="button" aria-label="menu" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- Menu -->
+      <nav class="menu">
+        <ul>
+          <li class="active"><a href="index.html"><span class="menu-no">00</span>Home</a></li>
+          <li class="active"><a href="gallery.html"><span class="menu-no">01</span>Gallery</a></li>
+          <li class="active"><a href="release.html"><span class="menu-no">02</span>New Release</a></li>
+          <li class="active"><a href="visualiser.html" aria-current="page"><span class="menu-no">03</span>Visualiser</a></li>
+          <li class="active"><a href="artist.html"><span class="menu-no">04</span>Artist</a></li>
+          <li class="active"><a href="contact.html"><span class="menu-no">05</span>Contact us</a></li>
+        </ul>
+        <p class="menu-foot">transparency / pale colors / refraction &amp; reflection of light</p>
+      </nav>
+    </div>
+  </div>
+
+  <div class="header-center">
+    <a href="index.html" class="header-home" aria-label="colorless studio home"><img src="images/logo/CS_logo.png" alt="colorless studio" class="header-logo"></a>
+  </div>
+
+  <div class="header-right">
+    <a href="contact.html" class="contact-btn">Contact us</a>
+  </div>
+</header>
+
+<!-- キービジュアル -->
+<section class="kv kv--mosaic" data-kv>
+  <div class="kv__media">
+    <div class="kv__pane" style="--d:0"><video autoplay muted loop playsinline preload="auto" poster="images/kv/visualiser_1.jpg" src="videos/kv/visualiser_1.mp4"></video></div>
+    <div class="kv__pane" style="--d:1"><video autoplay muted loop playsinline preload="auto" poster="images/kv/visualiser_2.jpg" src="videos/kv/visualiser_2.mp4"></video></div>
+    <div class="kv__pane" style="--d:2"><video autoplay muted loop playsinline preload="auto" poster="images/kv/visualiser_3.jpg" src="videos/kv/visualiser_3.mp4"></video></div>
+  </div>
+  <div class="kv__veil"></div>
+  <div class="kv__text">
+    <p class="kv__kicker"><span>(03)</span> colorless studio</p>
+    <h1 class="kv__title" data-split><span class="w"><span class="ch" style="--i:1">V</span><span class="ch" style="--i:2">i</span><span class="ch" style="--i:3">s</span><span class="ch" style="--i:4">u</span><span class="ch" style="--i:5">a</span><span class="ch" style="--i:6">l</span><span class="ch" style="--i:7">i</span><span class="ch" style="--i:8">s</span><span class="ch" style="--i:9">e</span><span class="ch" style="--i:10">r</span></span></h1>
+    <p class="kv__sub" data-reveal>ブラウザで動くグラニュラー / ビジュアライザー</p>
+  </div>
+  <a class="kv__scroll" href="#content" aria-label="scroll"><span>scroll</span><i></i></a>
+</section>
+
+<main id="content">
+<section class="feat">
+  <div class="sec-head" data-reveal>
+    <h2>Modules</h2><p class="sec-note">granular · midi · audio</p>
+  </div>
+
+  <ul class="feat__list">
+    <li data-reveal><span class="feat__name">Field</span><span class="feat__desc">グラニュラー。音を粒にして、空間に散らす</span></li>
+    <li data-reveal><span class="feat__name">Audio</span><span class="feat__desc">音声ファイルをドロップして再生・解析</span></li>
+    <li data-reveal><span class="feat__name">MIDI</span><span class="feat__desc">鍵盤・MIDIコントローラーで演奏</span></li>
+    <li data-reveal><span class="feat__name">Analyzer</span><span class="feat__desc">スペクトログラム・波形・ラウドネスを可視化</span></li>
+  </ul>
+</section>
+<section id="visualiser">
+  <div class="sec-head" data-reveal>
+    <h2>Play</h2><p class="sec-note">runs in your browser</p>
+  </div>
+
+
+  <div class="vis-panel" data-reveal>
+    <div class="vis-head">
+      <div class="vis-brand">
+        <img class="vis-mark" src="images/logo/CS_logo.png" alt="">
+        <div>
+          <p class="vis-title">colorless visualiser</p>
+          <p class="vis-sub">granular · midi · audio — ブラウザで動くグラニュラー / ビジュアライザー</p>
+        </div>
+      </div>
+      <div class="vis-actions">
+        <button type="button" class="vis-btn primary" id="visLaunch">▶ Launch</button>
+        <button type="button" class="vis-btn" id="visClose" hidden>Close</button>
+        <a class="vis-btn" href="visualiser/index.html" target="_blank" rel="noopener">新しいタブで開く ↗</a>
+      </div>
+    </div>
+
+    <div class="vis-stage" id="visStage">
+      <!-- 起動前のプレビュー（重いので、Launch を押すまで本体は読み込まない） -->
+      <div class="vis-cover" id="visCover">
+        <video class="vis-cover__video" src="visualiser/v/sky_1.mp4" muted loop playsinline autoplay preload="metadata"></video>
+        <button type="button" class="vis-cover__play" id="visCoverPlay" aria-label="Visualiser を起動">
+          <span class="vis-cover__icon">▶</span>
+          <span>Launch visualiser</span>
+        </button>
+        <p class="vis-cover__note">音声ファイルのドラッグ＆ドロップ・MIDI・カメラに対応。全機能（タブ録画など）は「新しいタブで開く」から。</p>
+      </div>
+      <iframe class="vis-frame" id="visFrame" title="colorless visualiser" hidden
+        allow="autoplay; microphone; camera; midi; fullscreen; display-capture; clipboard-write"></iframe>
+    </div>
+  </div>
+</section>
+
+
+<!-- 次のページへ -->
+<a class="next-page" href="artist.html" data-reveal>
+  <video class="next-page__video" muted loop playsinline preload="none" src="videos/kv/artist_1.mp4"></video>
+  <span class="next-page__label">next</span>
+  <span class="next-page__title">Artist</span>
+  <span class="next-page__arrow" aria-hidden="true">→</span>
+</a>
+
+</main>
+
+<section class="last">
+  <div class="last-image">
+    <img src="images/leaf-square.jpg" alt="leaf" loading="lazy">
+  </div>
+
+  <nav class="last-menu">
+    <ul class="page-links">
+      <li class="active"><a href="index.html">Home</a></li>
+      <li class="active"><a href="gallery.html">Gallery</a></li>
+      <li class="active"><a href="release.html">New Release</a></li>
+      <li class="active"><a href="visualiser.html">Visualiser</a></li>
+      <li class="active"><a href="artist.html">Artist</a></li>
+      <li class="active"><a href="contact.html">Contact us</a></li>
+    </ul>
+
+    <div class="sns-links">
+      <span class="label">SNS</span>
+      <a href="https://x.com/colorless_ST" target="_blank" rel="noopener">X</a>
+      <a href="https://www.instagram.com/colorless.studio.official/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@colorless_studio" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.youtube.com/@colorless_studio_official" target="_blank" rel="noopener">YouTube</a>
+    </div>
+    <div class="sns-links">
+      <span class="label">Store</span>
+      <a href="https://colorless-studio.booth.pm/" target="_blank" rel="noopener">Booth</a>
+      <a href="https://payhip.com/colorlessstudio" target="_blank" rel="noopener">Payhip</a>
+      <a href="https://www.soundcloud.com/colorless-studio" target="_blank" rel="noopener">SoundCloud</a>
+      <a href="https://colorlessstudio.bandcamp.com/" target="_blank" rel="noopener">Bandcamp</a>
+    </div>
+    <p class="last-copy">© colorless studio</p>
+  </nav>
+</section>
+
+</body>
+</html>
