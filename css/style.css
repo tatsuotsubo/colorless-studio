@@ -2989,7 +2989,7 @@ body.page-home .logo-image { transition: opacity .6s, transform .8s var(--ease-o
   gap: 16px;
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 0 var(--gutter);
+  padding: 0;
 }
 .member-card {
   position: relative;
@@ -3061,9 +3061,9 @@ body.page-member .member {
   display: grid;
   grid-template-columns: minmax(320px, 400px) minmax(0, 1fr);
   gap: 10px;
-  height: 100vh;
-  height: 100svh;
-  padding: calc(var(--header-h) + 10px) 10px 10px;
+  height: calc(100vh - var(--header-h));
+  height: calc(100svh - var(--header-h));
+  padding: 10px;
 }
 html:has(body.page-member) { overflow: hidden; }
 
@@ -3178,6 +3178,9 @@ html:has(body.page-member) { overflow: hidden; }
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  max-width: none;
+  padding: 0;
+  margin: 0;
 }
 .member__bar {
   display: flex;
@@ -3193,7 +3196,9 @@ html:has(body.page-member) { overflow: hidden; }
 .member__bar a:hover { color: var(--accent); }
 .member__frame {
   flex: 1 1 auto;
-  width: 100%;
+  align-self: stretch;
+  width: 100% !important;
+  height: auto;
   min-height: 0;
   border: 0;
   background: #fff;
