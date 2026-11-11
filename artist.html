@@ -10,11 +10,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/reset.css?v=20261111t">
-  <link rel="stylesheet" href="css/style.css?v=20261111t">
+  <link rel="stylesheet" href="css/reset.css?v=20261111u">
+  <link rel="stylesheet" href="css/style.css?v=20261111u">
   <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('cs-pt'))document.documentElement.classList.add('pt-enter')}catch(e){}</script>
-  <script src="js/site.js?v=20261111t" defer></script>
-  <script src="js/hamburger-menu.js?v=20261111t" defer></script>
+  <script src="js/site.js?v=20261111u" defer></script>
+  <script src="js/hamburger-menu.js?v=20261111u" defer></script>
 
 </head>
 <body class="page-artist">
@@ -83,7 +83,7 @@
   <div class="about-wrapper" data-reveal>
     <!-- 左画像 -->
     <div class="about-image">
-      <img src="images/aboutus_square.jpg" alt="About image">
+      <video class="about-video" src="videos/about/about.mp4" poster="images/about/about.jpg" autoplay muted loop playsinline preload="auto" aria-label="colorless studio"></video>
     </div>
 
     <div class="about-content">
@@ -114,22 +114,22 @@
   <div class="sec-head" data-reveal>
     <h2>Artist</h2>
   </div>
-  <div class="member-cards">
-    <a class="member-card" href="natsume.html" data-reveal style="--i:0">
-      <span class="member-card__media"><img src="images/artist/guitar.jpg" alt="natsume" loading="lazy"></span>
-      <span class="member-card__meta">
-        <span class="member-card__name">natsume</span>
-        <span class="member-card__role">Composer / Sound Designer / Music Producer / Manipulator</span>
+  <div class="member-rows">
+    <a class="member-row" href="natsume.html" data-reveal>
+      <span class="member-row__media"><img src="images/artist/guitar_crop.jpg" alt="natsume" loading="lazy"></span>
+      <span class="member-row__text">
+        <span class="member-row__name">natsume</span>
+        <span class="member-row__role">Composer / Sound Designer / Music Producer / Manipulator</span>
+        <span class="member-row__go">Works <span class="member-row__arrow" aria-hidden="true">→</span></span>
       </span>
-      <span class="member-card__arrow" aria-hidden="true">→</span>
     </a>
-    <a class="member-card" href="alpha.html" data-reveal style="--i:1">
-      <span class="member-card__media"><img src="images/artist/panda.jpg" alt="alpha" loading="lazy"></span>
-      <span class="member-card__meta">
-        <span class="member-card__name">alpha</span>
-        <span class="member-card__role">Composer / Sound Designer / Music Producer</span>
+    <a class="member-row member-row--rev" href="alpha.html" data-reveal>
+      <span class="member-row__media"><img src="images/artist/panda.jpg" alt="alpha" loading="lazy"></span>
+      <span class="member-row__text">
+        <span class="member-row__name">alpha</span>
+        <span class="member-row__role">Composer / Sound Designer / Music Producer</span>
+        <span class="member-row__go">Works <span class="member-row__arrow" aria-hidden="true">→</span></span>
       </span>
-      <span class="member-card__arrow" aria-hidden="true">→</span>
     </a>
   </div>
 </section>

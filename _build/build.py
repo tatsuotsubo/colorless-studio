@@ -435,7 +435,7 @@ MEMBERS = [
     {
         "key": "natsume", "file": "natsume.html", "name": "natsume",
         "role": "Composer / Sound Designer / Music Producer / Manipulator",
-        "img": "images/artist/guitar.jpg",
+        "img": "images/artist/guitar_crop.jpg",
         "foriio": "https://www.foriio.com/natsume0465", "foriio_user": "natsume0465",
         "cats": ["作曲", "編曲", "Remix", "MIx - Mastering"],
         "form": "https://forms.gle/DxaPEA6bQQMPRxas5",
@@ -491,19 +491,20 @@ for _m in MEMBERS:
 
 
 def member_cards():
-    cards = ""
+    """About Us のメンバー：枠なし。画像と大きな名前を交互に縦へ並べる（ページ上部のキービジュアルと同じ考え方）"""
+    rows = ""
     for i, m in enumerate(MEMBERS):
-        cards += f"""
-    <a class="member-card" href="{m['file']}" data-reveal style="--i:{i}">
-      <span class="member-card__media"><img src="{E(m['img'])}" alt="{E(m['name'])}" loading="lazy"></span>
-      <span class="member-card__meta">
-        <span class="member-card__name">{E(m['name'])}</span>
-        <span class="member-card__role">{E(m['role'])}</span>
+        rows += f"""
+    <a class="member-row{' member-row--rev' if i % 2 else ''}" href="{m['file']}" data-reveal>
+      <span class="member-row__media"><img src="{E(m['img'])}" alt="{E(m['name'])}" loading="lazy"></span>
+      <span class="member-row__text">
+        <span class="member-row__name">{E(m['name'])}</span>
+        <span class="member-row__role">{E(m['role'])}</span>
+        <span class="member-row__go">Works <span class="member-row__arrow" aria-hidden="true">→</span></span>
       </span>
-      <span class="member-card__arrow" aria-hidden="true">→</span>
     </a>"""
     return f"""<section id="artist">
-{section_head("Artist")}  <div class="member-cards">{cards}
+{section_head("Artist")}  <div class="member-rows">{rows}
   </div>
 </section>"""
 
