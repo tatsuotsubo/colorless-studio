@@ -2972,3 +2972,8 @@ body.page-home .logo-image { transition: opacity .6s, transform .8s var(--ease-o
 }
 
 .kv--triptych .kv__pane:nth-child(2) { margin: 0; }
+
+/* v5.4.1：Gallery（3枚並び）は映像の枠の下まで見せる（下端を背景色に溶かさない） */
+.kv--triptych .kv__veil {
+  background: linear-gradient(180deg, rgba(18, 33, 38, .18), transparent 30%, transparent 60%, rgba(234, 239, 241, .35));
+}

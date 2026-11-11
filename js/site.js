@@ -85,12 +85,14 @@
     if (kv && !reduce) {
       const media = kv.querySelector('.kv__media');
       const text = kv.querySelector('.kv__text');
+      const fixedMedia = kv.classList.contains('kv--triptych');
       let raf = 0;
       const onScroll = () => {
         cancelAnimationFrame(raf);
         raf = requestAnimationFrame(() => {
           const y = Math.min(window.scrollY, window.innerHeight);
-          media.style.transform = `translate3d(0, ${y * 0.28}px, 0) scale(${1 + y / 4000})`;
+          // Gallery（3枚並び）は映像の枠の上下をきっちり見せたいので動かさない
+          if (!fixedMedia) media.style.transform = `translate3d(0, ${y * 0.28}px, 0) scale(${1 + y / 4000})`;
           text.style.transform = `translate3d(0, ${y * 0.12}px, 0)`;
           text.style.opacity = String(Math.max(0, 1 - y / (window.innerHeight * 0.7)));
         });
