@@ -7,6 +7,7 @@ if [ ! -f "$SRC/index.html" ]; then echo "見つかりません: $SRC"; read -r 
 mkdir -p visualiser
 rsync -a --delete "$SRC/v/" visualiser/v/
 rsync -a --delete "$SRC/daw/" visualiser/daw/
+rsync -a --delete "$SRC/demo/" visualiser/demo/
 cp "$SRC/index.html" visualiser/index.html
 echo "visualiser を更新しました → $(pwd)/visualiser"
 read -r -p "Enter で閉じる"

@@ -3970,6 +3970,12 @@ resize();
 const demoBuf = makeDemo(); setBuffer(demoBuf, 'demo'); setAudio(demoBuf, 'demo');
 setMeterSrc('field');
 $('#meta').firstChild.textContent = 'demo';
+/* 初期の音源：demo/demo_song.m4a（読めなければ上の合成デモのまま）。読み込み中に自分の音声を入れた場合は差し替えない */
+(async () => { try {
+  const r = await fetch('demo/demo_song.m4a'); if (!r.ok) return; const ab = await r.arrayBuffer();
+  const b = await new Promise((res, rej) => { const p = ctx.decodeAudioData(ab, res, rej); if (p && p.then) p.then(res, rej); });
+  if (buf === demoBuf) setBuffer(b, 'demo_song'); if (aBuf === demoBuf) setAudio(b, 'demo_song');
+} catch(e) {} })();
 if (FIRST_VISIT) applySnapshot(DEFAULT_SNAP);  // 初めて開いた人は公開時の Default で始める
 document.fonts && document.fonts.ready.then(() => { resize(); });
 requestAnimationFrame(frame);
