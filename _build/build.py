@@ -417,18 +417,128 @@ def page_visualiser():
 
 
 def page_artist():
-    body = strip_h2(P["artist"]).replace('<div class="Artist">', '<div class="Artist" data-reveal>')
-    body = body.replace('<section id="artist" data-slider="artist">', '<section id="artist" data-slider="artist">\n' + section_head("Artist"))
     about = P["about"].replace('<div class="about-wrapper">', '<div class="about-wrapper" data-reveal>')
     # ページ名（About Us）と重複する見出しは出さない
     about = re.sub(r'\s*<h2 class="about-title">.*?</h2>', '', about, count=1, flags=re.S)
     return kv("artist") + f'''
 <main id="content">
 {about}
-{body}
+{member_cards()}
 {next_link("artist")}
 </main>
 '''
+
+
+
+# ------------------------------------------------------------------ メンバー（About Us のカード → 個別ページ）
+MEMBERS = [
+    {
+        "key": "natsume", "file": "natsume.html", "name": "natsume",
+        "role": "Composer / Sound Designer / Music Producer / Manipulator",
+        "img": "images/artist/guitar.jpg",
+        "foriio": "https://www.foriio.com/natsume0465",
+        "form": "https://forms.gle/DxaPEA6bQQMPRxas5",
+        "works": [
+            "Lir.E 2nd ワンマンライブ「愛について：REC」　Manipulator",
+            "あおぎり高校　春雨麗女 1st ONE-MAN LIVE「submerge of spring」　Manipulator",
+            "bit-chan　1st single　「あのゆめ」　作詞作曲",
+            "Compilation Album / ユシナ & kohe - 多重合成音声　「fragment」作詞作曲",
+            "Compilation Album / NEXTLIGHT - NX REALM　「fade」作詞作曲",
+            "Compilation Album / wagataki - 透明の瞬き　「ひかり」　作編曲",
+            "すぺしゃりてフェス #05 STREET FIGHTER 6 OP　BGM制作",
+        ],
+        "links": [
+            ("X", "https://x.com/koshianko_0465"),
+            ("YouTube", "https://www.youtube.com/@natsume-music"),
+            ("Instagram", "https://instagram.com/oshiruko_0465"),
+            ("SoundCloud", "https://soundcloud.com/user-37796398"),
+            ("niconico", "https://www.nicovideo.jp/user/126239780"),
+            ("Streaming", "https://linkco.re/TZ7ZeMM2"),
+            ("pixivFANBOX", "https://natsume0465.fanbox.cc/"),
+        ],
+    },
+    {
+        "key": "alpha", "file": "alpha.html", "name": "alpha",
+        "role": "Composer / Sound Designer / Music Producer",
+        "img": "images/artist/panda.jpg",
+        "foriio": "https://www.foriio.com/alphanium",
+        "form": "https://docs.google.com/forms/d/e/1FAIpQLSdZc_pFKcuENPU7SAxjXQI1N2Rz0HOgiYGGd9JfyFECqcR7uQ/viewform?usp=send_form",
+        "works": [
+            "スマートフォン向けゲームアプリ「無期迷途」　BGM制作,ゲーム内楽曲制作",
+            "楽園プロジェクト(ナイトプールremix) - 兎迷夢々　楽曲リアレンジ制作",
+            "百鬼あやめ 7周年記念ライブ ライブOP 　BGM制作",
+            "兎田ぺこら 6周年記念ライブ / SE,BGM制作",
+            "LOG IN: GAME START #ROCKINBiboo ライブOP　BGM制作",
+            "ホロライブ × ジョイポリス「SWEETY PARTY」　イベント幕間BGM制作",
+        ],
+        "links": [
+            ("X", "https://x.com/_alphanium_"),
+            ("YouTube", "https://www.youtube.com/@_alphanium_"),
+            ("Instagram", "https://www.instagram.com/alphanium"),
+            ("SoundCloud", "https://soundcloud.com/superalpha"),
+            ("Spotify", "https://open.spotify.com/intl-ja/artist/0sQYQk5Q0asffq6qDNG9VT"),
+            ("Apple Music", "https://music.apple.com/jp/artist/%E3%81%82%E3%82%8B%E3%81%B5%E3%81%81/1810330648"),
+            ("bandcamp", "https://alphanium.bandcamp.com/"),
+            ("pixivFANBOX", "https://alphanium.fanbox.cc/"),
+            ("skeb", "https://skeb.jp/@_alphanium_"),
+        ],
+    },
+]
+for _m in MEMBERS:
+    FILE[_m["key"]] = _m["file"]
+
+
+def member_cards():
+    cards = ""
+    for i, m in enumerate(MEMBERS):
+        cards += f"""
+    <a class="member-card" href="{m['file']}" data-reveal style="--i:{i}">
+      <span class="member-card__media"><img src="{E(m['img'])}" alt="{E(m['name'])}" loading="lazy"></span>
+      <span class="member-card__meta">
+        <span class="member-card__name">{E(m['name'])}</span>
+        <span class="member-card__role">{E(m['role'])}</span>
+      </span>
+      <span class="member-card__arrow" aria-hidden="true">→</span>
+    </a>"""
+    return f"""<section id="artist">
+{section_head("Artist")}  <div class="member-cards">{cards}
+  </div>
+</section>"""
+
+
+def page_member(m):
+    works = "".join(f"\n          <li>{E(w)}</li>" for w in m["works"])
+    links = "".join(f'<a class="member__pill" href="{E(u)}" target="_blank" rel="noopener">{E(n)}</a>' for n, u in m["links"])
+    return f"""
+<main class="member" id="content">
+  <aside class="member__side">
+    <a class="member__back" href="artist.html"><span aria-hidden="true">←</span> About Us</a>
+    <div class="member__head">
+      <img class="member__img" src="{E(m['img'])}" alt="{E(m['name'])}">
+      <div>
+        <h1 class="member__name" data-split>{split(m['name'])}</h1>
+        <p class="member__role">{E(m['role'])}</p>
+      </div>
+    </div>
+    <div class="member__works">
+      <ul>{works}
+      </ul>
+    </div>
+    <div class="member__cta">
+      <a class="member__btn member__btn--primary" href="{E(m['form'])}" target="_blank" rel="noopener">{E(m['name'])} に依頼する <span aria-hidden="true">↗</span></a>
+      <a class="member__btn" href="{E(m['foriio'])}" target="_blank" rel="noopener">Portfolio <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="member__links">{links}</div>
+  </aside>
+  <section class="member__portfolio" aria-label="{E(m['name'])} portfolio">
+    <div class="member__bar">
+      <span class="member__bar-title">Portfolio</span>
+      <a href="{E(m['foriio'])}" target="_blank" rel="noopener">foriio で開く <span aria-hidden="true">↗</span></a>
+    </div>
+    <iframe class="member__frame" src="{E(m['foriio'])}" title="{E(m['name'])} portfolio (foriio)" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+</main>
+"""
 
 
 def page_contact():
@@ -488,4 +598,9 @@ for key, (title, scripts, fn, bd) in SPEC.items():
             + (HOME_END if key == "home" else footer()))
     (ROOT / FILE[key]).write_text(page, encoding="utf-8")
     print("wrote", FILE[key], len(page))
+for m in MEMBERS:
+    page = (head(f"{m['name']} — colorless studio", DESC, []) + backdrop(KV["artist"]["videos"][0]["src"]).replace("{PAGE}", "member")
+            + header("artist") + page_member(m) + "\n</body>\n</html>\n")
+    (ROOT / m["file"]).write_text(page, encoding="utf-8")
+    print("wrote", m["file"], len(page))
 print("v=" + V)
