@@ -91,7 +91,8 @@
   "size": [
    1080,
    1080
-  ]
+  ],
+  "video": "videos/release/era_HP.mp4"
  },
  {
   "title": "CS_MIDI_HarmonyRack1.0",
@@ -101,7 +102,8 @@
   "size": [
    1200,
    1200
-  ]
+  ],
+  "video": "videos/release/CS_MIDI_HarmonyRack_HP.mp4"
  },
  {
   "title": "Sound as Film",
