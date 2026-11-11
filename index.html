@@ -10,17 +10,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/reset.css?v=20261111z">
-  <link rel="stylesheet" href="css/style.css?v=20261111z">
+  <link rel="stylesheet" href="css/reset.css?v=20261111za">
+  <link rel="stylesheet" href="css/style.css?v=20261111za">
   <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('cs-pt'))document.documentElement.classList.add('pt-enter')}catch(e){}</script>
-  <script src="js/site.js?v=20261111z" defer></script>
-  <script src="js/hamburger-menu.js?v=20261111z" defer></script>
+  <script src="js/site.js?v=20261111za" defer></script>
+  <script src="js/hamburger-menu.js?v=20261111za" defer></script>
 
 </head>
 <body class="page-home">
 <!-- 背景：visualiser と同じ「ぼかした動画＋淡いスカイ」 -->
 <div class="backdrop" aria-hidden="true">
-  <video autoplay muted loop playsinline preload="auto" src="videos/hero/hero_small.mp4"></video>
+  <video autoplay muted loop playsinline preload="none" data-lazy-src="videos/hero/hero_small.mp4"></video>
 </div>
 
 <!-- ページ遷移の幕 -->
@@ -81,11 +81,11 @@
 
   <!-- ホバーしたページの映像に切り替わる背景 -->
   <div class="home-bg" aria-hidden="true">
-    <video class="home-bg__layer" data-key="artist" muted loop playsinline preload="none" poster="images/home/artist.jpg" src="videos/home/artist.mp4"></video>
-    <video class="home-bg__layer" data-key="gallery" muted loop playsinline preload="none" poster="images/home/gallery.jpg" src="videos/home/gallery.mp4"></video>
-    <video class="home-bg__layer" data-key="release" muted loop playsinline preload="none" poster="images/home/release.jpg" src="videos/home/release.mp4"></video>
-    <video class="home-bg__layer" data-key="visualiser" muted loop playsinline preload="none" poster="images/home/visualiser.jpg" src="videos/home/visualiser.mp4"></video>
-    <video class="home-bg__layer" data-key="contact" muted loop playsinline preload="none" poster="images/home/contact.jpg" src="videos/home/contact.mp4"></video>
+    <video class="home-bg__layer" data-key="artist" muted loop playsinline preload="none" data-poster="images/home/artist.jpg" src="videos/home/artist.mp4"></video>
+    <video class="home-bg__layer" data-key="gallery" muted loop playsinline preload="none" data-poster="images/home/gallery.jpg" src="videos/home/gallery.mp4"></video>
+    <video class="home-bg__layer" data-key="release" muted loop playsinline preload="none" data-poster="images/home/release.jpg" src="videos/home/release.mp4"></video>
+    <video class="home-bg__layer" data-key="visualiser" muted loop playsinline preload="none" data-poster="images/home/visualiser.jpg" src="videos/home/visualiser.mp4"></video>
+    <video class="home-bg__layer" data-key="contact" muted loop playsinline preload="none" data-poster="images/home/contact.jpg" src="videos/home/contact.mp4"></video>
   </div>
 
   <!-- 1画面のホーム：映像タイルのメニュー -->
@@ -93,7 +93,7 @@
     <ul>
       <li style="--i:1">
         <a class="home-tile" href="artist.html" data-key="artist">
-          <video class="home-tile__video" autoplay muted loop playsinline preload="auto" poster="images/kv/artist_2.jpg" src="videos/kv/artist_2.mp4"></video>
+          <video class="home-tile__video" autoplay muted loop playsinline preload="none" poster="images/kv/artist_2.jpg" data-lazy-src="videos/kv/artist_2.mp4"></video>
           <span class="home-tile__shade"></span>
           <span class="home-tile__no">01</span>
           <span class="home-tile__title">About Us</span>
@@ -102,7 +102,7 @@
       </li>
       <li style="--i:2">
         <a class="home-tile" href="gallery.html" data-key="gallery">
-          <video class="home-tile__video" autoplay muted loop playsinline preload="auto" poster="images/kv/gallery_1.jpg" src="videos/kv/gallery_1.mp4"></video>
+          <video class="home-tile__video" autoplay muted loop playsinline preload="none" poster="images/kv/gallery_1.jpg" data-lazy-src="videos/kv/gallery_1.mp4"></video>
           <span class="home-tile__shade"></span>
           <span class="home-tile__no">02</span>
           <span class="home-tile__title">Gallery</span>
@@ -111,7 +111,7 @@
       </li>
       <li style="--i:3">
         <a class="home-tile" href="release.html" data-key="release">
-          <video class="home-tile__video" autoplay muted loop playsinline preload="auto" poster="images/kv/release_2.jpg" src="videos/kv/release_2.mp4"></video>
+          <video class="home-tile__video" autoplay muted loop playsinline preload="none" poster="images/kv/release_2.jpg" data-lazy-src="videos/kv/release_2.mp4"></video>
           <span class="home-tile__shade"></span>
           <span class="home-tile__no">03</span>
           <span class="home-tile__title">Release</span>
@@ -120,7 +120,7 @@
       </li>
       <li style="--i:4">
         <a class="home-tile" href="visualiser.html" data-key="visualiser">
-          <video class="home-tile__video" autoplay muted loop playsinline preload="auto" poster="images/kv/visualiser_2.jpg" src="videos/kv/visualiser_2.mp4"></video>
+          <video class="home-tile__video" autoplay muted loop playsinline preload="none" poster="images/kv/visualiser_2.jpg" data-lazy-src="videos/kv/visualiser_2.mp4"></video>
           <span class="home-tile__shade"></span>
           <span class="home-tile__no">04</span>
           <span class="home-tile__title">Visualiser</span>
@@ -129,7 +129,7 @@
       </li>
       <li style="--i:5">
         <a class="home-tile" href="contact.html" data-key="contact">
-          <video class="home-tile__video" autoplay muted loop playsinline preload="auto" poster="images/kv/contact_1.jpg" src="videos/kv/contact_1.mp4"></video>
+          <video class="home-tile__video" autoplay muted loop playsinline preload="none" poster="images/kv/contact_1.jpg" data-lazy-src="videos/kv/contact_1.mp4"></video>
           <span class="home-tile__shade"></span>
           <span class="home-tile__no">05</span>
           <span class="home-tile__title">Contact us</span>

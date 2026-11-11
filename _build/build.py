@@ -116,7 +116,7 @@ def backdrop(src):
     return f'''<body class="page-{{PAGE}}">
 <!-- 背景：visualiser と同じ「ぼかした動画＋淡いスカイ」 -->
 <div class="backdrop" aria-hidden="true">
-  <video autoplay muted loop playsinline preload="auto" src="{E(src)}"></video>
+  <video autoplay muted loop playsinline preload="none" data-lazy-src="{E(src)}"></video>
 </div>
 
 <!-- ページ遷移の幕 -->
@@ -158,8 +158,10 @@ def kv(key):
     panes = ""
     for i, v in enumerate(vids):
         poster = f' poster="{E(v["poster"])}"' if v.get("poster") else ""
-        panes += (f'\n    <div class="kv__pane" style="--d:{i}"><video autoplay muted loop playsinline preload="auto"'
-                  f'{poster} src="{E(v["src"])}"></video></div>')
+        # 1本目だけすぐ読み込み、残りはページの読み込みが終わってから（回線の取り合いを避ける）
+        srcattr = f'src="{E(v["src"])}"' if i == 0 else f'preload="none" data-lazy-src="{E(v["src"])}"'
+        panes += (f'\n    <div class="kv__pane" style="--d:{i}"><video autoplay muted loop playsinline'
+                  f'{poster} {srcattr}></video></div>')
     no = next(n for kk, _, _, n in PAGES if kk == key)
     title = next(lab for kk, _, lab, _ in PAGES if kk == key)
     return f'''
@@ -326,11 +328,11 @@ def page_home():
         bg = {"src": f"videos/home/{k}.mp4", "poster": f"images/home/{k}.jpg"}
         tv = vids[min(HOME_TILE[k], len(vids) - 1)]
         layers += (f'\n    <video class="home-bg__layer" data-key="{k}" muted loop playsinline preload="none"'
-                   f' poster="{E(bg["poster"])}" src="{E(bg["src"])}"></video>')
+                   f' data-poster="{E(bg["poster"])}" src="{E(bg["src"])}"></video>')
         tiles += f'''
       <li style="--i:{int(n)}">
         <a class="home-tile" href="{f}" data-key="{k}">
-          <video class="home-tile__video" autoplay muted loop playsinline preload="auto" poster="{E(tv["poster"])}" src="{E(tv["src"])}"></video>
+          <video class="home-tile__video" autoplay muted loop playsinline preload="none" poster="{E(tv["poster"])}" data-lazy-src="{E(tv["src"])}"></video>
           <span class="home-tile__shade"></span>
           <span class="home-tile__no">{n}</span>
           <span class="home-tile__title">{lab}</span>

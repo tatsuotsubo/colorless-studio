@@ -10,17 +10,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/reset.css?v=20261111z">
-  <link rel="stylesheet" href="css/style.css?v=20261111z">
+  <link rel="stylesheet" href="css/reset.css?v=20261111za">
+  <link rel="stylesheet" href="css/style.css?v=20261111za">
   <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('cs-pt'))document.documentElement.classList.add('pt-enter')}catch(e){}</script>
-  <script src="js/site.js?v=20261111z" defer></script>
-  <script src="js/hamburger-menu.js?v=20261111z" defer></script>
+  <script src="js/site.js?v=20261111za" defer></script>
+  <script src="js/hamburger-menu.js?v=20261111za" defer></script>
 
 </head>
 <body class="page-artist">
 <!-- 背景：visualiser と同じ「ぼかした動画＋淡いスカイ」 -->
 <div class="backdrop" aria-hidden="true">
-  <video autoplay muted loop playsinline preload="auto" src="videos/kv/artist_1.mp4"></video>
+  <video autoplay muted loop playsinline preload="none" data-lazy-src="videos/kv/artist_1.mp4"></video>
 </div>
 
 <!-- ページ遷移の幕 -->
@@ -65,8 +65,8 @@
 <!-- キービジュアル -->
 <section class="kv kv--split" data-kv>
   <div class="kv__media">
-    <div class="kv__pane" style="--d:0"><video autoplay muted loop playsinline preload="auto" poster="images/kv/artist_1.jpg" src="videos/kv/artist_1.mp4"></video></div>
-    <div class="kv__pane" style="--d:1"><video autoplay muted loop playsinline preload="auto" poster="images/kv/artist_2.jpg" src="videos/kv/artist_2.mp4"></video></div>
+    <div class="kv__pane" style="--d:0"><video autoplay muted loop playsinline poster="images/kv/artist_1.jpg" src="videos/kv/artist_1.mp4"></video></div>
+    <div class="kv__pane" style="--d:1"><video autoplay muted loop playsinline poster="images/kv/artist_2.jpg" preload="none" data-lazy-src="videos/kv/artist_2.mp4"></video></div>
   </div>
   <div class="kv__veil"></div>
   <div class="kv__text">

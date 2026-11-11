@@ -158,6 +158,7 @@
           if (l === v) return;
           if (l.classList.contains('is-active')) { l.classList.remove('is-active'); l.classList.add('is-leaving'); setTimeout(() => { l.classList.remove('is-leaving'); l.pause(); }, 900); }
         });
+        if (!v.getAttribute('poster') && v.dataset.poster) v.poster = v.dataset.poster;
         v.classList.remove('is-leaving');
         // 重なり順を一番上に
         v.style.zIndex = String(Date.now() % 100000);
@@ -217,3 +218,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.15 });
   document.querySelectorAll('video.about-video').forEach((v) => io.observe(v));
 });
+
+/* 後回しにした映像（data-lazy-src）：ページの読み込みが終わってから読み込む。
+   最初に CSS・文字・メインの映像へ回線を回して、表示を早くするため */
+(() => {
+  let done = false;
+  const start = () => {
+    if (done) return; done = true;
+    document.querySelectorAll('video[data-lazy-src]').forEach((v, i) => {
+      setTimeout(() => {
+        v.src = v.dataset.lazySrc;
+        v.removeAttribute('data-lazy-src');
+        if (v.autoplay) v.play().catch(() => {});
+      }, i * 250);
+    });
+  };
+  if (document.readyState === 'complete') setTimeout(start, 200);
+  else window.addEventListener('load', () => setTimeout(start, 200), { once: true });
+  setTimeout(start, 6000);
+})();
