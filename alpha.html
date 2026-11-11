@@ -10,12 +10,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/reset.css?v=20261111q">
-  <link rel="stylesheet" href="css/style.css?v=20261111q">
+  <link rel="stylesheet" href="css/reset.css?v=20261111r">
+  <link rel="stylesheet" href="css/style.css?v=20261111r">
   <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('cs-pt'))document.documentElement.classList.add('pt-enter')}catch(e){}</script>
-  <script src="js/site.js?v=20261111q" defer></script>
-  <script src="js/hamburger-menu.js?v=20261111q" defer></script>
-
+  <script src="js/site.js?v=20261111r" defer></script>
+  <script src="js/hamburger-menu.js?v=20261111r" defer></script>
+  <script src="js/member-works.js?v=20261111r" defer></script>
 </head>
 <body class="page-member">
 <!-- 背景：visualiser と同じ「ぼかした動画＋淡いスカイ」 -->
@@ -84,18 +84,34 @@
     </div>
     <div class="member__cta">
       <a class="member__btn member__btn--primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdZc_pFKcuENPU7SAxjXQI1N2Rz0HOgiYGGd9JfyFECqcR7uQ/viewform?usp=send_form" target="_blank" rel="noopener">alpha に依頼する <span aria-hidden="true">↗</span></a>
-      <a class="member__btn" href="https://www.foriio.com/alphanium" target="_blank" rel="noopener">Portfolio <span aria-hidden="true">↗</span></a>
     </div>
-    <div class="member__links"><a class="member__pill" href="https://x.com/_alphanium_" target="_blank" rel="noopener">X</a><a class="member__pill" href="https://www.youtube.com/@_alphanium_" target="_blank" rel="noopener">YouTube</a><a class="member__pill" href="https://www.instagram.com/alphanium" target="_blank" rel="noopener">Instagram</a><a class="member__pill" href="https://soundcloud.com/superalpha" target="_blank" rel="noopener">SoundCloud</a><a class="member__pill" href="https://open.spotify.com/intl-ja/artist/0sQYQk5Q0asffq6qDNG9VT" target="_blank" rel="noopener">Spotify</a><a class="member__pill" href="https://music.apple.com/jp/artist/%E3%81%82%E3%82%8B%E3%81%B5%E3%81%81/1810330648" target="_blank" rel="noopener">Apple Music</a><a class="member__pill" href="https://alphanium.bandcamp.com/" target="_blank" rel="noopener">bandcamp</a><a class="member__pill" href="https://alphanium.fanbox.cc/" target="_blank" rel="noopener">pixivFANBOX</a><a class="member__pill" href="https://skeb.jp/@_alphanium_" target="_blank" rel="noopener">skeb</a></div>
+    <div class="member__links"><a class="member__pill" href="https://x.com/_alphanium_" target="_blank" rel="noopener">X</a><a class="member__pill" href="https://www.youtube.com/@_alphanium_" target="_blank" rel="noopener">YouTube</a><a class="member__pill" href="https://www.instagram.com/alphanium" target="_blank" rel="noopener">Instagram</a><a class="member__pill" href="https://soundcloud.com/superalpha" target="_blank" rel="noopener">SoundCloud</a><a class="member__pill" href="https://open.spotify.com/intl-ja/artist/0sQYQk5Q0asffq6qDNG9VT" target="_blank" rel="noopener">Spotify</a><a class="member__pill" href="https://music.apple.com/jp/artist/%E3%81%82%E3%82%8B%E3%81%B5%E3%81%81/1810330648" target="_blank" rel="noopener">Apple Music</a><a class="member__pill" href="https://alphanium.bandcamp.com/" target="_blank" rel="noopener">bandcamp</a><a class="member__pill" href="https://alphanium.fanbox.cc/" target="_blank" rel="noopener">pixivFANBOX</a><a class="member__pill" href="https://skeb.jp/@_alphanium_" target="_blank" rel="noopener">skeb</a><a class="member__pill" href="https://www.foriio.com/alphanium" target="_blank" rel="noopener">foriio</a></div>
   </aside>
-  <section class="member__portfolio" aria-label="alpha portfolio">
+  <section class="member__portfolio" aria-label="alpha works" data-foriio="alphanium" data-foriio-url="https://www.foriio.com/alphanium" data-cats="inst/BGM制作|ボーカル曲制作|個人制作|整音">
     <div class="member__bar">
-      <span class="member__bar-title">Portfolio</span>
-      <a href="https://www.foriio.com/alphanium" target="_blank" rel="noopener">foriio で開く <span aria-hidden="true">↗</span></a>
+      <span class="member__bar-title">Works</span>
+      <div class="mw-chips"></div>
     </div>
-    <iframe class="member__frame" src="https://www.foriio.com/alphanium" title="alpha portfolio (foriio)" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="mw-grid"></div>
   </section>
 </main>
+
+<div class="mw-modal" id="mwModal" hidden>
+  <div class="mw-modal__card" role="dialog" aria-modal="true">
+    <button class="mw-modal__close" type="button" data-mw-close aria-label="閉じる">×</button>
+    <div class="mw-modal__media"></div>
+    <div class="mw-modal__info">
+      <p class="mw-modal__meta"></p>
+      <h2 class="mw-modal__title"></h2>
+      <p class="mw-modal__desc"></p>
+      <div class="mw-modal__actions">
+        <button class="mw-modal__prev" type="button" aria-label="前へ">←</button>
+        <button class="mw-modal__next" type="button" aria-label="次へ">→</button>
+        <a class="mw-modal__link member__btn member__btn--primary" href="#" target="_blank" rel="noopener" hidden>開く <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

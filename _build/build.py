@@ -436,7 +436,8 @@ MEMBERS = [
         "key": "natsume", "file": "natsume.html", "name": "natsume",
         "role": "Composer / Sound Designer / Music Producer / Manipulator",
         "img": "images/artist/guitar.jpg",
-        "foriio": "https://www.foriio.com/natsume0465",
+        "foriio": "https://www.foriio.com/natsume0465", "foriio_user": "natsume0465",
+        "cats": ["作曲", "編曲", "Remix", "MIx - Mastering"],
         "form": "https://forms.gle/DxaPEA6bQQMPRxas5",
         "works": [
             "Lir.E 2nd ワンマンライブ「愛について：REC」　Manipulator",
@@ -461,7 +462,8 @@ MEMBERS = [
         "key": "alpha", "file": "alpha.html", "name": "alpha",
         "role": "Composer / Sound Designer / Music Producer",
         "img": "images/artist/panda.jpg",
-        "foriio": "https://www.foriio.com/alphanium",
+        "foriio": "https://www.foriio.com/alphanium", "foriio_user": "alphanium",
+        "cats": ["inst/BGM制作", "ボーカル曲制作", "個人制作", "整音"],
         "form": "https://docs.google.com/forms/d/e/1FAIpQLSdZc_pFKcuENPU7SAxjXQI1N2Rz0HOgiYGGd9JfyFECqcR7uQ/viewform?usp=send_form",
         "works": [
             "スマートフォン向けゲームアプリ「無期迷途」　BGM制作,ゲーム内楽曲制作",
@@ -508,7 +510,7 @@ def member_cards():
 
 def page_member(m):
     works = "".join(f"\n          <li>{E(w)}</li>" for w in m["works"])
-    links = "".join(f'<a class="member__pill" href="{E(u)}" target="_blank" rel="noopener">{E(n)}</a>' for n, u in m["links"])
+    links = "".join(f'<a class="member__pill" href="{E(u)}" target="_blank" rel="noopener">{E(n)}</a>' for n, u in m["links"] + [("foriio", m["foriio"])])
     return f"""
 <main class="member" id="content">
   <aside class="member__side">
@@ -526,18 +528,34 @@ def page_member(m):
     </div>
     <div class="member__cta">
       <a class="member__btn member__btn--primary" href="{E(m['form'])}" target="_blank" rel="noopener">{E(m['name'])} に依頼する <span aria-hidden="true">↗</span></a>
-      <a class="member__btn" href="{E(m['foriio'])}" target="_blank" rel="noopener">Portfolio <span aria-hidden="true">↗</span></a>
     </div>
     <div class="member__links">{links}</div>
   </aside>
-  <section class="member__portfolio" aria-label="{E(m['name'])} portfolio">
+  <section class="member__portfolio" aria-label="{E(m['name'])} works" data-foriio="{E(m['foriio_user'])}" data-foriio-url="{E(m['foriio'])}" data-cats="{E('|'.join(m['cats']))}">
     <div class="member__bar">
-      <span class="member__bar-title">Portfolio</span>
-      <a href="{E(m['foriio'])}" target="_blank" rel="noopener">foriio で開く <span aria-hidden="true">↗</span></a>
+      <span class="member__bar-title">Works</span>
+      <div class="mw-chips"></div>
     </div>
-    <iframe class="member__frame" src="{E(m['foriio'])}" title="{E(m['name'])} portfolio (foriio)" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="mw-grid"></div>
   </section>
 </main>
+
+<div class="mw-modal" id="mwModal" hidden>
+  <div class="mw-modal__card" role="dialog" aria-modal="true">
+    <button class="mw-modal__close" type="button" data-mw-close aria-label="閉じる">×</button>
+    <div class="mw-modal__media"></div>
+    <div class="mw-modal__info">
+      <p class="mw-modal__meta"></p>
+      <h2 class="mw-modal__title"></h2>
+      <p class="mw-modal__desc"></p>
+      <div class="mw-modal__actions">
+        <button class="mw-modal__prev" type="button" aria-label="前へ">←</button>
+        <button class="mw-modal__next" type="button" aria-label="次へ">→</button>
+        <a class="mw-modal__link member__btn member__btn--primary" href="#" target="_blank" rel="noopener" hidden>開く <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </div>
+</div>
 """
 
 
@@ -599,7 +617,7 @@ for key, (title, scripts, fn, bd) in SPEC.items():
     (ROOT / FILE[key]).write_text(page, encoding="utf-8")
     print("wrote", FILE[key], len(page))
 for m in MEMBERS:
-    page = (head(f"{m['name']} — colorless studio", DESC, []) + backdrop(KV["artist"]["videos"][0]["src"]).replace("{PAGE}", "member")
+    page = (head(f"{m['name']} — colorless studio", DESC, ["member-works"]) + backdrop(KV["artist"]["videos"][0]["src"]).replace("{PAGE}", "member")
             + header("artist") + page_member(m) + "\n</body>\n</html>\n")
     (ROOT / m["file"]).write_text(page, encoding="utf-8")
     print("wrote", m["file"], len(page))
