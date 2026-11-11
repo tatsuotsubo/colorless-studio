@@ -231,29 +231,27 @@ def footer():
 
 
 # ------------------------------------------------------------------ Release
-def track_block(label, ul):
+def track_slide(label, ul):
     n = ul.count("<li")
-    body = textwrap.indent(textwrap.dedent(ul).strip("\n"), " " * 14)
+    body = textwrap.indent(textwrap.dedent(ul).strip("\n"), " " * 18)
     return f'''
-        <details class="rel-tracks">
-          <summary><span class="rel-tracks__label">{E(label)}</span><span class="rel-count">{n}</span><span class="rel-plus" aria-hidden="true"></span></summary>
-          <div class="music-info">
-            <ul>
+            <section class="rel-slide rel-slide--list" aria-label="{E(label)}">
+              <div class="music-info">
+                <ul>
 {body}
-            </ul>
-          </div>
-        </details>'''
+                </ul>
+              </div>
+            </section>''', label, n
 
 
-def tracklist_block(items, label="tracklist"):
-    lis = "".join(f'\n              <li><span class="tl-no">{i:02d}</span><span class="tl-title">{E(t)}</span><span class="tl-artist">{E(a)}</span></li>'
+def tracklist_slide(items, label="tracklist"):
+    lis = "".join(f'\n                <li><span class="tl-no">{i:02d}</span><span class="tl-title">{E(t)}</span><span class="tl-artist">{E(a)}</span></li>'
                   for i, (t, a) in enumerate(items, 1))
     return f'''
-        <details class="rel-tracks">
-          <summary><span class="rel-tracks__label">{E(label)}</span><span class="rel-count">{len(items)}</span><span class="rel-plus" aria-hidden="true"></span></summary>
-          <ol class="tracklist">{lis}
-          </ol>
-        </details>'''
+            <section class="rel-slide rel-slide--list" aria-label="{E(label)}">
+              <ol class="tracklist">{lis}
+              </ol>
+            </section>''', label, len(items)
 
 
 def release_item(r, with_tracks=True):
@@ -261,30 +259,47 @@ def release_item(r, with_tracks=True):
     img = r["img"]
     vid = (f'\n              <video class="music-video" src="{E(r["video"])}" muted loop playsinline preload="none"></video>'
            if r.get("video") else "")
-    tracks = ""
+    slides = []
     if with_tracks:
-        tracks = "".join(track_block(lab, ul) for lab, ul in r.get("tracks", []))
         if r.get("tracklist"):
-            tracks = tracklist_block(r["tracklist"]) + tracks
+            slides.append(tracklist_slide(r["tracklist"]))
+        slides += [track_slide(lab, ul) for lab, ul in r.get("tracks", [])]
     date = f'\n          <span class="rel-date">{E(r["date"])}</span>' if r.get("date") else ""
     href = r.get("href")
     open_tag = (f'<a class="rel-media click" href="{E(href)}" target="_blank" rel="noopener noreferrer">' if href
                 else '<div class="rel-media">')
     close_tag = "</a>" if href else "</div>"
     shape = "is-wide" if w / h > 1.15 else ("is-tall" if h / w > 1.15 else "is-square")
-    return f'''
-      <!-- {E(r["title"])} -->
-      <article class="rel {shape}" data-kind="{r["kind"]}" data-reveal>
-        {open_tag}
+    media = f'''{open_tag}
           <div class="music-art-wrap">
               <img class="music-art-bg" src="{E(img)}" alt="" aria-hidden="true" loading="lazy" decoding="async">
               <img class="music-art" src="{E(img)}" alt="{E(r["title"])}" width="{w}" height="{h}" loading="lazy" decoding="async">{vid}
           </div>
-        {close_tag}
+        {close_tag}'''
+    tabs = ""
+    if slides:
+        media = ('''<div class="rel-slider">
+          <div class="rel-slides">
+            <div class="rel-slide rel-slide--cover">
+        ''' + media + '''
+            </div>''' + "".join(html for html, _, _ in slides) + '''
+          </div>
+          <button class="rel-arrow rel-arrow--prev" type="button" aria-label="前へ" disabled></button>
+          <button class="rel-arrow rel-arrow--next" type="button" aria-label="次へ"></button>
+        </div>''')
+        btns = '<button type="button" class="rel-tab is-active" data-i="0">cover</button>'
+        for i, (_, lab, n) in enumerate(slides, 1):
+            btns += f'<button type="button" class="rel-tab" data-i="{i}">{E(lab)}<span class="rel-count">{n}</span></button>'
+        tabs = f'\n        <div class="rel-tabs">{btns}</div>'
+    cls = "rel " + shape + (" has-slides" if slides else "")
+    return f'''
+      <!-- {E(r["title"])} -->
+      <article class="{cls}" data-kind="{r["kind"]}" data-reveal>
+        {media}
         <div class="rel-meta">
           <h3 class="rel-title">{E(r["title"])}</h3>
           <span class="rel-kind">{KIND_LABEL[r["kind"]]}</span>{date}
-        </div>{tracks}
+        </div>{tabs}
       </article>'''
 
 

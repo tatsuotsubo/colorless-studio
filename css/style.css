@@ -2833,3 +2833,104 @@ body.page-home .logo-image { transition: opacity .6s, transform .8s var(--ease-o
 
 /* v5.2.2：説明文を削除したので Contact はカードだけを中央に */
 .contact__grid { grid-template-columns: minmax(0, 760px); justify-content: center; }
+
+/* v5.3：曲リストは下に開くのではなく、ジャケの左右にスワイプして表示 */
+.rel-slider { position: relative; }
+.rel-slides {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  border-radius: var(--r-md);
+  scrollbar-width: none;
+}
+.rel-slides::-webkit-scrollbar { display: none; }
+.rel-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+/* 曲リストの高さはジャケと同じ（中身は内側でスクロール） */
+.rel-slide--list { position: relative; }
+.rel-slide--list .music-info,
+.rel-slide--list .tracklist {
+  position: absolute;
+  inset: 0;
+  max-height: none;
+  margin: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+.rel-slide--list .track-item { padding: 8px 0; }
+.rel-slide--list .soundBtn { width: 30px; height: 30px; }
+.rel-slide--list .soundIcon,
+#music .rel-slide--list ul > li span.soundBtn img { width: 12px; height: 12px; }
+.rel-slide--list .track-name { font-size: 12px; }
+.rel-slide--list .wave { height: 28px; min-height: 28px; }
+
+/* 左右の矢印（マウス用。タッチ端末では隠す） */
+.rel-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  padding: 0;
+  border: 1px solid var(--glass-line);
+  border-radius: 50%;
+  background: var(--glass-strong);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .2s ease, border-color .15s;
+}
+.rel-arrow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-top: 1.5px solid var(--ink);
+  border-right: 1.5px solid var(--ink);
+  transform: translate(-65%, -50%) rotate(45deg);
+}
+.rel-arrow--prev { left: 8px; }
+.rel-arrow--prev::before { transform: translate(-35%, -50%) rotate(-135deg); }
+.rel-arrow--next { right: 8px; }
+.rel-arrow:hover { border-color: var(--accent); }
+.rel-slider:hover .rel-arrow:not(:disabled) { opacity: 1; }
+.rel-arrow:disabled { pointer-events: none; }
+@media (hover: none) { .rel-arrow { display: none; } }
+
+/* 下のタブ：今どこを見ているか＋押すとそこへ移動 */
+.rel-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 2px 2px;
+}
+.rel-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  background: transparent;
+  font: inherit;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink2);
+  cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.rel-tab .rel-count { min-width: 0; padding: 0 5px; }
+.rel-tab:hover { border-color: var(--accent); }
+.rel-tab.is-active { background: var(--glass-strong); border-color: var(--accent); color: var(--accent); }
