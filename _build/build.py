@@ -435,7 +435,7 @@ MEMBERS = [
     {
         "key": "natsume", "file": "natsume.html", "name": "natsume",
         "role": "Composer / Sound Designer / Music Producer / Manipulator",
-        "img": "images/artist/guitar_crop.jpg",
+        "img": "images/artist/guitar_crop.jpg", "img_size": (430, 430),
         "foriio": "https://www.foriio.com/natsume0465", "foriio_user": "natsume0465",
         "cats": ["作曲", "編曲", "Remix", "MIx - Mastering"],
         "form": "https://forms.gle/DxaPEA6bQQMPRxas5",
@@ -461,7 +461,7 @@ MEMBERS = [
     {
         "key": "alpha", "file": "alpha.html", "name": "alpha",
         "role": "Composer / Sound Designer / Music Producer",
-        "img": "images/artist/panda.jpg",
+        "img": "images/artist/panda.jpg", "img_size": (400, 400),
         "foriio": "https://www.foriio.com/alphanium", "foriio_user": "alphanium",
         "cats": ["inst/BGM制作", "ボーカル曲制作", "個人制作", "整音"],
         "form": "https://docs.google.com/forms/d/e/1FAIpQLSdZc_pFKcuENPU7SAxjXQI1N2Rz0HOgiYGGd9JfyFECqcR7uQ/viewform?usp=send_form",
@@ -496,7 +496,7 @@ def member_cards():
     for i, m in enumerate(MEMBERS):
         rows += f"""
     <a class="member-row{' member-row--rev' if i % 2 else ''}" href="{m['file']}" data-reveal>
-      <span class="member-row__media"><img src="{E(m['img'])}" alt="{E(m['name'])}" loading="lazy"></span>
+      <span class="member-row__media"><img src="{E(m['img'])}" alt="{E(m['name'])}" width="{m['img_size'][0]}" height="{m['img_size'][1]}" decoding="async"></span>
       <span class="member-row__text">
         <span class="member-row__name">{E(m['name'])}</span>
         <span class="member-row__role">{E(m['role'])}</span>
