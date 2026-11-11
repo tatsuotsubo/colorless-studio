@@ -52,7 +52,7 @@ STORE = [("Booth", "https://colorless-studio.booth.pm/"), ("Payhip", "https://pa
 # ------------------------------------------------------------------ 共通パーツ
 def head(title, desc, scripts):
     js = "\n".join(f'  <script src="js/{s}.js?v={V}" defer></script>' for s in scripts)
-    wave = '  <script src="https://unpkg.com/wavesurfer.js"></script>\n' if "scatter-modal" in scripts else ""
+    wave = '  <script src="https://unpkg.com/wavesurfer.js" defer></script>\n' if "scatter-modal" in scripts else ""
     return f'''<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -102,7 +102,7 @@ def header(current):
   </div>
 
   <div class="header-center">
-    <a href="index.html" class="header-home" aria-label="colorless studio home"><img src="images/logo/CS_logo.png" alt="colorless studio" class="header-logo"></a>
+    <a href="index.html" class="header-home" aria-label="colorless studio home"><img src="images/logo/CS_logo_web.png" alt="colorless studio" class="header-logo"></a>
   </div>
 
   <div class="header-right">
@@ -122,7 +122,7 @@ def backdrop(src):
 <!-- ページ遷移の幕 -->
 <div class="pt" aria-hidden="true">
   <div class="pt__panel"></div>
-  <img class="pt__logo" src="images/logo/CS_logo.png" alt="">
+  <img class="pt__logo" src="images/logo/CS_logo_web.png" alt="">
 </div>
 '''
 
@@ -134,7 +134,7 @@ def loader():
 <!-- 最初の読み込み（ホームのみ・1セッション1回） -->
 <div class="loader" aria-hidden="true">
   <div class="loader__inner">
-    <img class="loader__logo" src="images/logo/CS_logo.png" alt="">
+    <img class="loader__logo" src="images/logo/CS_logo_web.png" alt="">
     <p class="loader__word">{chars}</p>
     <div class="loader__bar"><i></i></div>
   </div>
@@ -359,7 +359,9 @@ def page_home():
 
 def gallery_cards():
     """sushiSource のカードから一覧用のカードを作る"""
-    return re.findall(r'<a class="scatter-card".*?</a>', P["gallery_stage"], re.S)
+    cards = re.findall(r'<a class="scatter-card".*?</a>', P["gallery_stage"], re.S)
+    # 画像は画面に入ってから読み込む
+    return [c.replace("<img ", '<img loading="lazy" decoding="async" ') for c in cards]
 
 
 def gallery_source():
@@ -600,7 +602,7 @@ HOME_END = """
 DESC = "colorless studio — 透明感・淡い色彩・光の屈折や反射をテーマにした音と映像の活動組織。ambient / IDM / botanica / petal core."
 SPEC = {
     # key: (title, scripts, body_fn, backdrop video)
-    "home": ("colorless studio", [], page_home, "videos/colorless_bg_fix.mp4"),
+    "home": ("colorless studio", [], page_home, "videos/hero/hero_small.mp4"),
     "gallery": ("Gallery — colorless studio", ["scatter-modal"], page_gallery, None),
     "release": ("Release — colorless studio", ["scatter-modal", "music-preview", "release-v3"], page_release, None),
     "visualiser": ("Visualiser — colorless studio", ["visualiser-tab"], page_visualiser, None),
