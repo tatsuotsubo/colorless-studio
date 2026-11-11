@@ -317,35 +317,30 @@ def section_head(title, note=""):
 
 
 def page_home():
-    index_items = "".join(f'''
-      <li data-reveal>
-        <a class="idx__link" href="{f}" data-preview="{E(KV[k]["videos"][0]["src"])}">
-          <span class="idx__no">{n}</span>
-          <span class="idx__title">{lab}</span>
-          <span class="idx__desc">{E(KV[k].get("sub", ""))}</span>
-          <span class="idx__arrow" aria-hidden="true">→</span>
-        </a>
-      </li>''' for k, f, lab, n in PAGES)
-    latest = release_grid(releases[:3], with_tracks=False)
-    return (P["hero_home"] + "\n" + marquee(["transparency", "pale colors", "refraction", "reflection of light", "ambient", "IDM", "botanica", "petal core"])
-            + "\n<main id=\"content\">\n" + P["about"].replace('<div class="about-wrapper">', '<div class="about-wrapper" data-reveal>') + f'''
-<!-- メニュー（各ページへ） -->
-<section class="idx">
-{section_head("Index", "pages")}
-  <ul class="idx__list">{index_items}
-  </ul>
-  <div class="idx__preview" aria-hidden="true"><video muted loop playsinline preload="none"></video></div>
-</section>
+    """ホーム：スクロールしない1画面。トップ動画＋ロゴの上に各ページへのメニュー"""
+    links = ""
+    for k, f, lab, n in PAGES:
+        links += f'''
+      <li><a class="idx__link home-nav__link" href="{f}" data-preview="{E(KV[k]["videos"][0]["src"])}" style="--i:{int(n)}">
+        <span class="home-nav__no">{n}</span><span class="home-nav__title">{lab}</span><span class="home-nav__arrow" aria-hidden="true">→</span>
+      </a></li>'''
+    sns = "".join(f'<a href="{u}" target="_blank" rel="noopener">{n}</a>' for n, u in SNS)
+    return (P["hero_home"].replace("</section>", f'''
+  <!-- 1画面のホーム：メニュー -->
+  <nav class="home-nav" aria-label="pages">
+    <ul>{links}
+    </ul>
+  </nav>
 
-<!-- 最新リリース -->
-<section id="music" class="home-latest">
-{section_head("New Release", "latest")}
-  <div class="rel-grid">{latest}
+  <div class="home-meta">
+    <p class="home-meta__name">colorless studio</p>
+    <p class="home-meta__theme">transparency / pale colors / refraction &amp; reflection of light</p>
   </div>
-  <div class="more-wrap" data-reveal><a class="more-btn" href="release.html">All releases <span aria-hidden="true">→</span></a></div>
-</section>
-</main>
-''')
+
+  <div class="home-sns">{sns}</div>
+
+  <div class="idx__preview" aria-hidden="true"><video muted loop playsinline preload="none"></video></div>
+</section>''', 1))
 
 
 def gallery_cards():
@@ -410,8 +405,10 @@ def page_visualiser():
 def page_artist():
     body = strip_h2(P["artist"]).replace('<div class="Artist">', '<div class="Artist" data-reveal>')
     body = body.replace('<section id="artist" data-slider="artist">', '<section id="artist" data-slider="artist">\n' + section_head("Artist", "members"))
+    about = P["about"].replace('<div class="about-wrapper">', '<div class="about-wrapper" data-reveal>')
     return kv("artist") + f'''
 <main id="content">
+{about}
 {body}
 {next_link("artist")}
 </main>
@@ -459,10 +456,14 @@ def page_contact():
 
 
 # ------------------------------------------------------------------ 書き出し
+HOME_END = """
+</body>
+</html>
+"""
 DESC = "colorless studio — 透明感・淡い色彩・光の屈折や反射をテーマにした音と映像の活動組織。ambient / IDM / botanica / petal core."
 SPEC = {
     # key: (title, scripts, body_fn, backdrop video)
-    "home": ("colorless studio", ["logo-scroll", "music-preview"], page_home, "videos/colorless_bg_fix.mp4"),
+    "home": ("colorless studio", [], page_home, "videos/colorless_bg_fix.mp4"),
     "gallery": ("Gallery — colorless studio", ["scatter-modal"], page_gallery, None),
     "release": ("New Release — colorless studio", ["scatter-modal", "music-preview", "release-v3"], page_release, None),
     "visualiser": ("Visualiser — colorless studio", ["visualiser-tab"], page_visualiser, None),
@@ -473,7 +474,8 @@ SPEC = {
 for key, (title, scripts, fn, bd) in SPEC.items():
     bdsrc = bd or KV[key]["videos"][0]["src"]
     page = (head(title, DESC, scripts) + backdrop(bdsrc).replace("{PAGE}", key)
-            + (loader() if key == "home" else "") + header(key) + fn() + footer())
+            + (loader() if key == "home" else "") + header(key) + fn()
+            + (HOME_END if key == "home" else footer()))
     (ROOT / FILE[key]).write_text(page, encoding="utf-8")
     print("wrote", FILE[key], len(page))
 print("v=" + V)
