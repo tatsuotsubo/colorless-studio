@@ -201,29 +201,13 @@ def next_link(key):
 
 
 def footer():
-    pages = "".join(f'\n      <li class="active"><a href="{f}">{lab}</a></li>' for _, f, lab, _ in PAGES)
-    sns = "".join(f'\n      <a href="{u}" target="_blank" rel="noopener">{n}</a>' for n, u in SNS)
-    store = "".join(f'\n      <a href="{u}" target="_blank" rel="noopener">{n}</a>' for n, u in STORE)
+    """各ページの一番下：ホームと同じ（左に名前、右に SNS）"""
+    sns = "".join(f'<a href="{u}" target="_blank" rel="noopener">{n}</a>' for n, u in SNS)
     return f'''
-<section class="last">
-  <div class="last-image">
-    <img src="images/leaf-square.jpg" alt="leaf" loading="lazy">
-  </div>
-
-  <nav class="last-menu">
-    <ul class="page-links">
-      <li class="active"><a href="index.html">Home</a></li>{pages}
-    </ul>
-
-    <div class="sns-links">
-      <span class="label">SNS</span>{sns}
-    </div>
-    <div class="sns-links">
-      <span class="label">Store</span>{store}
-    </div>
-    <p class="last-copy">© colorless studio</p>
-  </nav>
-</section>
+<footer class="site-foot">
+  <p class="site-foot__name">colorless studio</p>
+  <div class="site-foot__sns">{sns}</div>
+</footer>
 
 </body>
 </html>
