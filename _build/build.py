@@ -509,7 +509,8 @@ def member_cards():
 
 
 def page_member(m):
-    works = "".join(f"\n          <li>{E(w)}</li>" for w in m["works"])
+    data = (HERE / "works" / (m["foriio_user"] + ".json")).read_text(encoding="utf-8")
+    data = json.dumps(json.loads(data), ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     links = "".join(f'<a class="member__pill" href="{E(u)}" target="_blank" rel="noopener">{E(n)}</a>' for n, u in m["links"] + [("foriio", m["foriio"])])
     return f"""
 <main class="member" id="content">
@@ -522,16 +523,12 @@ def page_member(m):
         <p class="member__role">{E(m['role'])}</p>
       </div>
     </div>
-    <div class="member__works">
-      <ul>{works}
-      </ul>
-    </div>
     <div class="member__cta">
       <a class="member__btn member__btn--primary" href="{E(m['form'])}" target="_blank" rel="noopener">{E(m['name'])} に依頼する <span aria-hidden="true">↗</span></a>
     </div>
     <div class="member__links">{links}</div>
   </aside>
-  <section class="member__portfolio" aria-label="{E(m['name'])} works" data-foriio="{E(m['foriio_user'])}" data-foriio-url="{E(m['foriio'])}" data-cats="{E('|'.join(m['cats']))}">
+  <section class="member__portfolio" aria-label="{E(m['name'])} works" data-works data-foriio-url="{E(m['foriio'])}" data-cats="{E('|'.join(m['cats']))}">
     <div class="member__bar">
       <span class="member__bar-title">Works</span>
       <div class="mw-chips"></div>
@@ -540,6 +537,8 @@ def page_member(m):
   </section>
 </main>
 
+<script type="application/json" id="mwData">{data}</script>
+
 <div class="mw-modal" id="mwModal" hidden>
   <div class="mw-modal__card" role="dialog" aria-modal="true">
     <button class="mw-modal__close" type="button" data-mw-close aria-label="閉じる">×</button>
@@ -547,7 +546,6 @@ def page_member(m):
     <div class="mw-modal__info">
       <p class="mw-modal__meta"></p>
       <h2 class="mw-modal__title"></h2>
-      <p class="mw-modal__desc"></p>
       <div class="mw-modal__actions">
         <button class="mw-modal__prev" type="button" aria-label="前へ">←</button>
         <button class="mw-modal__next" type="button" aria-label="次へ">→</button>
