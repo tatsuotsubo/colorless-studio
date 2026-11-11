@@ -1354,3 +1354,12 @@ section.last {
   .vis-stage { height: 80vh; min-height: 460px; }
   .vis-title { font-size: 20px; }
 }
+
+/* 正方形カードが奇数枚のとき、最後の1枚を中央に置く（PCのみ） */
+@media (min-width: 769px) {
+  .music-square-grid > .music-card-square:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 8px);
+  }
+}
