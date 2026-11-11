@@ -97,7 +97,6 @@ def header(current):
       <nav class="menu">
         <ul>{lis}
         </ul>
-        <p class="menu-foot">transparency / pale colors / refraction &amp; reflection of light</p>
       </nav>
     </div>
   </div>
@@ -138,7 +137,6 @@ def loader():
     <img class="loader__logo" src="images/logo/CS_logo.png" alt="">
     <p class="loader__word">{chars}</p>
     <div class="loader__bar"><i></i></div>
-    <p class="loader__sub">transparency / pale colors / refraction &amp; reflection of light</p>
   </div>
 </div>
 '''
@@ -324,7 +322,6 @@ HOME_TILE = {"gallery": 0, "release": 1, "visualiser": 1, "artist": 1, "contact"
 def page_home():
     """ホーム：スクロールしない1画面。右に映像タイルのメニュー。
     タイルにホバーすると少し拡大し、背景がそのページの映像に切り替わる"""
-    THEME = "transparency / pale colors / refraction &amp; reflection of light"
     layers, tiles = "", ""
     for k, f, lab, n in PAGES:
         vids = KV[k]["videos"]
@@ -357,7 +354,6 @@ def page_home():
 
   <div class="home-meta">
     <p class="home-meta__name">colorless studio</p>
-    <p class="home-meta__theme" data-default="{THEME}">{THEME}</p>
   </div>
 
   <div class="home-sns">{sns}</div>
