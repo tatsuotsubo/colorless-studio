@@ -402,6 +402,12 @@ def page_release():
 
 def page_visualiser():
     body = strip_h2(P["visualiser"]).replace('<div class="vis-panel">', '<div class="vis-panel" data-reveal>')
+    # visualiser 本体を更新したら必ず新しい版が読まれるよう、中身のハッシュを URL に付ける
+    import hashlib
+    vh = hashlib.md5((ROOT / "visualiser" / "index.html").read_bytes()).hexdigest()[:10]
+    vsrc = f"visualiser/index.html?v={vh}"
+    body = body.replace('<iframe class="vis-frame" id="visFrame"', f'<iframe class="vis-frame" id="visFrame" data-src="{vsrc}"')
+    body = body.replace('href="visualiser/index.html"', f'href="{vsrc}"')
     return kv("visualiser") + f'''
 <main id="content">
 {body}
