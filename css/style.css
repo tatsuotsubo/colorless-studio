@@ -3510,3 +3510,12 @@ html.mw-lock { overflow: hidden; }
   .member-row--rev .member-row__media { order: 0; }
   .member-row__text, .member-row--rev .member-row__text { margin: -0.5em 0 0; align-items: flex-start; text-align: left; padding-left: 8px; }
 }
+/* 名前だけを画像に重ね、肩書きとリンクは重ねない */
+.member-row__text, .member-row--rev .member-row__text { margin: 0; padding: 0 0 6px clamp(20px, 3vw, 44px); }
+.member-row--rev .member-row__text { padding: 0 clamp(20px, 3vw, 44px) 6px 0; }
+.member-row__name { margin-left: clamp(-150px, -10vw, -48px); margin-bottom: 4px; }
+.member-row--rev .member-row__name { margin-left: 0; margin-right: clamp(-150px, -10vw, -48px); }
+@media (max-width: 760px) {
+  .member-row__text, .member-row--rev .member-row__text { padding: 0 4px; margin-top: -.45em; }
+  .member-row__name, .member-row--rev .member-row__name { margin: 0; }
+}

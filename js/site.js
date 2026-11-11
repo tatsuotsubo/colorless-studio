@@ -211,3 +211,12 @@
     }
   });
 })();
+
+/* 自動再生の映像：画面に入った時に止まっていたら再生する（ブラウザが自動再生を見送った場合の保険） */
+document.addEventListener('DOMContentLoaded', () => {
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver((es) => {
+    es.forEach((e) => { if (e.isIntersecting && e.target.paused) e.target.play().catch(() => {}); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('video.about-video').forEach((v) => io.observe(v));
+});
