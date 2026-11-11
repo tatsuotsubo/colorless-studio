@@ -182,7 +182,12 @@
           t.addEventListener('focus', () => activate(t));
           t.addEventListener('blur', deactivate);
         });
-        document.querySelector('.home-nav')?.addEventListener('mouseleave', deactivate);
+        const nav = document.querySelector('.home-nav');
+        nav?.addEventListener('mouseleave', deactivate);
+        // メニューに近づいたら背景用の映像を読み込み始める（最初の表示は軽いまま）
+        nav?.addEventListener('mouseenter', () => {
+          Object.values(layers).forEach((l) => { if (l.preload !== 'auto') { l.preload = 'auto'; l.load(); } });
+        }, { once: true });
       }
     }
 

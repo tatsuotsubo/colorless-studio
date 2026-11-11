@@ -316,9 +316,9 @@ def section_head(title, note=""):
 '''
 
 
-# ホームのタイル（軽い映像）と、ホバー時の背景（メインの映像）
+# ホームのタイル（kv.json の何本目の軽い映像を使うか）。
+# ホバー時の背景は videos/home/<key>.mp4（フルHD・切り抜きなし）＋ images/home/<key>.jpg
 HOME_TILE = {"gallery": 0, "release": 1, "visualiser": 1, "artist": 1, "contact": 0}
-HOME_BG = {"gallery": 1, "release": 0, "visualiser": 0, "artist": 0, "contact": 0}
 
 
 def page_home():
@@ -328,7 +328,8 @@ def page_home():
     layers, tiles = "", ""
     for k, f, lab, n in PAGES:
         vids = KV[k]["videos"]
-        bg = vids[min(HOME_BG[k], len(vids) - 1)]
+        # 背景はホーム専用のフル解像度版（videos/home/<key>.mp4）。パネル用の切り抜き版は使わない（荒くなる）
+        bg = {"src": f"videos/home/{k}.mp4", "poster": f"images/home/{k}.jpg"}
         tv = vids[min(HOME_TILE[k], len(vids) - 1)]
         layers += (f'\n    <video class="home-bg__layer" data-key="{k}" muted loop playsinline preload="none"'
                    f' poster="{E(bg["poster"])}" src="{E(bg["src"])}"></video>')

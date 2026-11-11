@@ -2821,3 +2821,12 @@ body.page-home .logo-image { transition: opacity .6s, transform .8s var(--ease-o
   .home-tile.is-active, .home-tile:hover { transform: none; height: 150px; }
   .home-nav:hover .home-tile:not(.is-active) { opacity: 1; filter: none; }
 }
+
+/* v5.2.1：ホーム背景の切り替え — ズームとぼかしを弱く（画質を落とさない） */
+.home-bg__layer {
+  transform: scale(1.03);
+  filter: blur(3px);
+}
+
+.home-bg__layer.is-active { transform: none; filter: none; }
+.home-bg__layer.is-leaving { transform: none; }
