@@ -331,7 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("load", () => {
-  const cards = document.querySelectorAll(".music-card");
+  const cards = document.querySelectorAll(".music-card, .music-card-square");
 
   cards.forEach((card) => {
     const tabButtons = card.querySelectorAll(".tab-btn");

@@ -1363,3 +1363,150 @@ section.last {
     width: calc(50% - 8px);
   }
 }
+
+/* =========================================================
+   New Release：すべて正方形カード＋スワイプ（2026-11 改修）
+========================================================= */
+
+/* カード見出しの高さを揃える（隣のカードとジャケの位置がずれないように） */
+.music-card-square .music-card-top {
+  min-height: 24px;
+}
+
+/* ---------- ホバー動画：正方形の中に全体を収める ---------- */
+.music-art {
+  transition: opacity .4s ease, filter .4s ease, transform .4s ease;
+}
+
+.music-video {
+  object-fit: contain;   /* 横長・縦長でも切らずに全部見せる */
+}
+
+/* ホバー中はジャケを消さずにぼかして、動画の余白を埋める（visualiser の背景と同じ考え方） */
+.music-art-wrap:hover .music-art {
+  opacity: 1;
+  filter: blur(18px) saturate(1.1) brightness(1.04);
+  transform: scale(1.15);
+}
+
+/* ---------- スワイプ ---------- */
+.release-slider {
+  position: relative;
+}
+
+.release-track {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.release-track::-webkit-scrollbar { display: none; }
+
+.release-slide {
+  position: relative;
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* 曲リストはジャケと同じ正方形の枠に収める（高さはジャケのスライドが決める） */
+.release-slide--tracks .music-info {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 400px;
+  max-height: none;
+  margin: 0 auto;
+  padding: 4px 14px;
+}
+
+.release-slide--tracks .track-item { padding: 8px 0; }
+.release-slide--tracks .wave { height: 30px; min-height: 30px; }
+
+/* ‹ › ボタン */
+.slide-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-line);
+  background: var(--glass-strong);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 14px rgba(18, 33, 38, .12);
+  font-size: 20px;
+  line-height: 1;
+  color: var(--ink);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: border-color .15s, opacity .2s;
+}
+
+.slide-nav:hover { border-color: var(--accent); }
+.slide-nav[hidden] { display: none; }
+.slide-nav.prev { left: 4px; }
+.slide-nav.next { right: 4px; }
+
+/* 下のラベル（jacket / songs / samples）：visualiser のセグメント風 */
+.slide-segs {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  width: fit-content;
+  margin: 14px auto 0;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  background: var(--glass-strong);
+}
+
+.slide-seg {
+  padding: 3px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink2);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+
+.slide-seg:hover { color: var(--ink); }
+
+.slide-seg.is-active {
+  background: var(--ink);
+  color: #fff;
+}
+
+/* 曲がある合図：ジャケ表示中だけ「次へ」を少し揺らす */
+@keyframes nudge {
+  0%, 85%, 100% { transform: translate(0, -50%); }
+  90% { transform: translate(4px, -50%); }
+  95% { transform: translate(-1px, -50%); }
+}
+
+.has-slides.is-on-art .slide-nav.next {
+  animation: nudge 4s ease-in-out infinite;
+}
+
+@media (hover: none) {
+  /* スマホは指でスワイプできるので矢印は小さめ */
+  .slide-nav { width: 30px; height: 30px; font-size: 17px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .has-slides.is-on-art .slide-nav.next { animation: none; }
+}
