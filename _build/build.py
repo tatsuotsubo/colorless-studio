@@ -316,31 +316,51 @@ def section_head(title, note=""):
 '''
 
 
+# ホームのタイル（軽い映像）と、ホバー時の背景（メインの映像）
+HOME_TILE = {"gallery": 0, "release": 1, "visualiser": 1, "artist": 1, "contact": 0}
+HOME_BG = {"gallery": 1, "release": 0, "visualiser": 0, "artist": 0, "contact": 0}
+
+
 def page_home():
-    """ホーム：スクロールしない1画面。トップ動画＋ロゴの上に各ページへのメニュー"""
-    links = ""
+    """ホーム：スクロールしない1画面。右に映像タイルのメニュー。
+    タイルにホバーすると少し拡大し、背景がそのページの映像に切り替わる"""
+    THEME = "transparency / pale colors / refraction &amp; reflection of light"
+    layers, tiles = "", ""
     for k, f, lab, n in PAGES:
-        links += f'''
-      <li><a class="idx__link home-nav__link" href="{f}" data-preview="{E(KV[k]["videos"][0]["src"])}" style="--i:{int(n)}">
-        <span class="home-nav__no">{n}</span><span class="home-nav__title">{lab}</span><span class="home-nav__arrow" aria-hidden="true">→</span>
-      </a></li>'''
+        vids = KV[k]["videos"]
+        bg = vids[min(HOME_BG[k], len(vids) - 1)]
+        tv = vids[min(HOME_TILE[k], len(vids) - 1)]
+        layers += (f'\n    <video class="home-bg__layer" data-key="{k}" muted loop playsinline preload="none"'
+                   f' poster="{E(bg["poster"])}" src="{E(bg["src"])}"></video>')
+        tiles += f'''
+      <li style="--i:{int(n)}">
+        <a class="home-tile" href="{f}" data-key="{k}" data-sub="{E(KV[k].get("sub", ""))}">
+          <video class="home-tile__video" autoplay muted loop playsinline preload="auto" poster="{E(tv["poster"])}" src="{E(tv["src"])}"></video>
+          <span class="home-tile__shade"></span>
+          <span class="home-tile__no">{n}</span>
+          <span class="home-tile__title">{lab}</span>
+          <span class="home-tile__arrow" aria-hidden="true">→</span>
+        </a>
+      </li>'''
     sns = "".join(f'<a href="{u}" target="_blank" rel="noopener">{n}</a>' for n, u in SNS)
-    return (P["hero_home"].replace("</section>", f'''
-  <!-- 1画面のホーム：メニュー -->
+    return P["hero_home"].replace("</section>", f'''
+  <!-- ホバーしたページの映像に切り替わる背景 -->
+  <div class="home-bg" aria-hidden="true">{layers}
+  </div>
+
+  <!-- 1画面のホーム：映像タイルのメニュー -->
   <nav class="home-nav" aria-label="pages">
-    <ul>{links}
+    <ul>{tiles}
     </ul>
   </nav>
 
   <div class="home-meta">
     <p class="home-meta__name">colorless studio</p>
-    <p class="home-meta__theme">transparency / pale colors / refraction &amp; reflection of light</p>
+    <p class="home-meta__theme" data-default="{THEME}">{THEME}</p>
   </div>
 
   <div class="home-sns">{sns}</div>
-
-  <div class="idx__preview" aria-hidden="true"><video muted loop playsinline preload="none"></video></div>
-</section>''', 1))
+</section>''', 1)
 
 
 def gallery_cards():

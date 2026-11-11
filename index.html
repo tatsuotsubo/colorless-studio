@@ -10,11 +10,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/reset.css?v=20261111g">
-  <link rel="stylesheet" href="css/style.css?v=20261111g">
+  <link rel="stylesheet" href="css/reset.css?v=20261111h">
+  <link rel="stylesheet" href="css/style.css?v=20261111h">
   <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('cs-pt'))document.documentElement.classList.add('pt-enter')}catch(e){}</script>
-  <script src="js/site.js?v=20261111g" defer></script>
-  <script src="js/hamburger-menu.js?v=20261111g" defer></script>
+  <script src="js/site.js?v=20261111h" defer></script>
+  <script src="js/hamburger-menu.js?v=20261111h" defer></script>
 
 </head>
 <body class="page-home">
@@ -81,35 +81,72 @@
   <!-- ロゴ -->
   <img src="images/logo/CS_logo.png" class="logo-image">
 
-  <!-- 1画面のホーム：メニュー -->
+  <!-- ホバーしたページの映像に切り替わる背景 -->
+  <div class="home-bg" aria-hidden="true">
+    <video class="home-bg__layer" data-key="gallery" muted loop playsinline preload="none" poster="images/kv/gallery_2.jpg" src="videos/kv/gallery_2.mp4"></video>
+    <video class="home-bg__layer" data-key="release" muted loop playsinline preload="none" poster="images/kv/release_1.jpg" src="videos/kv/release_1.mp4"></video>
+    <video class="home-bg__layer" data-key="visualiser" muted loop playsinline preload="none" poster="images/kv/visualiser_1.jpg" src="videos/kv/visualiser_1.mp4"></video>
+    <video class="home-bg__layer" data-key="artist" muted loop playsinline preload="none" poster="images/kv/artist_1.jpg" src="videos/kv/artist_1.mp4"></video>
+    <video class="home-bg__layer" data-key="contact" muted loop playsinline preload="none" poster="images/kv/contact_1.jpg" src="videos/kv/contact_1.mp4"></video>
+  </div>
+
+  <!-- 1画面のホーム：映像タイルのメニュー -->
   <nav class="home-nav" aria-label="pages">
     <ul>
-      <li><a class="idx__link home-nav__link" href="gallery.html" data-preview="videos/kv/gallery_1.mp4" style="--i:1">
-        <span class="home-nav__no">01</span><span class="home-nav__title">Gallery</span><span class="home-nav__arrow" aria-hidden="true">→</span>
-      </a></li>
-      <li><a class="idx__link home-nav__link" href="release.html" data-preview="videos/kv/release_1.mp4" style="--i:2">
-        <span class="home-nav__no">02</span><span class="home-nav__title">New Release</span><span class="home-nav__arrow" aria-hidden="true">→</span>
-      </a></li>
-      <li><a class="idx__link home-nav__link" href="visualiser.html" data-preview="videos/kv/visualiser_1.mp4" style="--i:3">
-        <span class="home-nav__no">03</span><span class="home-nav__title">Visualiser</span><span class="home-nav__arrow" aria-hidden="true">→</span>
-      </a></li>
-      <li><a class="idx__link home-nav__link" href="artist.html" data-preview="videos/kv/artist_1.mp4" style="--i:4">
-        <span class="home-nav__no">04</span><span class="home-nav__title">Artist</span><span class="home-nav__arrow" aria-hidden="true">→</span>
-      </a></li>
-      <li><a class="idx__link home-nav__link" href="contact.html" data-preview="videos/kv/contact_1.mp4" style="--i:5">
-        <span class="home-nav__no">05</span><span class="home-nav__title">Contact us</span><span class="home-nav__arrow" aria-hidden="true">→</span>
-      </a></li>
+      <li style="--i:1">
+        <a class="home-tile" href="gallery.html" data-key="gallery" data-sub="ジャケットとアートワークのアーカイブ">
+          <video class="home-tile__video" autoplay muted loop playsinline preload="auto" poster="images/kv/gallery_1.jpg" src="videos/kv/gallery_1.mp4"></video>
+          <span class="home-tile__shade"></span>
+          <span class="home-tile__no">01</span>
+          <span class="home-tile__title">Gallery</span>
+          <span class="home-tile__arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li style="--i:2">
+        <a class="home-tile" href="release.html" data-key="release" data-sub="アルバム・サンプルパック・ツール・ライブ">
+          <video class="home-tile__video" autoplay muted loop playsinline preload="auto" poster="images/kv/release_2.jpg" src="videos/kv/release_2.mp4"></video>
+          <span class="home-tile__shade"></span>
+          <span class="home-tile__no">02</span>
+          <span class="home-tile__title">New Release</span>
+          <span class="home-tile__arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li style="--i:3">
+        <a class="home-tile" href="visualiser.html" data-key="visualiser" data-sub="ブラウザで動くグラニュラー / ビジュアライザー">
+          <video class="home-tile__video" autoplay muted loop playsinline preload="auto" poster="images/kv/visualiser_2.jpg" src="videos/kv/visualiser_2.mp4"></video>
+          <span class="home-tile__shade"></span>
+          <span class="home-tile__no">03</span>
+          <span class="home-tile__title">Visualiser</span>
+          <span class="home-tile__arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li style="--i:4">
+        <a class="home-tile" href="artist.html" data-key="artist" data-sub="colorless studio のメンバー">
+          <video class="home-tile__video" autoplay muted loop playsinline preload="auto" poster="images/kv/artist_2.jpg" src="videos/kv/artist_2.mp4"></video>
+          <span class="home-tile__shade"></span>
+          <span class="home-tile__no">04</span>
+          <span class="home-tile__title">Artist</span>
+          <span class="home-tile__arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li style="--i:5">
+        <a class="home-tile" href="contact.html" data-key="contact" data-sub="お仕事のご依頼・ご相談はこちらから">
+          <video class="home-tile__video" autoplay muted loop playsinline preload="auto" poster="images/kv/contact_1.jpg" src="videos/kv/contact_1.mp4"></video>
+          <span class="home-tile__shade"></span>
+          <span class="home-tile__no">05</span>
+          <span class="home-tile__title">Contact us</span>
+          <span class="home-tile__arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
     </ul>
   </nav>
 
   <div class="home-meta">
     <p class="home-meta__name">colorless studio</p>
-    <p class="home-meta__theme">transparency / pale colors / refraction &amp; reflection of light</p>
+    <p class="home-meta__theme" data-default="transparency / pale colors / refraction &amp; reflection of light">transparency / pale colors / refraction &amp; reflection of light</p>
   </div>
 
   <div class="home-sns"><a href="https://x.com/colorless_ST" target="_blank" rel="noopener">X</a><a href="https://www.instagram.com/colorless.studio.official/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@colorless_studio" target="_blank" rel="noopener">TikTok</a><a href="https://www.youtube.com/@colorless_studio_official" target="_blank" rel="noopener">YouTube</a></div>
-
-  <div class="idx__preview" aria-hidden="true"><video muted loop playsinline preload="none"></video></div>
 </section>
 
 </body>

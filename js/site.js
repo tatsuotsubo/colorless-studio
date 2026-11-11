@@ -123,6 +123,69 @@
       });
     }
 
+    /* ---------- 4e) ホーム：映像タイルにホバー → 背景がそのページの映像に ---------- */
+    const tiles = document.querySelectorAll('.home-tile');
+    if (tiles.length) {
+      const hero = document.getElementById('mainvisual');
+      const layers = {};
+      document.querySelectorAll('.home-bg__layer').forEach((v) => { layers[v.dataset.key] = v; });
+      const theme = document.querySelector('.home-meta__theme');
+      let current = null, leaveTimer = 0, textTimer = 0;
+
+      const setText = (txt) => {
+        if (!theme || theme.textContent === txt) return;
+        clearTimeout(textTimer);
+        theme.classList.add('is-swapping');
+        textTimer = setTimeout(() => { theme.textContent = txt; theme.classList.remove('is-swapping'); }, 220);
+      };
+
+      const activate = (tile) => {
+        clearTimeout(leaveTimer);
+        const key = tile.dataset.key;
+        tiles.forEach((t) => t.classList.toggle('is-active', t === tile));
+        hero.classList.add('is-previewing');
+        setText(tile.dataset.sub || '');
+        if (current === key) return;
+        const v = layers[key];
+        if (!v) return;
+        // タイルの位置から円が広がるように
+        const hr = hero.getBoundingClientRect(), tr = tile.getBoundingClientRect();
+        v.style.setProperty('--cx', `${tr.left + tr.width / 2 - hr.left}px`);
+        v.style.setProperty('--cy', `${tr.top + tr.height / 2 - hr.top}px`);
+        Object.values(layers).forEach((l) => {
+          if (l === v) return;
+          if (l.classList.contains('is-active')) { l.classList.remove('is-active'); l.classList.add('is-leaving'); setTimeout(() => { l.classList.remove('is-leaving'); l.pause(); }, 900); }
+        });
+        v.classList.remove('is-leaving');
+        // 重なり順を一番上に
+        v.style.zIndex = String(Date.now() % 100000);
+        v.play().catch(() => {});
+        requestAnimationFrame(() => v.classList.add('is-active'));
+        current = key;
+      };
+
+      const deactivate = () => {
+        leaveTimer = setTimeout(() => {
+          tiles.forEach((t) => t.classList.remove('is-active'));
+          hero.classList.remove('is-previewing');
+          Object.values(layers).forEach((l) => {
+            if (l.classList.contains('is-active')) { l.classList.remove('is-active'); l.classList.add('is-leaving'); setTimeout(() => { l.classList.remove('is-leaving'); l.pause(); }, 900); }
+          });
+          current = null;
+          if (theme) setText(theme.dataset.default || '');
+        }, 260);
+      };
+
+      if (fine) {
+        tiles.forEach((t) => {
+          t.addEventListener('mouseenter', () => activate(t));
+          t.addEventListener('focus', () => activate(t));
+          t.addEventListener('blur', deactivate);
+        });
+        document.querySelector('.home-nav')?.addEventListener('mouseleave', deactivate);
+      }
+    }
+
     /* ---------- 4c) 次ページリンクの動画（見えたら再生） ---------- */
     document.querySelectorAll('.next-page').forEach((n) => {
       const v = n.querySelector('video');
