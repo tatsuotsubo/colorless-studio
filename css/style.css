@@ -3519,3 +3519,15 @@ html.mw-lock { overflow: hidden; }
   .member-row__text, .member-row--rev .member-row__text { padding: 0 4px; margin-top: -.45em; }
   .member-row__name, .member-row--rev .member-row__name { margin: 0; }
 }
+
+/* v5.7.1：メンバーの画像は元のサイズのまま表示（拡大しない） */
+.member-row { grid-template-columns: auto minmax(0, 1fr); }
+.member-row--rev { grid-template-columns: minmax(0, 1fr) auto; }
+.member-row--rev .member-row__media { justify-self: end; }
+.member-row__media { aspect-ratio: auto; width: fit-content; max-width: 100%; }
+.member-row__media img { display: block; width: auto; height: auto; max-width: 100%; object-fit: initial; transition: opacity .4s ease; }
+.member-row:hover .member-row__media img { transform: none; opacity: .88; }
+@media (max-width: 760px) {
+  .member-row, .member-row--rev { grid-template-columns: 1fr; }
+  .member-row--rev .member-row__media { justify-self: start; }
+}
