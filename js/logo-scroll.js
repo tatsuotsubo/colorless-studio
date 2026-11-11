@@ -81,16 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(update);
     }
 
-    // ヘッダーロゴクリックでトップへ戻る
-    headerLogo.style.cursor = 'pointer';
+  });
 
-    headerLogo.addEventListener('click', () => {
-       if (window.scrollY > 10) {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      }
-    });
+  // ヘッダーロゴクリックでトップへ戻る（スクロールのたびに登録しないよう外に出した）
+  headerLogo.style.cursor = 'pointer';
+  headerLogo.addEventListener('click', () => {
+    if (window.scrollY > 10) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   });
 });

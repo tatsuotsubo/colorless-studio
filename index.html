@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#EAEFF1">
   <title>colorless studio</title>
   <link rel="icon" href="images/logo/CS_logo_icon.ico">
   <link rel="stylesheet" href="css/reset.css">
@@ -24,9 +26,20 @@
   <!-- ミュージックプレビュー -->
   <script src="js/music-preview.js" defer></script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Visualiser タブ -->
+  <script src="js/visualiser-tab.js" defer></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet">
 
 </head>
+
+<body>
+<!-- 背景：visualiser と同じ「ぼかした動画＋淡いスカイ」 -->
+<div class="backdrop" aria-hidden="true">
+  <video autoplay muted loop playsinline preload="auto" src="videos/colorless_bg_fix.mp4"></video>
+</div>
 
 <!-- ヘッダー -->
 <header id="header">
@@ -44,6 +57,7 @@
           <li class="active"><a href="#about">About us</a></li>
           <li class="active"><a href="#scatter">Gallery</a></li>
           <li class="active"><a href="#music">New Release</a></li>
+          <li class="active"><a href="#visualiser">Visualiser</a></li>
           <li class="active"><a href="#artist">Artist</a></li>
           <li class="active"><a
               href="https://forms.gle/ysjVeLeQBovMZLsK8">Contact us</a>
@@ -90,38 +104,16 @@
     </div>
 
     <div class="about-content">
-      <p>　</p>
-      <p>　</p>
-      <p>　</p>
-      <p>　</p>
-      <p>　</p>
-      <p>　</p>
-      <p>　</p>
-      <p>　</p>
-      <p>　</p>
-      <p>　</p>
-      <p>　</p>
-      <p>　</p>
-      <p>　</p>
-      <p>　</p>
-      <h2 class="about-title">
-        <small>About us</small>
-      </h2>
-      <p>　</p>
-      <p>　</p>
-      <p>　</p>
+      <h2 class="about-title">About us</h2>
       <!-- 文言 -->
       <div class="about-text">
-        <!-- <hr> --><!-- ←横線 -->
-        <p>
+                <p>
           colorless studioは、“透明感”“淡い色彩”“光の屈折や反射”をテーマに掲げる活動組織です。<br>
           ジャンルに縛られず、ambient、IDM、botanica、petal coreなど多様なスタイルを横断しながら、
           音そのものが持つ質感や空気感を発信していきます。<br>
           また、映像やアートワークとも関わり、実写・イラスト問わず
           「淡く揺らぐ世界観」の共有を目指します。
         </p>
-
-        <p>　</p>
 
         <p>
           colorless studio is an organization whose themes are “transparency,” “pale colors,”
@@ -327,9 +319,7 @@
 
     <!-- See All -->
     <div class="gallery-actions">
-      <button type="button" class="gallery-seeall" data-open-gallery>
-        <a href="#" data-open-gallery>See all</a>
-      </button>
+      <button type="button" class="gallery-seeall" data-open-gallery>See all</button>
     </div>
   </div>
 </section>
@@ -435,11 +425,6 @@
     </div>
   </div>
   </div>
-
-   <br>
-  <br>
-
-
   <!-- Sound as Film-->
       <div class="music-card">
 
@@ -582,13 +567,6 @@
       </div>
   </div>
     </div>
-
-  <br>
-  <br>
-  <br>
-  <br>
-
-
 <div class="music-square-grid">
   
     <!-- -ish -->
@@ -638,9 +616,6 @@
     </div>
   </div>
    </div>
-
-    <br>
-
   <!-- Awake; poetry texture pack vol.1(JPN)-->
   <div class="music-card">
 
@@ -1041,6 +1016,42 @@
   </div>
 </section>
 
+<!-- Visualiser（colorless visualiser を埋め込み） -->
+<section id="visualiser">
+  <h2>Visualiser</h2>
+
+  <div class="vis-panel">
+    <div class="vis-head">
+      <div class="vis-brand">
+        <img class="vis-mark" src="images/logo/CS_logo.png" alt="">
+        <div>
+          <p class="vis-title">colorless visualiser</p>
+          <p class="vis-sub">granular · midi · audio — ブラウザで動くグラニュラー / ビジュアライザー</p>
+        </div>
+      </div>
+      <div class="vis-actions">
+        <button type="button" class="vis-btn primary" id="visLaunch">▶ Launch</button>
+        <button type="button" class="vis-btn" id="visClose" hidden>Close</button>
+        <a class="vis-btn" href="visualiser/index.html" target="_blank" rel="noopener">新しいタブで開く ↗</a>
+      </div>
+    </div>
+
+    <div class="vis-stage" id="visStage">
+      <!-- 起動前のプレビュー（重いので、Launch を押すまで本体は読み込まない） -->
+      <div class="vis-cover" id="visCover">
+        <video class="vis-cover__video" src="visualiser/v/sky_1.mp4" muted loop playsinline autoplay preload="metadata"></video>
+        <button type="button" class="vis-cover__play" id="visCoverPlay" aria-label="Visualiser を起動">
+          <span class="vis-cover__icon">▶</span>
+          <span>Launch visualiser</span>
+        </button>
+        <p class="vis-cover__note">音声ファイルのドラッグ＆ドロップ・MIDI・カメラに対応。全機能（タブ録画など）は「新しいタブで開く」から。</p>
+      </div>
+      <iframe class="vis-frame" id="visFrame" title="colorless visualiser" hidden
+        allow="autoplay; microphone; camera; midi; fullscreen; display-capture; clipboard-write"></iframe>
+    </div>
+  </div>
+</section>
+
 <!-- Artist -->
 <section id="artist" data-slider="artist">
   <h2>Artist</h2>
@@ -1058,57 +1069,24 @@
 
     <div class="artist-right">
       <div class="career-box">
-        <p>
-          <br>
-          <br>
-          <span class="artist-name">natsume</span>
-          <br>
-          <br>
-          Composer / Sound Designer / Music Producer / Manipulator
-          <br>
-          <br>
-
-          <span class="works-small">
-            <br>
-            ・Lir.E 2nd ワンマンライブ「愛について：REC」　Manipulator
-            <br>
-            ・あおぎり高校　春雨麗女 1st ONE-MAN LIVE「submerge of spring」　Manipulator
-            <br>
-            ・bit-chan　1st single　「あのゆめ」　作詞作曲
-            <br>
-            ・Compilation Album / ユシナ & kohe - 多重合成音声　「fragment」作詞作曲
-            <br>
-            ・Compilation Album / NEXTLIGHT - NX REALM　「fade」作詞作曲
-            <br>
-            ・Compilation Album / wagataki - 透明の瞬き　「ひかり」　作編曲
-            <br>
-            ・すぺしゃりてフェス #05 STREET FIGHTER 6 OP　BGM制作
-            <br>
-            <br>
-
-            　and more...
-          </span>
-        </p>
-      </div>
+          <p class="artist-name">natsume</p>
+          <p class="artist-role">Composer / Sound Designer / Music Producer / Manipulator</p>
+          <ul class="works-small">
+            <li>Lir.E 2nd ワンマンライブ「愛について：REC」　Manipulator</li>
+            <li>あおぎり高校　春雨麗女 1st ONE-MAN LIVE「submerge of spring」　Manipulator</li>
+            <li>bit-chan　1st single　「あのゆめ」　作詞作曲</li>
+            <li>Compilation Album / ユシナ & kohe - 多重合成音声　「fragment」作詞作曲</li>
+            <li>Compilation Album / NEXTLIGHT - NX REALM　「fade」作詞作曲</li>
+            <li>Compilation Album / wagataki - 透明の瞬き　「ひかり」　作編曲</li>
+            <li>すぺしゃりてフェス #05 STREET FIGHTER 6 OP　BGM制作</li>
+            <li class="more">and more...</li>
+          </ul>
+        </div>
       <a class="about-natsume-btn" href="https://linktr.ee/natsume_music" target="_blank" rel="noopener">
         About natsume
       </a>
     </div>
   </div>
-
-
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-
-
   <!-- alpha -->
   <div class="Artist">
     <div class="artist-left">
@@ -1119,35 +1097,18 @@
 
     <div class="artist-right">
       <div class="career-box">
-        <p>
-          <br>
-          <br>
-         <span class="artist-name">alpha</span>
-          <br>
-          <br>
-          Composer / Sound Designer / Music Producer
-          <br>
-          <br>
-          <span class="works-small">
-            <br>
-            ・スマートフォン向けゲームアプリ「無期迷途」　BGM制作,ゲーム内楽曲制作
-            <br>
-            ・楽園プロジェクト(ナイトプールremix) - 兎迷夢々　楽曲リアレンジ制作
-            <br>
-            ・百鬼あやめ 7周年記念ライブ ライブOP 　BGM制作
-            <br>
-            ・兎田ぺこら 6周年記念ライブ / SE,BGM制作
-            <br>
-            ・LOG IN: GAME START #ROCKINBiboo ライブOP　BGM制作
-            <br>
-            ・ホロライブ × ジョイポリス「SWEETY PARTY」　イベント幕間BGM制作
-            <br>
-            <br>
-            　and more...
-          </span>
-        </p>
-
-      </div>
+          <p class="artist-name">alpha</p>
+          <p class="artist-role">Composer / Sound Designer / Music Producer</p>
+          <ul class="works-small">
+            <li>スマートフォン向けゲームアプリ「無期迷途」　BGM制作,ゲーム内楽曲制作</li>
+            <li>楽園プロジェクト(ナイトプールremix) - 兎迷夢々　楽曲リアレンジ制作</li>
+            <li>百鬼あやめ 7周年記念ライブ ライブOP 　BGM制作</li>
+            <li>兎田ぺこら 6周年記念ライブ / SE,BGM制作</li>
+            <li>LOG IN: GAME START #ROCKINBiboo ライブOP　BGM制作</li>
+            <li>ホロライブ × ジョイポリス「SWEETY PARTY」　イベント幕間BGM制作</li>
+            <li class="more">and more...</li>
+          </ul>
+        </div>
       <a class="about-natsume-btn"
         href="https://linktr.ee/alphanium?utm_source=linktree_profile_share&ltsid=e2ba630c-6e7f-4665-ad7e-b87ed21c654e"
         target="_blank" rel="noopener">
@@ -1177,6 +1138,7 @@
       <li class="active"><a href="#about">About us</a></li>
       <li class="active"><a href="#scatter">Gallery</a></li>
       <li class="active"><a href="#music">New Release</a></li>
+      <li class="active"><a href="#visualiser">Visualiser</a></li>
       <li class="active"><a href="#artist">Artist</a></li>
       <li class="active"><a
           href="mailto:colorless.studio.official@gmail.com?subject=お問い合わせ&body=お名前:%0D%0A内容:%0D%0A">Contact us</a></li>
@@ -1202,4 +1164,5 @@
 
 </section>
 
+</body>
 </html>

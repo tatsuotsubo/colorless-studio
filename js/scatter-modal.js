@@ -93,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    document.body.classList.add("modal-open");
 
     buildThumbs();
     setActiveThumb(currentIndex);
@@ -215,6 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (player) player.src = "";
 
     document.body.style.overflow = "";
+    document.body.classList.remove("modal-open");
     thumbsWrap?.classList.remove("is-open");
   };
 
@@ -387,8 +389,8 @@ function initWavesIn(scope) {
 
     const wavesurfer = WaveSurfer.create({
       container: waveEl,
-      waveColor: "#b8b8b8",
-      progressColor: "#555",
+      waveColor: "#B9C6CC",
+      progressColor: "#1E739E",
       cursorColor: "transparent",
       barWidth: 2,
       barGap: 2,

@@ -1,0 +1,28 @@
+# v/ の各クリップの元素材（/Volumes/500GB/movie/撮影素材/横/ 以下）
+# 960x540 / 24fps / 最長16秒 / 末尾→先頭クロスフェードでループ化
+
+sky_1.mp4	1080_sky/C0446_1.mp4
+sky_2.mp4	1080_sky/C0448_1.mp4
+sky_3.mp4	1080_sky/mixkit-blue-sky-background-as-the-clouds-travel-blown-by-the-26108-hd-ready.mp4
+sky_4.mp4	1080_sky/mixkit-clouds-and-blue-sky-background-2408-hd-ready.mp4
+sky_5.mp4	1080_sky/mixkit-cloudy-sky-118-hd-ready.mp4
+sky_6.mp4	1080_sky/mixkit-white-clouds-moving-across-a-clear-blue-sky-51102-hd-ready.mp4
+sky_7.mp4	1080_sky/mixkit-white-clouds-moving-across-a-clear-blue-sky-quickly-51105-hd-ready.mp4
+sky_8.mp4	1080_sky/natsume00272760_1.mp4
+tree_1.mp4	1080_tree/100896-video-720.mp4
+tree_2.mp4	1080_tree/20260729_C0669_1.mp4
+tree_3.mp4	1080_tree/20260729_C0671_1.mp4
+tree_4.mp4	1080_tree/20260729_C0675_1.mp4
+tree_5.mp4	1080_tree/mixkit-autumn-maple-leaves-being-moved-by-the-wind-1611-hd-ready.mp4
+tree_6.mp4	1080_tree/mixkit-branches-swaying-in-the-wind-95-hd-ready.mp4
+water_1.mp4	1080_water/100998-video-720.mp4
+water_2.mp4	1080_water/101002-video-720.mp4
+water_3.mp4	1080_water/101487-video-720.mp4
+water_4.mp4	1080_water/101497-video-720.mp4
+water_5.mp4	1080_water/mixkit-aerial-view-of-waves-hitting-a-small-cliff-in-the-51454-hd-ready.mp4
+water_6.mp4	1080_water/mixkit-crystal-clear-water-flowing-on-a-paradisiacal-beach-50235-hd-ready.mp4
+water_7.mp4	1080_water/mixkit-the-water-of-the-river-creates-splashes-foam-and-ripples-51590-hd-ready.mp4
+water_8.mp4	1080_water/mixkit-turquoise-ocean-background-with-foaming-waves-2091-hd-ready.mp4
+water_9.mp4	1080_water/mixkit-window-on-a-rainy-day-2846-hd-ready.mp4
+
+# 未使用: 1080_sky/IMG_4265.mp4（約770MB・転送上限超えのため）

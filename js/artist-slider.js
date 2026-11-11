@@ -12,6 +12,9 @@ function initSlider(root) {
   const nextBtn = root.querySelector('.next');
   const slider  = root.querySelector('.artist-slider');
 
+  // スライダー用の要素がない（縦並び表示）ときは何もしない
+  if (!track || !slider || !items.length) return;
+
   let index = 1;
   let isMoving = false;
   const total = items.length;
