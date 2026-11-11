@@ -6,9 +6,9 @@
 生成するページ（リポジトリ直下に書き出す。直接編集しない）:
   index.html       ホーム（トップ動画・About・メニュー・最新リリース）
   gallery.html     Gallery
-  release.html     New Release
+  release.html     Release
   visualiser.html  Visualiser
-  artist.html      Artist
+  artist.html      About Us
   contact.html     Contact us
 
 編集するもの:
@@ -32,10 +32,10 @@ FORM = "https://forms.gle/ysjVeLeQBovMZLsK8"
 MAIL = "colorless.studio.official@gmail.com"
 
 PAGES = [  # (key, file, label, no)
-    ("gallery", "gallery.html", "Gallery", "01"),
-    ("release", "release.html", "New Release", "02"),
-    ("visualiser", "visualiser.html", "Visualiser", "03"),
-    ("artist", "artist.html", "Artist", "04"),
+    ("artist", "artist.html", "About Us", "01"),
+    ("gallery", "gallery.html", "Gallery", "02"),
+    ("release", "release.html", "Release", "03"),
+    ("visualiser", "visualiser.html", "Visualiser", "04"),
     ("contact", "contact.html", "Contact us", "05"),
 ]
 FILE = {k: f for k, f, _, _ in PAGES}
@@ -362,14 +362,18 @@ def gallery_cards():
     return re.findall(r'<a class="scatter-card".*?</a>', P["gallery_stage"], re.S)
 
 
+def gallery_source():
+    """流れるジャケ（寿司レーン）は表示しない。モーダルの元データとしてだけ置く"""
+    return ('<div id="sushiSource" data-source-only hidden>'
+            + "".join(gallery_cards()) + '</div>')
+
+
 def page_gallery():
     cards = gallery_cards()
     grid = "".join(f"\n      <div class=\"gal-item\" data-reveal style=\"--r:{(i * 37) % 7 - 3}\">{c}</div>" for i, c in enumerate(cards))
     return kv("gallery") + f'''
 <main id="content">
-<section id="scatter">
-{P["gallery_stage"]}
-</section>
+{gallery_source()}
 
 <section class="gal-all">
 {section_head("Archive")}
@@ -410,6 +414,8 @@ def page_artist():
     body = strip_h2(P["artist"]).replace('<div class="Artist">', '<div class="Artist" data-reveal>')
     body = body.replace('<section id="artist" data-slider="artist">', '<section id="artist" data-slider="artist">\n' + section_head("Artist"))
     about = P["about"].replace('<div class="about-wrapper">', '<div class="about-wrapper" data-reveal>')
+    # ページ名（About Us）と重複する見出しは出さない
+    about = re.sub(r'\s*<h2 class="about-title">.*?</h2>', '', about, count=1, flags=re.S)
     return kv("artist") + f'''
 <main id="content">
 {about}
@@ -463,9 +469,9 @@ SPEC = {
     # key: (title, scripts, body_fn, backdrop video)
     "home": ("colorless studio", [], page_home, "videos/colorless_bg_fix.mp4"),
     "gallery": ("Gallery — colorless studio", ["scatter-modal"], page_gallery, None),
-    "release": ("New Release — colorless studio", ["scatter-modal", "music-preview", "release-v3"], page_release, None),
+    "release": ("Release — colorless studio", ["scatter-modal", "music-preview", "release-v3"], page_release, None),
     "visualiser": ("Visualiser — colorless studio", ["visualiser-tab"], page_visualiser, None),
-    "artist": ("Artist — colorless studio", [], page_artist, None),
+    "artist": ("About Us — colorless studio", [], page_artist, None),
     "contact": ("Contact us — colorless studio", [], page_contact, None),
 }
 

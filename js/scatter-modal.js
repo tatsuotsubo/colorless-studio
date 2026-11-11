@@ -30,9 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const templateCards = Array.from(source.querySelectorAll(".scatter-card"));
+  const sourceOnly = source.hasAttribute("data-source-only");  // 流れるジャケを出さないページ
   source.remove();
 
-  lanes.forEach((lane) => {
+  if (!sourceOnly) lanes.forEach((lane) => {
     const track = document.createElement("div");
     track.className = "sushi-track";
     if (lane.reverse) track.classList.add("reverse");
