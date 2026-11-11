@@ -449,6 +449,18 @@ body.mlearn [data-mlmap]{outline:2px solid #3B9A6A!important}
 body.mlearn .mlsel{outline:2.5px solid #C2412F!important;box-shadow:0 0 0 5px rgba(194,65,47,.18)}
 .mltag{position:fixed;z-index:119;pointer-events:none;padding:1px 6px;border-radius:999px;background:#3B9A6A;color:#fff;font-size:9.5px;letter-spacing:.04em;transform:translateX(-100%);white-space:nowrap}
 #mlBtn[aria-pressed="true"]{background:#C2412F;color:#fff}
+/* ---------- i: feature info ---------- */
+#infoBtn{position:fixed;left:14px;bottom:14px;z-index:130;width:30px;height:30px;border-radius:50%;border:1px solid rgba(30,115,158,.35);background:rgba(255,255,255,.85);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  color:var(--accent);font:italic 600 15px/1 Georgia,"Times New Roman",serif;cursor:pointer;box-shadow:0 4px 14px rgba(18,33,38,.15);display:flex;align-items:center;justify-content:center;padding:0}
+#infoBtn:hover{background:#fff}
+#infoBtn[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+#infoBox{position:fixed;left:14px;bottom:54px;z-index:130;width:min(340px,calc(100vw - 28px));padding:12px 14px 10px;border-radius:14px;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  box-shadow:0 12px 34px rgba(18,33,38,.18);pointer-events:none;display:flex;flex-direction:column;gap:5px}
+#infoBox[hidden]{display:none}
+#infoBox .ib-t{font-weight:500;font-size:11px;letter-spacing:.12em;color:var(--accent)}
+#infoBox .ib-d{margin:0;font-size:12.5px;line-height:1.65;color:var(--ink)}
+#infoBox .ib-f{font-size:10px;color:var(--ink2);opacity:.75}
+body.tabrec #infoBtn,body.tabrec #infoBox{display:none!important}
 .help{padding:14px 18px;font-size:12px;color:var(--ink2);line-height:1.85;margin:0}
 .help b{color:var(--ink);font-weight:500}
 footer{display:flex;align-items:center;gap:10px;justify-content:center;font-size:12px;color:var(--ink2);padding-top:6px}
@@ -843,7 +855,7 @@ footer img{width:22px;height:22px}
 (() => {
 'use strict';
 const $ = s => document.querySelector(s);
-const IN_FRAME = (() => { try { return window.top !== window; } catch(e) { return true; } })(), IS_FILE = location.protocol === 'file:';
+const IN_FRAME = (() => { try { return window.top !== window && !window.top.location.host; } catch(e) { return true; } })(), IS_FILE = location.protocol === 'file:';
 const openHint = () => IS_FILE ? 'colorless tool フォルダの「start.command」から開いてください。' : IN_FRAME ? '公開版のページを Chrome で直接開くと使えます。' : 'Chrome（または Edge・Arc など Chromium 系）で開いてください。';
 /* pristine HTML of each visualiser module, captured before anything is wired up — used to make copies */
 const MOD_TPL = {}; document.querySelectorAll('#rack > section.vz[data-mod], #rack > section.vbox[data-mod]').forEach(sec => { if (sec.dataset.mod !== 'camera') MOD_TPL[sec.dataset.mod] = sec.outerHTML; });
@@ -3873,6 +3885,71 @@ function mlApply(el, t, v, on, prev) { const fire = (...evs) => evs.forEach(n =>
   if (el.tagName === 'SELECT') { const n = el.options.length; if (!n) return; let i = el.selectedIndex; if (t === 'note') { if (!on) return; i = (i + 1) % n; } else i = Math.min(n - 1, Math.floor(v*n)); if (i !== el.selectedIndex) { el.selectedIndex = i; fire('input', 'change'); } return; }
   if (el.tagName === 'BUTTON' && press) el.click(); }
 if (ML.maps.length) mlAccess();
+
+/* ---------- i：画面左下のボタンで「カーソルの下にある機能の説明」を出す ---------- */
+const INFO_ID = {
+  startAll:['Start', 'MIDI・Audio・Field を今の位置からまとめて再生 / 停止します。Space キーでも。'],
+  bpmOn:['BPM On / Off', 'On のとき、全ビジュアライザーが BPM（拍）に合わせて動きます。Off のときは音量に合わせてゆっくり揺れます。'],
+  bpmIn:['BPM', '曲のテンポ。入力して Commit で全モジュールに反映します。'],
+  bpmDet:['検出 BPM', '流れている音から推定したテンポ。クリックすると入力欄に入ります。'],
+  bpmTap:['Tap', '拍に合わせて数回クリックすると、そのテンポを入力します。'],
+  bpmCommit:['Commit', '入力した BPM を全モジュール（ビジュアライザー・MIDI など）に反映し、キックの頭に拍を合わせます。'],
+  bpmLock:['Lock', '検出 BPM の自動更新を止めて、今の値に固定します。'],
+  play:['Play', 'グラニュラーの音を鳴らす / 止める。'],
+  rand:['Random', 'パラメータをまとめてランダムにします（ロックしたものは除く）。'],
+  resetAll:['Reset', '全パラメータを初期値に戻します（ロックも解除）。'],
+  drift:['Drift', 'パラメータが少しずつ勝手に動き続けるモード。'],
+  preset:['Preset', '保存した値・モジュール配置を呼び出します。'],
+  presetSave:['Save', '今の値・モジュール配置などをプリセットとして保存。保存欄の「書き出し」で全設定をファイルにできます。'],
+  mlBtn:['MIDI Learn', 'MIDI アサインモード（⌘M / Ctrl+M）。ボタンやフェーダーをクリック → MIDI を送ると割り当てられます。'],
+  rec:['Rec', '録画枠の中を動画で録画します。もう一度押すと停止して保存。'],
+  fmtSel:['画面サイズ', 'PC（横長）・iPhone（縦 9:16）・正方形（1:1）。録画枠とレイアウトがこの比率になります。'],
+};
+const INFO_CLS = [
+  ['.grip', '並べ替え', 'ドラッグで並べ替え。Option を押しながらドラッグで複製。ビジュアライザーを別のビジュアライザーの中央に落とすと重なります。矢印キーでも動かせます。'],
+  ['.rszc', '大きさ', 'ドラッグで幅と高さをまとめて変更（マス目に吸着）。'],
+  ['.rszv', '高さ', 'ドラッグで高さを変更（マス目に吸着。録画枠より高くはなりません）。'],
+  ['.rsz', '幅', 'ドラッグで幅を変更（12 列のマス目に吸着）。'],
+  ['.mtri', '詳細', 'このモジュールの設定パネルを右に開きます。'],
+  ['.ed-h .x, .mh .x', '外す', 'このモジュールを外します（+ Module のストックに戻ります。複製したものは削除）。'],
+  ['input.rk', 'ランダム', 'チェックすると、この値が BPM（または音量）に合わせてランダムに変わります。間隔・幅・なめらかさは Random の Every / Amount / Smooth で。'],
+  ['.ed-h h2.h', 'モジュール名', 'クリックで名前の表示 / 非表示（録画にも反映）。'],
+  ['#addList button', '', 'クリックで追加、ドラッグで好きな場所へ置けます。ビジュアライザーは Visualizer 枠や他のビジュアライザーの上に直接落とせます。'],
+  ['.lyr', 'レイヤー', '上が手前。▲▼ で重なり順、メニューで重ね方（Screen / Add など）、スライダーで不透明度。'],
+];
+const infoBtn = document.createElement('button'); infoBtn.type = 'button'; infoBtn.id = 'infoBtn'; infoBtn.textContent = 'i'; infoBtn.setAttribute('aria-label', '機能の説明を表示'); infoBtn.setAttribute('aria-pressed', 'false');
+const infoBox = document.createElement('div'); infoBox.id = 'infoBox'; infoBox.hidden = true; infoBox.setAttribute('role', 'status'); infoBox.innerHTML = '<b class="ib-t"></b><p class="ib-d"></p><span class="ib-f">i をもう一度押すと閉じます</span>';
+document.body.append(infoBtn, infoBox);
+const clean = t => (t || '').replace(/\s+/g, ' ').trim();
+function infoFor(el) {
+  if (!el || !el.closest || el.closest('#infoBox, #infoBtn')) return null;
+  const pn = el.closest('.mpanel'), sec = el.closest('[data-mod]') || (pn && pn._sec) || (el.closest('#mDrawer') && drawerSec) || null;
+  const k = sec && sec.dataset.mod, mod = k ? (MODULES[k] || k) : '', base = k ? baseOf(k) : '';
+  const ctl = el.closest('button, select, input, textarea, .seg, label, .fxrow, h2.h, .rsz, .rszv, .rszc, .lyr');
+  // 1. known ids / kinds of control
+  for (let n = el; n && n !== document.body; n = n.parentElement) if (n.id && INFO_ID[n.id]) return {t:INFO_ID[n.id][0], d:INFO_ID[n.id][1]};
+  for (const [sel, t, d] of INFO_CLS) { const m = el.closest(sel); if (m) { const kk = m.dataset && m.dataset.k; return {t:(t || (kk && MODULES[kk]) || clean(m.textContent)) + (mod && t ? ` — ${mod}` : ''), d:(kk && MOD_DESC[kk] ? MOD_DESC[kk] + ' ' : '') + d}; } }
+  // 2. a control: its own label + its tooltip / aria text
+  if (ctl && !ctl.matches('h2.h')) { const lab = ctl.closest('label'), row = ctl.closest('.fxrow');
+    let name = clean(ctl.getAttribute('aria-label')) || (row && clean((row.querySelector('.pl') || row).textContent)) || (lab && clean([...lab.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join(' '))) || clean(ctl.textContent).slice(0, 40);
+    let d = ''; for (let n = ctl; n && n !== document.body && !d; n = n.parentElement) d = n.getAttribute && n.getAttribute('title') || '';
+    if (ctl.matches('.seg') || ctl.closest('.seg')) { const sg = ctl.closest('.seg'); d = d || '押したものに切り替わります：' + [...sg.children].map(b => clean(b.textContent)).filter(Boolean).join(' / '); }
+    else if (ctl.matches('input[type=range]')) d = d || 'ドラッグで値を変更。' + (row && row.querySelector('input.rk') ? '左のチェックでランダム対象になります。' : '');
+    else if (ctl.matches('select')) d = d || 'メニューから選びます。';
+    if (name || d) return {t:(name || '設定') + (mod ? ` — ${mod}` : ''), d:d || (mod ? `${mod} の設定です。` : '')}; }
+  // 3. a module: its description (the text from the module's own info line)
+  if (sec) { const ri = (sec.querySelector(':scope > .rollinfo') || (sec._panel && (sec._panel.querySelector('.rollinfo') || sec._panel.querySelector('.minfo')))), ex = el.closest('.disp') ? ' 表示部分をダブルクリックで 3D 空間になります。' : '';
+    return {t:mod, d:(ri ? clean(ri.textContent) : MOD_DESC[base] || '') + ex}; }
+  if (el.closest('#frame')) return {t:'録画枠', d:'この枠の中が Rec で録画されます。モジュールは右端・下端・右下の角のドラッグで大きさを変えられます。'};
+  return null; }
+let infoOn = false, infoLast = null, infoRaf = 0, infoPt = null;
+function infoShow(x, y) { const el = document.elementFromPoint(x, y); if (el === infoLast) return; infoLast = el; const r = infoFor(el);
+  infoBox.querySelector('.ib-t').textContent = r ? r.t : 'colorless visualiser'; infoBox.querySelector('.ib-d').textContent = r ? r.d : '知りたいボタンやモジュールにカーソルを合わせると、ここに説明が出ます。'; }
+function infoToggle(on) { infoOn = on == null ? !infoOn : on; infoBtn.setAttribute('aria-pressed', infoOn); infoBox.hidden = !infoOn; infoLast = null;
+  if (infoOn) { infoBox.querySelector('.ib-t').textContent = 'colorless visualiser'; infoBox.querySelector('.ib-d').textContent = '知りたいボタンやモジュールにカーソルを合わせると、ここに説明が出ます。'; } }
+infoBtn.addEventListener('click', () => infoToggle());
+window.addEventListener('pointermove', e => { if (!infoOn || e.pointerType === 'touch') return; infoPt = [e.clientX, e.clientY]; if (!infoRaf) infoRaf = requestAnimationFrame(() => { infoRaf = 0; infoShow(infoPt[0], infoPt[1]); }); }, {passive:true});
+window.addEventListener('pointerdown', e => { if (infoOn && e.pointerType === 'touch') { infoLast = null; infoShow(e.clientX, e.clientY); } }, {passive:true, capture:true});
 
 for (const c of [...modCopies]) if (!makeAny(c.b, c.k)) modCopies = modCopies.filter(x => x !== c);
 applyOrder();

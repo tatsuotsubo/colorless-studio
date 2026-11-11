@@ -1510,3 +1510,293 @@ section.last {
 @media (prefers-reduced-motion: reduce) {
   .has-slides.is-on-art .slide-nav.next { animation: none; }
 }
+
+/* =========================================================
+   v4（2026-11）：New Release を「ジャケの比率自由」に。
+   見た目は colorless visualiser のまま（すりガラス・ピル型・アクセント #1E739E）。
+   フォントは Futura Medium に統一。
+========================================================= */
+
+/* ---------- フォント：Futura Medium に統一 ---------- */
+:root {
+  --f-body: "Futura", "Futura PT", "Jost", "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif;
+  --f-ja: var(--f-body);
+}
+
+body,
+body *:not(svg):not(path) {
+  font-family: var(--f-body) !important;
+  font-weight: 500 !important;
+  font-style: normal;
+}
+
+/* ---------- フィルター（visualiser のセグメント） ---------- */
+.rel-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  width: fit-content;
+  margin: -8px 0 22px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  background: var(--glass-strong);
+}
+
+.chip {
+  padding: 4px 14px;
+  border: 0;
+  border-radius: 9999px;
+  background: none;
+  font-size: 12px;
+  color: var(--ink2);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+
+.chip:hover { color: var(--ink); }
+
+.chip.is-active {
+  background: var(--ink);
+  color: #fff;
+}
+
+/* ---------- 一覧：3列（ジャケの縦横比は自由） ---------- */
+.rel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.rel {
+  min-width: 0;
+  padding: 12px 12px 10px;
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--r-lg);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  backdrop-filter: blur(14px) saturate(1.1);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+@supports (animation-timeline: view()) {
+  .rel {
+    animation: fadeIn linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 25%;
+  }
+}
+
+.rel:hover {
+  box-shadow: 0 10px 30px rgba(18, 33, 38, .1);
+}
+
+.rel.is-hidden { display: none; }
+
+/* ジャケの枠：正方形の「くぼみ」。
+   長方形ジャケは切らずに全体を収め、余白は同じジャケをぼかして埋める（visualiser の動画フレームと同じ考え方） */
+.rel-media { display: block; }
+
+.rel .music-art-wrap {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--r-md);
+  background: var(--well);
+  isolation: isolate;
+}
+
+/* 余白を埋める、同じジャケのぼかし */
+.rel .music-art-bg {
+  position: absolute;
+  inset: -24px;
+  z-index: 0;
+  width: calc(100% + 48px);
+  height: calc(100% + 48px);
+  object-fit: cover;
+  filter: blur(22px) saturate(1.15) brightness(1.04);
+  pointer-events: none;
+}
+
+.rel .music-art,
+.rel .music-video {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.rel .music-art {
+  transition: opacity .4s ease, transform .6s cubic-bezier(.2, .7, .2, 1);
+}
+
+/* 長方形ジャケは少し影をつけて「置いてある」感じに */
+.rel.is-wide .music-art,
+.rel.is-tall .music-art {
+  filter: drop-shadow(0 6px 18px rgba(18, 33, 38, .18));
+}
+
+.rel .music-video { z-index: 2; opacity: 0; transition: opacity .4s ease; }
+.rel-media:hover .music-video { opacity: 1; }
+.rel-media:hover .music-art-wrap:has(.music-video) .music-art { opacity: 0; }
+.rel-media:hover .music-art { transform: scale(1.03); }
+
+/* ---------- タイトル行 ---------- */
+.rel-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  padding: 12px 4px 4px;
+}
+
+.rel-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.35;
+  letter-spacing: .01em;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.rel-kind {
+  flex: none;
+  padding: 1px 9px;
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  background: var(--glass-strong);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.rel-date {
+  flex-basis: 100%;
+  font-size: 11px;
+  color: var(--ink2);
+}
+
+/* ---------- 曲リスト（開閉） ---------- */
+.rel-tracks {
+  margin: 8px 0 2px;
+  border-top: 1px solid var(--line);
+}
+
+.rel-tracks + .rel-tracks { margin-top: 0; }
+
+.rel-tracks summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 4px;
+  list-style: none;
+  font-size: 12px;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.rel-tracks summary::-webkit-details-marker { display: none; }
+
+.rel-tracks__label {
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: var(--accent);
+}
+
+.rel-count {
+  min-width: 20px;
+  padding: 0 6px;
+  border-radius: 9999px;
+  background: rgba(18, 33, 38, .07);
+  font-size: 10px;
+  text-align: center;
+  color: var(--ink2);
+}
+
+.rel-plus {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  margin-left: auto;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--glass-strong);
+  transition: border-color .15s;
+}
+
+.rel-tracks summary:hover .rel-plus { border-color: var(--accent); }
+
+.rel-plus::before,
+.rel-plus::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 9px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: var(--ink);
+  transform: translate(-50%, -50%);
+  transition: transform .3s ease;
+}
+
+.rel-plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+.rel-tracks[open] .rel-plus::after { transform: translate(-50%, -50%) rotate(0); }
+
+.rel-tracks .music-info {
+  max-height: 320px;
+  margin: 0 0 8px;
+  padding: 2px 12px;
+}
+
+.rel-tracks .track-item { padding: 8px 0; }
+.rel-tracks .soundBtn { width: 30px; height: 30px; }
+.rel-tracks .soundIcon,
+#music .rel-tracks ul > li span.soundBtn img { width: 12px; height: 12px; }
+.rel-tracks .track-name { font-size: 12px; }
+.rel-tracks .wave { height: 28px; min-height: 28px; }
+
+/* ---------- レスポンシブ ---------- */
+@media (max-width: 1000px) {
+  .rel-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .rel-grid { grid-template-columns: 1fr; gap: 14px; }
+  .rel-filter { margin-top: -4px; }
+}
+
+/* 音源なしの曲目（tracklist） */
+.tracklist {
+  margin: 0 0 8px;
+  padding: 2px 12px;
+  border-radius: var(--r-md);
+  background: var(--well);
+  border: 1px solid rgba(255, 255, 255, .55);
+  list-style: none;
+}
+
+.tracklist li {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: baseline;
+  padding: 7px 0;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+}
+
+.tracklist li:first-child { border-top: 0; }
+.tl-no { font-size: 10px; color: var(--ink2); }
+.tl-title { color: var(--ink); overflow-wrap: anywhere; }
+.tl-artist { font-size: 11px; color: var(--ink2); text-align: right; }

@@ -1,0 +1,166 @@
+[
+ {
+  "title": "calm",
+  "kind": "live",
+  "img": "images/release/web/calm.jpg",
+  "size": [
+   856,
+   1200
+  ],
+  "video": "videos/release/calm_HP.mp4",
+  "date": "2026.11.08 sun — LIQUID ROOM KATA / open 14:30 start 15:00"
+ },
+ {
+  "title": "Fragment;",
+  "kind": "album",
+  "href": "https://colorless-studio-cscd-0002.pages.dev/",
+  "img": "images/release/web/Fragment.jpg",
+  "size": [
+   1200,
+   1185
+  ],
+  "video": "videos/release/Fragment_HP.mp4",
+  "date": "2026.10.25 — CSCD-0002 / M3-2026秋",
+  "tracklist": [
+   [
+    "daydream",
+    "Malcha"
+   ],
+   [
+    "reverse",
+    "kou"
+   ],
+   [
+    "sele",
+    "夜間同好会"
+   ],
+   [
+    "Layers",
+    "Yusho Sunagawa"
+   ],
+   [
+    "RESFEBER",
+    "so1anew"
+   ],
+   [
+    "downspout",
+    "potaguri"
+   ],
+   [
+    "tōrō nagashi",
+    "ftrygry"
+   ],
+   [
+    "refraction",
+    "Tsuyoshi A."
+   ],
+   [
+    "Fragment",
+    "colorless studio"
+   ]
+  ]
+ },
+ {
+  "title": "Fragment; sound texture pack",
+  "kind": "samplepack",
+  "href": "https://colorless-studio.booth.pm/items/8959411",
+  "img": "images/release/web/Fragment_samplepack.jpg",
+  "size": [
+   1200,
+   675
+  ],
+  "video": "videos/release/Fragment_samplepack_HP.mp4",
+  "date": "555 files"
+ },
+ {
+  "title": "CS_SoundDesignRack1.0",
+  "kind": "tool",
+  "href": "https://colorless-studio.booth.pm/items/8377202",
+  "img": "images/release/web/CS_SoundDesignRack.jpg",
+  "size": [
+   937,
+   878
+  ],
+  "video": "videos/release/CS_SoundDesignRack_HP.mp4"
+ },
+ {
+  "title": "era / IA :[R]",
+  "kind": "single",
+  "href": "https://www.youtube.com/watch?v=oTIW9dxWadI",
+  "img": "images/release/web/era.jpg",
+  "size": [
+   1080,
+   1080
+  ]
+ },
+ {
+  "title": "CS_MIDI_HarmonyRack1.0",
+  "kind": "tool",
+  "href": "https://colorless-studio.booth.pm/items/8342676",
+  "img": "images/release/web/CS_MIDI_HarmonyRack.jpg",
+  "size": [
+   1200,
+   1200
+  ]
+ },
+ {
+  "title": "Sound as Film",
+  "kind": "album",
+  "href": "https://colorless-studio.booth.pm/",
+  "img": "images/release/web/SoundAsFilm.jpg",
+  "size": [
+   1200,
+   1200
+  ],
+  "video": "videos/release/SoundAsFilm_HP.mp4",
+  "tracks": [
+   [
+    "songs",
+    "<li class=\"track-item\" data-src=\"sounds/SoundasFilm/01.sync.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        sync feat.ひらめ _ natsume & Viznode\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/SoundasFilm/02.ulysses.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        ulysses feat.ひらめ _ ていぬ\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/SoundasFilm/03.Remnant.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        Remnant feat.ひらめ _ natsume & AZURA\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/SoundasFilm/04.なびく足跡.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        なびく足跡 _ Yusho Snagawa\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/SoundasFilm/05.adrift.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        adrift _ ecro\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/SoundasFilm/06.eidolume.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        eidolume _ jian\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/SoundasFilm/07.First Breath of Down.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        First Breath of Down _ あるふぁ\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>"
+   ]
+  ]
+ },
+ {
+  "title": "-ish (From Roteano)",
+  "kind": "single",
+  "href": "https://youtu.be/II6__wVhv-M",
+  "img": "images/release/web/ish.jpg",
+  "size": [
+   1200,
+   1200
+  ],
+  "video": "videos/release/ish_HP.mp4"
+ },
+ {
+  "title": "CS_HarmonyRack1.0",
+  "kind": "tool",
+  "href": "https://colorlessstudio.gumroad.com/l/cs_aw_samplepack",
+  "img": "images/release/web/CS_HarmonyRack.jpg",
+  "size": [
+   1080,
+   1080
+  ],
+  "video": "videos/release/CS_HarmonyRack_HP.mp4"
+ },
+ {
+  "title": "Awake; poetry texture pack vol.1(JPN)",
+  "kind": "samplepack",
+  "href": "https://colorlessstudio.gumroad.com/l/cs_aw_samplepack",
+  "img": "images/release/web/Awake.jpg",
+  "size": [
+   1200,
+   1200
+  ],
+  "video": "videos/release/Awake_HP.mp4",
+  "tracks": [
+   [
+    "demo songs",
+    "<li class=\"track-item\" data-src=\"sounds/demo_songs/01_teinu.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        as usual_ていぬ\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/demo_songs/02_wavfire.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        archetype_wavfire\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/demo_songs/03_ecro.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        just a dream_ecro\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/demo_songs/04_dowfi.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        shine_dowfi\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/demo_songs/05_nuimi.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        mimi_nari_nuimi\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/demo_songs/06_shimoui.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        Inconsistent_shimoui\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/demo_songs/07_wagataki.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        光の記憶_wagataki\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/demo_songs/08_flawgri.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        waterfowl_flawguri\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/demo_songs/09_jian.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        solivagant_jian\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/demo_songs/10_Viznode.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        Evoke_Viznode\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/demo_songs/11_natsume&alpha.mp3\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        Awake_natsume & alpha\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>"
+   ],
+   [
+    "samples",
+    "<li class=\"track-item\" data-src=\"sounds/samples/01_CS_AW_teinu_Spectral Riser_Ebmajwav-teinu.wav\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        CS_AW_teinu_Spectral Riser_Ebmaj\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/samples/02_CS_AW_pluckdelay_CMaj-Wavfire.wav\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        CS_AW_Wavfire_pluckdelay_C#Maj\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/samples/03_CW_AW_ecro_hocket_texture_01_Fmaj-Wayne Huang.wav\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        CW_AW_ecro_hocket_texture_01_F#maj\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/samples/CS_AW_dowfi_shot_delay.wav\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        CS_AW_dowfi_piano_random_C#\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n\n<li class=\"track-item\" data-src=\"sounds/samples/05_CS_AW_nu_imi_dmn.wav\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        CS_AW_nu_imi_dmn\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/samples/06_CS_AW_Shimoui_granular_epiano_120_Dmaj-Shimoui.wav\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        CS_AW_Shimoui_granular_epiano_120_Dmaj\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\"\n  data-src=\"sounds/samples/07_CS_AW_wagataki_piano_rondom_shimmering_Dmaj-wagataki.wav\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        CS_AW_wagataki_piano_rondom_shimmering_Dmaj\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/samples/08_CS_AW_flawguri_classical_guitar_120_Fmaj-gua hogo.wav\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        CS_AW_flawguri_classical_guitar_120_Fmaj\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/samples/09_CS_AW_jian_spectral-atonal-jian.wav\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        CS_AW_jian_spectral\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/samples/10_CS_AW_Viznode_Swell_Textural_1_D-Vz.wav\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        CS_AW_Viznode_Swell_Textural_1_D\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/samples/11_CS_AW_alpha_spacy_lofi_granular_Gmaj.wav\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        CS_AW_alpha_spacy_lofi_granular_G#maj\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>\n\n<li class=\"track-item\" data-src=\"sounds/samples/12_CS_AW_natsume_vocode_flower_pulse_Fmaj.wav\">\n  <div class=\"music-row\">\n    <span class=\"soundBtn\">\n      <img class=\"soundIcon\" src=\"images/button/play_button.png\" alt=\"再生\" width=\"20\">\n    </span>\n\n    <div class=\"track-right\">\n      <span class=\"track-name\">\n        CS_AW_natsume_vocode_flower_pulse_Fmaj\n      </span>\n      <div class=\"wave\"></div>\n    </div>\n  </div>\n</li>"
+   ]
+  ]
+ }
+]

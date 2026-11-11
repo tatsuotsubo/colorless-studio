@@ -2,7 +2,7 @@
 // HP の Visualiser セクション：Launch で visualiser/index.html を iframe に読み込む。
 // Close で iframe を空にして、音・カメラ・MIDI を確実に止める。
 document.addEventListener('DOMContentLoaded', () => {
-  const SRC = 'visualiser/index.html';
+  const SRC = 'visualiser/index.html?v=61';
   const frame = document.getElementById('visFrame');
   const cover = document.getElementById('visCover');
   const launch = document.getElementById('visLaunch');
