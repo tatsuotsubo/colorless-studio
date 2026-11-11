@@ -169,9 +169,7 @@ def kv(key):
   </div>
   <div class="kv__veil"></div>
   <div class="kv__text">
-    <p class="kv__kicker"><span>({no})</span> colorless studio</p>
     <h1 class="kv__title" data-split>{split(title)}</h1>
-    <p class="kv__sub" data-reveal>{E(k.get("sub", ""))}</p>
   </div>
   <a class="kv__scroll" href="#content" aria-label="scroll"><span>scroll</span><i></i></a>
 </section>
@@ -332,7 +330,7 @@ def page_home():
                    f' poster="{E(bg["poster"])}" src="{E(bg["src"])}"></video>')
         tiles += f'''
       <li style="--i:{int(n)}">
-        <a class="home-tile" href="{f}" data-key="{k}" data-sub="{E(KV[k].get("sub", ""))}">
+        <a class="home-tile" href="{f}" data-key="{k}">
           <video class="home-tile__video" autoplay muted loop playsinline preload="auto" poster="{E(tv["poster"])}" src="{E(tv["src"])}"></video>
           <span class="home-tile__shade"></span>
           <span class="home-tile__no">{n}</span>
@@ -371,12 +369,11 @@ def page_gallery():
     return kv("gallery") + f'''
 <main id="content">
 <section id="scatter">
-{section_head("Gallery", f"{len(cards)} artworks — tap to listen")}
 {P["gallery_stage"]}
 </section>
 
 <section class="gal-all">
-{section_head("Archive", "all artworks")}
+{section_head("Archive")}
   <div class="gal-grid">{grid}
   </div>
 </section>
@@ -391,7 +388,6 @@ def page_release():
     return kv("release") + f'''
 <main id="content">
 <section id="music">
-{section_head("New Release", f"{len(releases)} releases")}
   {release_filter()}
   <div class="rel-grid">{release_grid(releases)}
   </div>
@@ -403,17 +399,9 @@ def page_release():
 
 def page_visualiser():
     body = strip_h2(P["visualiser"]).replace('<div class="vis-panel">', '<div class="vis-panel" data-reveal>')
-    feats = [("Field", "グラニュラー。音を粒にして、空間に散らす"), ("Audio", "音声ファイルをドロップして再生・解析"),
-             ("MIDI", "鍵盤・MIDIコントローラーで演奏"), ("Analyzer", "スペクトログラム・波形・ラウドネスを可視化")]
-    fl = "".join(f'\n    <li data-reveal><span class="feat__name">{a}</span><span class="feat__desc">{E(b)}</span></li>' for a, b in feats)
     return kv("visualiser") + f'''
 <main id="content">
-<section class="feat">
-{section_head("Modules", "granular · midi · audio")}
-  <ul class="feat__list">{fl}
-  </ul>
-</section>
-{body.replace('<section id="visualiser">', '<section id="visualiser">' + chr(10) + section_head("Play", "runs in your browser"))}
+{body}
 {next_link("visualiser")}
 </main>
 '''
@@ -421,7 +409,7 @@ def page_visualiser():
 
 def page_artist():
     body = strip_h2(P["artist"]).replace('<div class="Artist">', '<div class="Artist" data-reveal>')
-    body = body.replace('<section id="artist" data-slider="artist">', '<section id="artist" data-slider="artist">\n' + section_head("Artist", "members"))
+    body = body.replace('<section id="artist" data-slider="artist">', '<section id="artist" data-slider="artist">\n' + section_head("Artist"))
     about = P["about"].replace('<div class="about-wrapper">', '<div class="about-wrapper" data-reveal>')
     return kv("artist") + f'''
 <main id="content">
@@ -438,13 +426,7 @@ def page_contact():
     return kv("contact") + f'''
 <main id="content">
 <section class="contact">
-{section_head("Contact us", "お問い合わせ")}
   <div class="contact__grid">
-    <div class="contact__lead" data-reveal>
-      <p class="contact__big">Let’s make<br>something <span class="accent">pale</span><br>&amp; beautiful.</p>
-      <p class="contact__text">お仕事のご依頼・ご相談・その他のお問い合わせは、フォームまたはメールからお気軽にどうぞ。</p>
-    </div>
-
     <div class="contact__cards">
       <a class="contact-card contact-card--primary" href="{FORM}" target="_blank" rel="noopener" data-reveal>
         <span class="contact-card__label">form</span>

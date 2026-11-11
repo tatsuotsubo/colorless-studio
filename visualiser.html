@@ -10,12 +10,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/reset.css?v=20261111i">
-  <link rel="stylesheet" href="css/style.css?v=20261111i">
+  <link rel="stylesheet" href="css/reset.css?v=20261111j">
+  <link rel="stylesheet" href="css/style.css?v=20261111j">
   <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('cs-pt'))document.documentElement.classList.add('pt-enter')}catch(e){}</script>
-  <script src="js/site.js?v=20261111i" defer></script>
-  <script src="js/hamburger-menu.js?v=20261111i" defer></script>
-  <script src="js/visualiser-tab.js?v=20261111i" defer></script>
+  <script src="js/site.js?v=20261111j" defer></script>
+  <script src="js/hamburger-menu.js?v=20261111j" defer></script>
+  <script src="js/visualiser-tab.js?v=20261111j" defer></script>
 </head>
 <body class="page-visualiser">
 <!-- 背景：visualiser と同じ「ぼかした動画＋淡いスカイ」 -->
@@ -71,31 +71,13 @@
   </div>
   <div class="kv__veil"></div>
   <div class="kv__text">
-    <p class="kv__kicker"><span>(03)</span> colorless studio</p>
     <h1 class="kv__title" data-split><span class="w"><span class="ch" style="--i:1">V</span><span class="ch" style="--i:2">i</span><span class="ch" style="--i:3">s</span><span class="ch" style="--i:4">u</span><span class="ch" style="--i:5">a</span><span class="ch" style="--i:6">l</span><span class="ch" style="--i:7">i</span><span class="ch" style="--i:8">s</span><span class="ch" style="--i:9">e</span><span class="ch" style="--i:10">r</span></span></h1>
-    <p class="kv__sub" data-reveal>ブラウザで動くグラニュラー / ビジュアライザー</p>
   </div>
   <a class="kv__scroll" href="#content" aria-label="scroll"><span>scroll</span><i></i></a>
 </section>
 
 <main id="content">
-<section class="feat">
-  <div class="sec-head" data-reveal>
-    <h2>Modules</h2><p class="sec-note">granular · midi · audio</p>
-  </div>
-
-  <ul class="feat__list">
-    <li data-reveal><span class="feat__name">Field</span><span class="feat__desc">グラニュラー。音を粒にして、空間に散らす</span></li>
-    <li data-reveal><span class="feat__name">Audio</span><span class="feat__desc">音声ファイルをドロップして再生・解析</span></li>
-    <li data-reveal><span class="feat__name">MIDI</span><span class="feat__desc">鍵盤・MIDIコントローラーで演奏</span></li>
-    <li data-reveal><span class="feat__name">Analyzer</span><span class="feat__desc">スペクトログラム・波形・ラウドネスを可視化</span></li>
-  </ul>
-</section>
 <section id="visualiser">
-  <div class="sec-head" data-reveal>
-    <h2>Play</h2><p class="sec-note">runs in your browser</p>
-  </div>
-
 
   <div class="vis-panel" data-reveal>
     <div class="vis-head">
@@ -103,7 +85,6 @@
         <img class="vis-mark" src="images/logo/CS_logo.png" alt="">
         <div>
           <p class="vis-title">colorless visualiser</p>
-          <p class="vis-sub">granular · midi · audio — ブラウザで動くグラニュラー / ビジュアライザー</p>
         </div>
       </div>
       <div class="vis-actions">
@@ -121,7 +102,6 @@
           <span class="vis-cover__icon">▶</span>
           <span>Launch visualiser</span>
         </button>
-        <p class="vis-cover__note">音声ファイルのドラッグ＆ドロップ・MIDI・カメラに対応。全機能（タブ録画など）は「新しいタブで開く」から。</p>
       </div>
       <iframe class="vis-frame" id="visFrame" title="colorless visualiser" hidden
         allow="autoplay; microphone; camera; midi; fullscreen; display-capture; clipboard-write"></iframe>

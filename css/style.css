@@ -2830,3 +2830,6 @@ body.page-home .logo-image { transition: opacity .6s, transform .8s var(--ease-o
 
 .home-bg__layer.is-active { transform: none; filter: none; }
 .home-bg__layer.is-leaving { transform: none; }
+
+/* v5.2.2：説明文を削除したので Contact はカードだけを中央に */
+.contact__grid { grid-template-columns: minmax(0, 760px); justify-content: center; }
