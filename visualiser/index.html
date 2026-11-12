@@ -510,6 +510,24 @@ body.infomode .vempty{visibility:visible}
 #infoBox{left:auto;bottom:auto;top:0;transition:none}
 /* Rec 中は録画される枠を赤く */
 body:has(#rec[aria-pressed="true"]) .frame::before{display:block!important;border:2px solid var(--rec,#C2412F);box-shadow:0 0 0 3px rgba(194,65,47,.18);inset:-7px}
+/* ===== Undo / Redo ボタン ===== */
+.histbtn{width:var(--bh,30px);padding:0!important;justify-content:center;font-size:15px!important}
+.histbtn:disabled{opacity:.35;cursor:default;border-color:var(--line)}
+/* ===== モジュールのドラッグ：持ち上げてふわふわ ===== */
+.lifting{opacity:.18!important;outline:1.5px dashed rgba(30,115,158,.55)!important;outline-offset:2px;filter:saturate(.6)}
+.lifting.landing{opacity:1!important;outline:0!important;filter:none;transition:opacity .25s}
+.modfloat{position:fixed;left:0;top:0;z-index:2000;pointer-events:none;will-change:transform;transition:none}
+.modfloat > *{transform-origin:50% 40%;transition:transform .28s cubic-bezier(.2,.9,.25,1.25),box-shadow .28s;border-radius:var(--r-lg);overflow:hidden}
+.modfloat.up > *{transform:scale(1.045);box-shadow:0 26px 60px rgba(18,33,38,.28),0 6px 16px rgba(18,33,38,.14);animation:modFloat 2.4s ease-in-out .25s infinite}
+.modfloat.land{transition:transform .24s cubic-bezier(.2,.8,.2,1),width .24s,height .24s}
+.modfloat.land > *{transform:scale(1);box-shadow:none;animation:none}
+@keyframes modFloat{0%,100%{transform:scale(1.045) translateY(0) rotate(-.35deg)}50%{transform:scale(1.05) translateY(-4px) rotate(.35deg)}}
+/* 持ち上げている間、ほかのモジュールは小さく揺れて「並べ替えできる」状態に */
+body.modlifting .rack > [data-mod]:not(.lifting){animation:modJiggle .32s ease-in-out infinite alternate}
+body.modlifting .rack > [data-mod]:nth-child(2n):not(.lifting){animation-delay:-.16s}
+body.modlifting .rack > [data-mod]:nth-child(3n):not(.lifting){animation-duration:.36s}
+@keyframes modJiggle{from{rotate:-.18deg}to{rotate:.18deg}}
+@media (prefers-reduced-motion: reduce){.modfloat.up > *,body.modlifting .rack > [data-mod]{animation:none!important}}
 </style>
 
 <div class="backdrop" aria-hidden="true">
@@ -553,6 +571,8 @@ body:has(#rec[aria-pressed="true"]) .frame::before{display:block!important;borde
     </span>
     <button class="btn" id="play" type="button" aria-pressed="false">▶ C3</button>
     <button class="btn" id="resetAll" type="button" title="全パラメータを初期値に戻す（ロックも解除）">Reset</button>
+    <button class="btn histbtn" id="undoBtn" type="button" title="元に戻す（⌘Z / Ctrl+Z）" aria-label="元に戻す" disabled>↶</button>
+    <button class="btn histbtn" id="redoBtn" type="button" title="やり直す（⇧⌘Z / Ctrl+Y）" aria-label="やり直す" disabled>↷</button>
     <span class="sep"></span>
     <label for="preset">Preset
       <select id="preset">
@@ -3422,6 +3442,32 @@ const rack = $('#rack'), addTile = $('#addTile');
 function saveRack() { try { localStorage.setItem('cv.rack.v3', JSON.stringify({order: modOrder, off: Object.keys(MODULES).filter(k=>!modOn.has(k))})); } catch(e){} }
 function applyOrder() { for (const k of modOrder) { const el = rack.querySelector(`:scope > [data-mod="${k}"]`); if (el) rack.appendChild(el); } rack.appendChild(addTile); }
 function readOrder() { modOrder = [...rack.querySelectorAll(':scope > [data-mod]')].map(el=>el.dataset.mod); saveRack(); }
+/* つかんだモジュールの「浮いた写し」：指に持ち上げられたように少し大きく、影をつけてふわふわ追いかける（iPhone のアプリ並べ替えのように） */
+let flt = null;
+function floatStart(sec, e) {
+  floatEnd(null, true);
+  const r = sec.getBoundingClientRect(); if (!r.width) return;
+  const c = sec.cloneNode(true); c.removeAttribute('id'); c.querySelectorAll('[id]').forEach(n => n.removeAttribute('id'));
+  // 絵（canvas・動画）はその瞬間の画を写す
+  const sc = sec.querySelectorAll('canvas, video'), cc = c.querySelectorAll('canvas, video');
+  sc.forEach((src, i) => { const dst = cc[i]; if (!dst) return; const cv = document.createElement('canvas'); const w = src.width || src.videoWidth || src.clientWidth, h = src.height || src.videoHeight || src.clientHeight;
+    cv.width = w; cv.height = h; cv.className = dst.className; cv.style.cssText = dst.style.cssText; try { cv.getContext('2d').drawImage(src, 0, 0, w, h); } catch(_) {} dst.replaceWith(cv); });
+  const w = document.createElement('div'); w.className = 'modfloat'; w.style.width = r.width + 'px'; w.style.height = r.height + 'px';
+  c.classList.remove('lifting', 'editing'); c.style.cssText += ';width:100%;height:100%;margin:0;position:relative;left:0;top:0'; w.appendChild(c); document.body.appendChild(w);
+  flt = {el:w, ox:e.clientX - r.left, oy:e.clientY - r.top, x:r.left, y:r.top, tx:r.left, ty:r.top, raf:0};
+  const tick = () => { if (!flt) return; flt.x += (flt.tx - flt.x) * .32; flt.y += (flt.ty - flt.y) * .32; flt.el.style.transform = `translate(${flt.x}px,${flt.y}px)`; flt.raf = requestAnimationFrame(tick); };
+  tick(); requestAnimationFrame(() => w.classList.add('up')); document.body.classList.add('modlifting');
+}
+function floatFollow(e) { if (!flt) return; flt.tx = e.clientX - flt.ox; flt.ty = e.clientY - flt.oy; }
+function floatEnd(L, now) {
+  document.body.classList.remove('modlifting');
+  if (!flt) return; const f = flt; flt = null; cancelAnimationFrame(f.raf);
+  if (now || !L || !L.isConnected) { f.el.remove(); return; }
+  // 置いた場所へすっと吸い込まれて着地
+  const r = L.getBoundingClientRect(); f.el.classList.remove('up'); f.el.classList.add('land');
+  f.el.style.width = r.width + 'px'; f.el.style.height = r.height + 'px'; f.el.style.transform = `translate(${r.left}px,${r.top}px)`;
+  L.classList.add('landing'); setTimeout(() => { f.el.remove(); L.classList.remove('landing'); }, 260);
+}
 let lift = null, grab = null, ghost = null, ins = null, layerTgt = null, dockTip = null;
 const tipAt = (t, e) => { if (!t) { if (dockTip) { dockTip.remove(); dockTip = null; } return; } if (!dockTip) { dockTip = document.createElement('div'); dockTip.className = 'rsztip'; document.body.appendChild(dockTip); }
   dockTip.textContent = t; dockTip.style.left = (e.clientX + 14) + 'px'; dockTip.style.top = (e.clientY + 16) + 'px'; };
@@ -3430,9 +3476,9 @@ const unIns = () => { if (ins && ins.tgt) { setCellRect(ins.tgt.dataset.mod, ins
 rack.addEventListener('pointerdown', e => { const g = e.target.closest('.grip'); if (!g) return; e.preventDefault(); let sec = g.closest('[data-mod]');
   if (e.altKey) { const cp = dupModule(sec.dataset.mod, true); if (!cp) return; sec = cp; msg(`${MODULES[cp.dataset.mod]} を作りました。置きたい場所までドラッグ。`); }   // Option-drag: lift a copy
   grab = null; if (inBox(sec)) { const R = sec.parentElement.getBoundingClientRect(), r = sec.getBoundingClientRect(); grab = [(e.clientX - r.left)/R.width, (e.clientY - r.top)/R.height]; }
-  lift = sec; lift.classList.add('lifting'); try { g.setPointerCapture(e.pointerId); } catch(_){} });
+  lift = sec; lift.classList.add('lifting'); floatStart(sec, e); try { g.setPointerCapture(e.pointerId); } catch(_){} });
 let dwell = null;
-function liftMove(e) { if (!lift) return; clearTimeout(liftMove._t); if (ghost) { ghost.style.left = (e.clientX + 14) + 'px'; ghost.style.top = (e.clientY - 12) + 'px'; }
+function liftMoveCore(e) { if (!lift) return; clearTimeout(liftMove._t); if (ghost) { ghost.style.left = (e.clientX + 14) + 'px'; ghost.style.top = (e.clientY - 12) + 'px'; }
   const boxable = canBox(lift); let G = null, R = null;
   if (boxable) for (const b of boxes()) { if (b.hidden) continue; const g = gridOf(b), r = g.getBoundingClientRect(), M = 18;
     if (r.width && e.clientX > r.left - M && e.clientX < r.right + M && e.clientY > r.top - M && e.clientY < r.bottom + M) { G = g; R = r; break; } }
@@ -3468,8 +3514,15 @@ function liftMove(e) { if (!lift) return; clearTimeout(liftMove._t); if (ghost) 
   if (!tgt || tgt === lift || tgt.parentElement !== rack) return;
   const was = inBox(lift), mods = [...rack.querySelectorAll(':scope > [data-mod]')];
   if (was || mods.indexOf(tgt) < mods.indexOf(lift)) rack.insertBefore(lift, tgt); else rack.insertBefore(lift, tgt.nextSibling); rack.appendChild(addTile); if (was) { grab = null; unIns(); boxChanged(); } }
+/* ドラッグ中、まわりのモジュールが場所を空けるときは、ぱっと飛ばずにすっと動く（FLIP） */
+function liftMove(e) { if (!lift) return;
+  const els = [...rack.querySelectorAll(':scope > [data-mod], :scope > .addtile')].filter(x => x !== lift), before = new Map(els.map(x => [x, x.getBoundingClientRect()]));
+  liftMoveCore(e);
+  for (const x of els) { const a = before.get(x), b = x.getBoundingClientRect(), dx = a.left - b.left, dy = a.top - b.top;
+    if ((Math.abs(dx) > 1 || Math.abs(dy) > 1) && x.animate) x.animate([{transform:`translate(${dx}px,${dy}px)`}, {transform:'none'}], {duration:320, easing:'cubic-bezier(.2,.8,.2,1)'}); }
+  floatFollow(e); }
 window.addEventListener('pointermove', liftMove);
-const drop = () => { ins = null; dwell = null; clearTimeout(liftMove._t); if (!lift) return; const L = lift, T = layerTgt; L.classList.remove('lifting'); setTimeout(() => { lift = null; }, 0); setLayerTgt(null); tipAt(null);
+const drop = () => { ins = null; dwell = null; clearTimeout(liftMove._t); if (!lift) return; const L = lift, T = layerTgt; floatEnd(L); L.classList.remove('lifting'); setTimeout(() => { lift = null; }, 0); setLayerTgt(null); tipAt(null);
   if (ghost) { ghost.remove(); ghost = null; } for (const g of rack.querySelectorAll('.vgrid')) g.classList.remove('drop', 'snap');
   if (T && T.isConnected && !inBox(L)) makeLayer(T, L); readOrder(); boxChanged(); pruneBoxes(); storeSizes(); };
 window.addEventListener('pointerup', drop); window.addEventListener('pointercancel', drop);
@@ -4034,6 +4087,21 @@ $('#meta').firstChild.textContent = 'demo';
 } catch(e) {} })();
 if (FIRST_VISIT) applySnapshot(DEFAULT_SNAP);  // 初めて開いた人は公開時の Default で始める
 document.fonts && document.fonts.ready.then(() => { resize(); });
+/* ---------- Undo / Redo：操作のたびに状態を記録（最大 60 手） ---------- */
+{ const H = {stack:[], i:-1, lock:0, t:0};
+  const key = () => { try { return JSON.stringify(takeSnapshot()); } catch(e) { return null; } };
+  const ui = () => { $('#undoBtn').disabled = H.i <= 0; $('#redoBtn').disabled = H.i >= H.stack.length - 1; };
+  const push = () => { if (performance.now() < H.lock || lift) return; const k = key(); if (!k || k === H.stack[H.i]) return;
+    H.stack = H.stack.slice(0, H.i + 1); H.stack.push(k); if (H.stack.length > 60) H.stack.shift(); H.i = H.stack.length - 1; ui(); };
+  const soon = e => { if (e && e.target && e.target.closest && e.target.closest('#undoBtn, #redoBtn')) return; if (e && e.type === 'keyup' && (e.metaKey || e.ctrlKey || /^(Meta|Control|Shift)$/.test(e.key) || e.code === 'KeyZ' || e.code === 'KeyY')) return;
+    clearTimeout(H.t); H.t = setTimeout(push, 400); };
+  for (const ev of ['pointerup', 'change', 'keyup', 'drop']) document.addEventListener(ev, soon, true);
+  const go = d => { const j = H.i + d; if (j < 0 || j >= H.stack.length) return; H.i = j; H.lock = performance.now() + 1200; clearTimeout(H.t);
+    try { applySnapshot(JSON.parse(H.stack[j])); } catch(e) {} ui(); msg(d < 0 ? '元に戻しました。' : 'やり直しました。'); };
+  $('#undoBtn').addEventListener('click', () => go(-1)); $('#redoBtn').addEventListener('click', () => go(1));
+  window.addEventListener('keydown', e => { if (!(e.metaKey || e.ctrlKey) || typing(e)) return;
+    if (e.code === 'KeyZ' && !e.shiftKey) { e.preventDefault(); go(-1); } else if ((e.code === 'KeyZ' && e.shiftKey) || e.code === 'KeyY') { e.preventDefault(); go(1); } });
+  setTimeout(() => { H.stack = [key()].filter(Boolean); H.i = H.stack.length - 1; ui(); }, 1500); }
 requestAnimationFrame(frame);
 })();
 </script>
