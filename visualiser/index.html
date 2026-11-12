@@ -511,12 +511,13 @@ body.infomode .vempty{visibility:visible}
 /* Rec 中は録画される枠を赤く */
 body:has(#rec[aria-pressed="true"]) .frame::before{display:block!important;border:2px solid var(--rec,#C2412F);box-shadow:0 0 0 3px rgba(194,65,47,.18);inset:-7px}
 /* ===== Undo / Redo ボタン ===== */
-.histbtn{width:var(--bh,30px);padding:0!important;justify-content:center;font-size:15px!important}
+.histbtn{flex:none;width:var(--bh,30px);min-width:var(--bh,30px);padding:0!important;justify-content:center;font-size:15px!important;font-family:system-ui,-apple-system,sans-serif!important}
 .histbtn:disabled{opacity:.35;cursor:default;border-color:var(--line)}
 /* ===== モジュールのドラッグ：持ち上げてふわふわ ===== */
 .lifting{opacity:.18!important;outline:1.5px dashed rgba(30,115,158,.55)!important;outline-offset:2px;filter:saturate(.6)}
 .lifting.landing{opacity:1!important;outline:0!important;filter:none;transition:opacity .25s}
 .modfloat{position:fixed;left:0;top:0;z-index:2000;pointer-events:none;will-change:transform;transition:none}
+.modfloat.rack{display:block!important;gap:0;padding:0;margin:0;columns:auto}
 .modfloat > *{transform-origin:50% 40%;transition:transform .28s cubic-bezier(.2,.9,.25,1.25),box-shadow .28s;border-radius:var(--r-lg);overflow:hidden}
 .modfloat.up > *{transform:scale(1.045);box-shadow:0 26px 60px rgba(18,33,38,.28),0 6px 16px rgba(18,33,38,.14);animation:modFloat 2.4s ease-in-out .25s infinite}
 .modfloat.land{transition:transform .24s cubic-bezier(.2,.8,.2,1),width .24s,height .24s}
@@ -3450,9 +3451,15 @@ function floatStart(sec, e) {
   const c = sec.cloneNode(true); c.removeAttribute('id'); c.querySelectorAll('[id]').forEach(n => n.removeAttribute('id'));
   // 絵（canvas・動画）はその瞬間の画を写す
   const sc = sec.querySelectorAll('canvas, video'), cc = c.querySelectorAll('canvas, video');
-  sc.forEach((src, i) => { const dst = cc[i]; if (!dst) return; const cv = document.createElement('canvas'); const w = src.width || src.videoWidth || src.clientWidth, h = src.height || src.videoHeight || src.clientHeight;
-    cv.width = w; cv.height = h; cv.className = dst.className; cv.style.cssText = dst.style.cssText; try { cv.getContext('2d').drawImage(src, 0, 0, w, h); } catch(_) {} dst.replaceWith(cv); });
-  const w = document.createElement('div'); w.className = 'modfloat'; w.style.width = r.width + 'px'; w.style.height = r.height + 'px';
+  sc.forEach((src, i) => { const dst = cc[i]; if (!dst) return;
+    if (src.tagName === 'CANVAS') { try { dst.getContext('2d').drawImage(src, 0, 0); } catch(_) {} return; }
+    // 動画（背景のテーマ映像など）：今の1コマを、object-fit:cover と同じ切り抜きで描く
+    const b = src.getBoundingClientRect(), cv = document.createElement('canvas'); cv.width = Math.max(1, Math.round(b.width)); cv.height = Math.max(1, Math.round(b.height));
+    cv.style.cssText = 'position:absolute;inset:0;width:100%;height:100%';
+    const vw = src.videoWidth, vh = src.videoHeight;
+    if (vw && vh) { const s = Math.max(cv.width / vw, cv.height / vh), dw = vw * s, dh = vh * s; try { cv.getContext('2d').drawImage(src, (cv.width - dw) / 2, (cv.height - dh) / 2, dw, dh); } catch(_) {} }
+    dst.replaceWith(cv); });
+  const w = document.createElement('div'); w.className = 'modfloat rack'; w.style.width = r.width + 'px'; w.style.height = r.height + 'px';
   c.classList.remove('lifting', 'editing'); c.style.cssText += ';width:100%;height:100%;margin:0;position:relative;left:0;top:0'; w.appendChild(c); document.body.appendChild(w);
   flt = {el:w, ox:e.clientX - r.left, oy:e.clientY - r.top, x:r.left, y:r.top, tx:r.left, ty:r.top, raf:0};
   const tick = () => { if (!flt) return; flt.x += (flt.tx - flt.x) * .32; flt.y += (flt.ty - flt.y) * .32; flt.el.style.transform = `translate(${flt.x}px,${flt.y}px)`; flt.raf = requestAnimationFrame(tick); };
