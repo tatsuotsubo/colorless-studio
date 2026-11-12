@@ -499,6 +499,17 @@ select,.mpbar select,.rndgrp select,.lyr select{height:var(--bh);box-sizing:bord
 .rack [data-mod]:hover > .ed-h h2.h,.rack [data-mod]:focus-within > .ed-h h2.h,.vgrid [data-mod]:hover > .ed-h h2.h{opacity:1}
 .rack [data-mod].noname:hover > .ed-h h2.h{opacity:.35}
 body.tabrec .rack [data-mod] > .ed-h h2.h{opacity:0!important}
+/* ===== 説明文はふだん隠し、i（info）を押した時だけ表示 ===== */
+.helptext,.rollinfo > span:not([id]),.fxhd > span,h2.h > span,.tag.hint,.minfo,.by{display:none!important}
+body.infomode .helptext,body.infomode .rollinfo > span:not([id]),body.infomode .fxhd > span,body.infomode .tag.hint,body.infomode .minfo{display:revert!important}
+body.infomode :not(.rack > [data-mod]) > .ed-h h2.h > span{display:revert!important}
+.vempty{visibility:hidden}
+body.infomode .vempty{visibility:visible}
+/* i ボタンは上のバーの右端に（他のボタンと同じ 30px の丸） */
+#infoBtn{position:static;flex:none;width:var(--bh,30px);height:var(--bh,30px);box-shadow:none;margin-left:2px;font-size:14px;background:var(--glass-strong);border:1px solid var(--line)}
+#infoBox{left:auto;bottom:auto;top:0;transition:none}
+/* Rec 中は録画される枠を赤く */
+body:has(#rec[aria-pressed="true"]) .frame::before{display:block!important;border:2px solid var(--rec,#C2412F);box-shadow:0 0 0 3px rgba(194,65,47,.18);inset:-7px}
 </style>
 
 <div class="backdrop" aria-hidden="true">
@@ -875,7 +886,7 @@ body.tabrec .rack [data-mod] > .ed-h h2.h{opacity:0!important}
       <h2 class="h">+ Module</h2>
       <div class="addlist" id="addList"></div>
       <div class="modpeek" id="modPeek" hidden aria-hidden="true"><img alt=""><b></b><span></span></div>
-      <span class="vcount" style="text-align:left">外したモジュールはここから戻せます。⠿ をドラッグで並べ替え。</span>
+      <span class="vcount helptext" style="text-align:left">外したモジュールはここから戻せます。⠿ をドラッグで並べ替え。</span>
     </section>
   </div>
   </div>
@@ -3964,7 +3975,7 @@ const INFO_CLS = [
 ];
 const infoBtn = document.createElement('button'); infoBtn.type = 'button'; infoBtn.id = 'infoBtn'; infoBtn.textContent = 'i'; infoBtn.setAttribute('aria-label', '機能の説明を表示'); infoBtn.setAttribute('aria-pressed', 'false');
 const infoBox = document.createElement('div'); infoBox.id = 'infoBox'; infoBox.hidden = true; infoBox.setAttribute('role', 'status'); infoBox.innerHTML = '<b class="ib-t"></b><p class="ib-d"></p><span class="ib-f">i をもう一度押すと閉じます</span>';
-document.body.append(infoBtn, infoBox);
+(document.querySelector('.transport') || document.body).append(infoBtn); document.body.append(infoBox);
 const clean = t => (t || '').replace(/\s+/g, ' ').trim();
 function infoFor(el) {
   if (!el || !el.closest || el.closest('#infoBox, #infoBtn')) return null;
@@ -3990,10 +4001,11 @@ function infoFor(el) {
 let infoOn = false, infoLast = null, infoRaf = 0, infoPt = null;
 function infoShow(x, y) { const el = document.elementFromPoint(x, y); if (el === infoLast) return; infoLast = el; const r = infoFor(el);
   infoBox.querySelector('.ib-t').textContent = r ? r.t : 'colorless visualizer'; infoBox.querySelector('.ib-d').textContent = r ? r.d : '知りたいボタンやモジュールにカーソルを合わせると、ここに説明が出ます。'; }
-function infoToggle(on) { infoOn = on == null ? !infoOn : on; infoBtn.setAttribute('aria-pressed', infoOn); infoBox.hidden = !infoOn; infoLast = null;
+function infoToggle(on) { infoOn = on == null ? !infoOn : on; infoBtn.setAttribute('aria-pressed', infoOn); infoBox.hidden = !infoOn; infoLast = null; document.body.classList.toggle('infomode', infoOn); if (infoOn) { const r = infoBtn.getBoundingClientRect(); infoPlace(r.right, r.bottom); }
   if (infoOn) { infoBox.querySelector('.ib-t').textContent = 'colorless visualizer'; infoBox.querySelector('.ib-d').textContent = '知りたいボタンやモジュールにカーソルを合わせると、ここに説明が出ます。'; } }
 infoBtn.addEventListener('click', () => infoToggle());
-window.addEventListener('pointermove', e => { if (!infoOn || e.pointerType === 'touch') return; infoPt = [e.clientX, e.clientY]; if (!infoRaf) infoRaf = requestAnimationFrame(() => { infoRaf = 0; infoShow(infoPt[0], infoPt[1]); }); }, {passive:true});
+function infoPlace(x, y) { const w = infoBox.offsetWidth || 340, h = infoBox.offsetHeight || 90; let L = x + 16, T = y + 18; if (L + w > innerWidth - 8) L = Math.max(8, x - w - 16); if (T + h > innerHeight - 8) T = Math.max(8, y - h - 14); infoBox.style.left = L + 'px'; infoBox.style.top = T + 'px'; }
+window.addEventListener('pointermove', e => { if (!infoOn || e.pointerType === 'touch') return; infoPt = [e.clientX, e.clientY]; infoPlace(e.clientX, e.clientY); if (!infoRaf) infoRaf = requestAnimationFrame(() => { infoRaf = 0; infoShow(infoPt[0], infoPt[1]); }); }, {passive:true});
 window.addEventListener('pointerdown', e => { if (infoOn && e.pointerType === 'touch') { infoLast = null; infoShow(e.clientX, e.clientY); } }, {passive:true, capture:true});
 
 for (const c of [...modCopies]) if (!makeAny(c.b, c.k)) modCopies = modCopies.filter(x => x !== c);
