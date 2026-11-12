@@ -3536,3 +3536,6 @@ html.mw-lock { overflow: hidden; }
 .vis-panel { padding: 0; background: none; border: 0; border-radius: 0; -webkit-backdrop-filter: none; backdrop-filter: none; }
 .vis-head { justify-content: flex-end; margin-bottom: 10px; }
 .vis-stage { border: 0; border-radius: var(--r-lg); }
+/* 起動中は visualizer の中身の高さまで枠を伸ばす（中でスクロールさせない） */
+.vis-stage.is-running { height: auto; min-height: 0; overflow: visible; }
+.vis-stage.is-running .vis-frame { height: 100vh; }

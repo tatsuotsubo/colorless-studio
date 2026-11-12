@@ -21,10 +21,39 @@ document.addEventListener('DOMContentLoaded', () => {
     if (launch) launch.hidden = true;
     if (closeBtn) closeBtn.hidden = false;
     document.getElementById('visualiser')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    frame.addEventListener('load', () => { try { frame.focus(); } catch (e) {} }, { once: true });
+    frame.addEventListener('load', () => { try { frame.focus(); } catch (e) {} fitStart(); }, { once: true });
+  };
+
+  /* 中でスクロールさせず、visualizer の中身の高さに合わせて枠を伸ばす（同じサイトなので中身を測れる） */
+  const stage = document.getElementById('visStage');
+  let ro = null, timer = 0;
+  const fit = () => {
+    try {
+      const d = frame.contentDocument;
+      if (!d || !d.body) return;
+      const cs = d.defaultView.getComputedStyle(d.body);
+      const h = Math.ceil(d.body.scrollHeight + parseFloat(cs.marginTop || 0) + parseFloat(cs.marginBottom || 0));
+      if (h > 200) frame.style.height = h + 'px';
+    } catch (e) {}
+  };
+  const fitStart = () => {
+    stage?.classList.add('is-running');
+    fit();
+    try {
+      ro = new ResizeObserver(() => { cancelAnimationFrame(timer); timer = requestAnimationFrame(fit); });
+      ro.observe(frame.contentDocument.body);
+    } catch (e) {}
+    window.addEventListener('resize', fit);
+  };
+  const fitStop = () => {
+    ro?.disconnect(); ro = null;
+    window.removeEventListener('resize', fit);
+    stage?.classList.remove('is-running');
+    frame.style.height = '';
   };
 
   const close = () => {
+    fitStop();
     frame.removeAttribute('src');   // ページごと破棄 → 音も止まる
     frame.src = 'about:blank';
     frame.hidden = true;
