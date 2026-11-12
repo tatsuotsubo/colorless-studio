@@ -1,5 +1,5 @@
 // js/visualiser-tab.js
-// HP の Visualiser セクション：Launch で visualiser/index.html を iframe に読み込む。
+// HP の Visualizer セクション：Launch で visualiser/index.html を iframe に読み込む。
 // Close で iframe を空にして、音・カメラ・MIDI を確実に止める。
 document.addEventListener('DOMContentLoaded', () => {
   const frame = document.getElementById('visFrame');

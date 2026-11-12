@@ -7,7 +7,7 @@
   index.html       ホーム（トップ動画・About・メニュー・最新リリース）
   gallery.html     Gallery
   release.html     Release
-  visualiser.html  Visualiser
+  visualiser.html  Visualizer
   artist.html      About Us
   contact.html     Contact us
 
@@ -35,7 +35,7 @@ PAGES = [  # (key, file, label, no)
     ("artist", "artist.html", "About Us", "01"),
     ("gallery", "gallery.html", "Gallery", "02"),
     ("release", "release.html", "Release", "03"),
-    ("visualiser", "visualiser.html", "Visualiser", "04"),
+    ("visualiser", "visualiser.html", "Visualizer", "04"),
     ("contact", "contact.html", "Contact us", "05"),
 ]
 FILE = {k: f for k, f, _, _ in PAGES}
@@ -607,7 +607,7 @@ SPEC = {
     "home": ("colorless studio", [], page_home, "videos/hero/hero_small.mp4"),
     "gallery": ("Gallery — colorless studio", ["scatter-modal"], page_gallery, None),
     "release": ("Release — colorless studio", ["scatter-modal", "music-preview", "release-v3"], page_release, None),
-    "visualiser": ("Visualiser — colorless studio", ["visualiser-tab"], page_visualiser, None),
+    "visualiser": ("Visualizer — colorless studio", ["visualiser-tab"], page_visualiser, None),
     "artist": ("About Us — colorless studio", [], page_artist, None),
     "contact": ("Contact us — colorless studio", [], page_contact, None),
 }
