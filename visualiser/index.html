@@ -3460,7 +3460,7 @@ function floatStart(sec, e) {
     if (vw && vh) { const s = Math.max(cv.width / vw, cv.height / vh), dw = vw * s, dh = vh * s; try { cv.getContext('2d').drawImage(src, (cv.width - dw) / 2, (cv.height - dh) / 2, dw, dh); } catch(_) {} }
     dst.replaceWith(cv); });
   const w = document.createElement('div'); w.className = 'modfloat rack'; w.style.width = r.width + 'px'; w.style.height = r.height + 'px';
-  c.classList.remove('lifting', 'editing'); c.style.cssText += ';width:100%;height:100%;margin:0;position:relative;left:0;top:0'; w.appendChild(c); document.body.appendChild(w);
+  c.classList.remove('lifting', 'editing'); for (const [k, v] of [['width', r.width + 'px'], ['height', r.height + 'px'], ['margin', '0'], ['position', 'relative'], ['left', '0'], ['top', '0']]) c.style.setProperty(k, v, 'important'); w.appendChild(c); document.body.appendChild(w);
   flt = {el:w, ox:e.clientX - r.left, oy:e.clientY - r.top, x:r.left, y:r.top, tx:r.left, ty:r.top, raf:0};
   const tick = () => { if (!flt) return; flt.x += (flt.tx - flt.x) * .32; flt.y += (flt.ty - flt.y) * .32; flt.el.style.transform = `translate(${flt.x}px,${flt.y}px)`; flt.raf = requestAnimationFrame(tick); };
   tick(); requestAnimationFrame(() => w.classList.add('up')); document.body.classList.add('modlifting');
