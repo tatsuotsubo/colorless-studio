@@ -3531,3 +3531,8 @@ html.mw-lock { overflow: hidden; }
   .member-row, .member-row--rev { grid-template-columns: 1fr; }
   .member-row--rev .member-row__media { justify-self: start; }
 }
+
+/* v5.8：Visualizer は枠なし（ロゴ・名前は本体側に出るので重ねない）。ボタンだけ右上に */
+.vis-panel { padding: 0; background: none; border: 0; border-radius: 0; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.vis-head { justify-content: flex-end; margin-bottom: 10px; }
+.vis-stage { border: 0; border-radius: var(--r-lg); }
