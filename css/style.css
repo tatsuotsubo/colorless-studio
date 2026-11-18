@@ -3542,3 +3542,4 @@ html.mw-lock { overflow: hidden; }
 
 /* v5.9 natsume 画像は白枠ごと見せる */
 .member__img[src*="guitar.jpg"] { object-fit: contain; border-radius: 0; }
+.member-row__media img[src*="guitar.jpg"] { width: 430px; }
