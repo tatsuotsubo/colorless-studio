@@ -3609,3 +3609,8 @@ body.page-home .header-right .contact-btn { display: none; }
   body.page-home #mainvisual { background: transparent; }
   body.page-home #mainvisual .bg-video { object-fit: contain; }
 }
+@media (max-width: 760px) {
+  /* トップ映像（全体）をロゴの高さに合わせて上寄せ、タイルは下に（SNS はメニューへ移したので下げる） */
+  body.page-home #mainvisual .bg-video { top: 34%; bottom: auto; height: auto; aspect-ratio: 16 / 9; transform: translateY(-50%); object-fit: cover; }
+  body.page-home .home-nav { bottom: 28px; }
+}
