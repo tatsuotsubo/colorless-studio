@@ -3802,13 +3802,5 @@ body.page-home #mainvisual .home-tile .home-tile__video { transform: none; }
 #mainvisual.menu-open .home-meta { opacity: 0; pointer-events: none; }
 .home-meta { transition: opacity .4s; }
 
-/* v6.8 ホーム：背景（映像）は最初から全部ぼかす。ロゴを押すと白みが加わる */
-.home-veil {
-  opacity: 1;
-  background: rgba(255, 255, 255, 0);
-  -webkit-backdrop-filter: blur(18px) saturate(1.05);
-  backdrop-filter: blur(18px) saturate(1.05);
-  transition: background .8s ease;
-}
-#mainvisual.menu-open .home-veil { opacity: 1; background: rgba(255, 255, 255, .38); }
-#mainvisual.menu-open.is-previewing .home-veil { opacity: 1; background: rgba(255, 255, 255, .12); }
+/* v6.8.1 Tap Here：後ろのぼかし・帯はなし（文字だけ） */
+.home-hint { padding: 0; border: 0; border-radius: 0; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; text-shadow: 0 0 2px rgba(18, 33, 38, .55), 0 1px 14px rgba(18, 33, 38, .6); }
