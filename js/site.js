@@ -201,6 +201,19 @@
       }
     }
 
+    /* ---------- 4f) ホーム：ロゴを押すとページのタイルが横から出る ---------- */
+    const logoBtn = document.querySelector('.home-logo-btn');
+    if (logoBtn) {
+      const mv = document.getElementById('mainvisual');
+      const setOpen = (on) => {
+        mv.classList.toggle('menu-open', on);
+        logoBtn.setAttribute('aria-expanded', on ? 'true' : 'false');
+      };
+      logoBtn.addEventListener('click', () => setOpen(!mv.classList.contains('menu-open')));
+      document.querySelector('.home-veil')?.addEventListener('click', () => setOpen(false));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+    }
+
     /* ---------- 4c) 次ページリンクの動画（見えたら再生） ---------- */
     document.querySelectorAll('.next-page').forEach((n) => {
       const v = n.querySelector('video');

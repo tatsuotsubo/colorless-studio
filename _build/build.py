@@ -355,8 +355,11 @@ def page_home():
   <div class="home-bg" aria-hidden="true">{layers}
   </div>
 
-  <!-- 1画面のホーム：映像タイルのメニュー -->
-  <nav class="home-nav" aria-label="pages">
+  <!-- ロゴを押すと出る、背景をぼかした白い幕 -->
+  <div class="home-veil" aria-hidden="true"></div>
+
+  <!-- 1画面のホーム：映像タイルのメニュー（ロゴを押すと横から出る） -->
+  <nav class="home-nav" id="homeNav" aria-label="pages">
     <ul>{tiles}
     </ul>
   </nav>
