@@ -326,7 +326,8 @@ def page_home():
         vids = KV[k]["videos"]
         # 背景はホーム専用のフル解像度版（videos/home/<key>.mp4）。パネル用の切り抜き版は使わない（荒くなる）
         bg = {"src": f"videos/home/{k}.mp4", "poster": f"images/home/{k}.jpg"}
-        tv = vids[min(HOME_TILE[k], len(vids) - 1)]
+        # タイルのサムネも背景と同じ映像（各ページの1枚目のビジュアル）の軽い版
+        tv = {"src": f"videos/home/{k}_tile.mp4", "poster": f"images/home/{k}_tile.jpg"}
         layers += (f'\n    <video class="home-bg__layer" data-key="{k}" muted loop playsinline preload="none"'
                    f' data-poster="{E(bg["poster"])}" src="{E(bg["src"])}"></video>')
         tiles += f'''
@@ -613,7 +614,7 @@ SPEC = {
 }
 
 for key, (title, scripts, fn, bd) in SPEC.items():
-    bdsrc = bd or KV[key]["videos"][0]["src"]
+    bdsrc = bd or ("videos/home/gallery.mp4" if key == "gallery" else KV[key]["videos"][0]["src"])
     page = (head(title, DESC, scripts) + backdrop(bdsrc).replace("{PAGE}", key)
             + (loader() if key == "home" else "") + header(key) + fn()
             + (HOME_END if key == "home" else footer()))

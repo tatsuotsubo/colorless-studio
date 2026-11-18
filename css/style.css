@@ -3543,3 +3543,21 @@ html.mw-lock { overflow: hidden; }
 /* v5.9 natsume 画像は白枠ごと見せる */
 .member__img[src*="guitar.jpg"] { object-fit: contain; border-radius: 0; }
 .member-row__media img[src*="guitar.jpg"] { width: 430px; }
+
+/* v6.0 ホーム：ホバー時の背景は円形に広げず、ふっとクロスフェード */
+.home-bg__layer,
+.home-bg__layer.is-active,
+.home-bg__layer.is-leaving {
+  clip-path: none;
+  transform: none;
+  filter: none;
+}
+.home-bg__layer { opacity: 0; transition: opacity 1s ease; }
+.home-bg__layer.is-active { opacity: 1; }
+.home-bg__layer.is-leaving { opacity: 0; }
+#mainvisual.is-previewing ~ .logo-image,
+body.page-home:has(#mainvisual.is-previewing) .logo-image {
+  transform: translate(-50%, -50%) !important;
+  transition: opacity 1s ease;
+}
+.home-bg:has(.is-active) .home-bg__layer.is-leaving { opacity: 1; }
