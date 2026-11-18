@@ -3662,3 +3662,60 @@ body.page-home .home-nav li {
 @media (max-height: 560px) and (max-width: 760px) {
   body.page-home .logo-image { display: block; width: 90px; }
 }
+
+/* =========================================================
+   v6.6 ホーム：ロゴは画面の真ん中、「tap here」と跳ねるロゴ、スマホは映像を並べて全体を埋める
+========================================================= */
+.home-mosaic { display: none; }
+
+.home-hint {
+  position: fixed;
+  left: 50%;
+  top: calc(50% + 122px);
+  z-index: 201;
+  transform: translateX(-50%);
+  font-size: 11px;
+  letter-spacing: .32em;
+  text-transform: lowercase;
+  color: #fff;
+  text-shadow: 0 1px 10px rgba(18, 33, 38, .45);
+  pointer-events: none;
+  white-space: nowrap;
+  animation: hintPulse 2.8s ease-in-out infinite;
+  transition: opacity .4s;
+}
+@keyframes hintPulse { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+#mainvisual.menu-open .home-hint,
+#mainvisual.menu-seen .home-hint { opacity: 0; animation: none; }
+
+@keyframes logoHop {
+  0%, 62%, 100% { transform: translate(-50%, -50%); }
+  70% { transform: translate(-50%, calc(-50% - 16px)) scale(1.03); }
+  78% { transform: translate(-50%, -50%) scale(1.04, .96); }
+  84% { transform: translate(-50%, calc(-50% - 6px)); }
+  90% { transform: translate(-50%, -50%); }
+}
+#mainvisual:not(.menu-seen) .logo-image { animation: logoHop 2.8s ease-in-out 1.2s infinite; }
+
+@media (max-width: 760px) {
+  body.page-home .logo-image { top: 50%; }
+  body.page-home #mainvisual .bg-video { top: 50%; z-index: 1; }
+  .home-hint { top: calc(50% + 96px); }
+  .home-mosaic {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0;
+  }
+  .home-mosaic > * { flex: none; width: 100%; aspect-ratio: 16 / 9; }
+  .home-mosaic video { display: block; height: auto; object-fit: cover; }
+  body.page-home #mainvisual::after { display: none; }
+}
+@media (max-height: 560px) and (max-width: 760px) {
+  .home-hint { top: calc(50% + 58px); }
+}

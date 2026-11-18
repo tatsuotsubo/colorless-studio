@@ -10,11 +10,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/reset.css?v=20261119c">
-  <link rel="stylesheet" href="css/style.css?v=20261119c">
+  <link rel="stylesheet" href="css/reset.css?v=20261119d">
+  <link rel="stylesheet" href="css/style.css?v=20261119d">
   <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('cs-pt'))document.documentElement.classList.add('pt-enter')}catch(e){}</script>
-  <script src="js/site.js?v=20261119c" defer></script>
-  <script src="js/hamburger-menu.js?v=20261119c" defer></script>
+  <script src="js/site.js?v=20261119d" defer></script>
+  <script src="js/hamburger-menu.js?v=20261119d" defer></script>
 
 </head>
 <body class="page-home">
@@ -72,6 +72,15 @@
   </div>
 </header>
 <section id="mainvisual">
+  <!-- スマホ：トップ映像の上下に各ページの映像を並べて画面全体を埋める（スマホの時だけ JS が読み込む） -->
+  <div class="home-mosaic" aria-hidden="true">
+    <video muted loop playsinline preload="none" poster="images/home/gallery_tile.jpg" data-m-src="videos/home/gallery_tile.mp4"></video>
+    <video muted loop playsinline preload="none" poster="images/home/release_tile.jpg" data-m-src="videos/home/release_tile.mp4"></video>
+    <span class="home-mosaic__hero"></span>
+    <video muted loop playsinline preload="none" poster="images/home/artist_dj2_tile.jpg" data-m-src="videos/home/artist_dj2_tile.mp4"></video>
+    <video muted loop playsinline preload="none" poster="images/home/contact_tile.jpg" data-m-src="videos/home/contact_tile.mp4"></video>
+  </div>
+
   <!-- 背景動画 -->
   <video class="bg-video" autoplay muted loop playsinline>
     <source src="videos/hero/hero.mp4" type="video/mp4">
@@ -79,6 +88,7 @@
 
   <!-- ロゴ -->
   <button type="button" class="home-logo-btn" aria-label="pages" aria-expanded="false" aria-controls="homeNav"><img src="images/logo/CS_logo_web.png" class="logo-image" alt="colorless studio"></button>
+  <span class="home-hint" aria-hidden="true">tap here</span>
 
   <!-- ホバーしたページの映像に切り替わる背景 -->
   <div class="home-bg" aria-hidden="true">

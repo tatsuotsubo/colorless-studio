@@ -201,12 +201,22 @@
       }
     }
 
+    /* ---------- 4g) ホーム（スマホ）：トップ映像の上下に並べる映像 ---------- */
+    if (window.matchMedia('(max-width: 760px)').matches) {
+      document.querySelectorAll('.home-mosaic video[data-m-src]').forEach((v) => {
+        v.src = v.dataset.mSrc;
+        v.removeAttribute('data-m-src');
+        v.play().catch(() => {});
+      });
+    }
+
     /* ---------- 4f) ホーム：ロゴを押すとページのタイルが横から出る ---------- */
     const logoBtn = document.querySelector('.home-logo-btn');
     if (logoBtn) {
       const mv = document.getElementById('mainvisual');
       const setOpen = (on) => {
         mv.classList.toggle('menu-open', on);
+        if (on) mv.classList.add('menu-seen');  // 一度開いたら「tap here」と跳ねる動きは止める
         logoBtn.setAttribute('aria-expanded', on ? 'true' : 'false');
       };
       logoBtn.addEventListener('click', () => setOpen(!mv.classList.contains('menu-open')));
