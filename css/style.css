@@ -3621,6 +3621,13 @@ body.page-home .header-right .contact-btn { display: none; }
   .vis-stage:not(.is-running) { height: auto; min-height: 0; aspect-ratio: 4 / 3; }
 }
 
+/* v6.9 ロゴのボタン・Tap Here・タイルの並べ方（v6.5〜v6.8.1）はスマホだけ。PC は v6.4 までの Home */
+.home-hint, .home-mosaic, .home-veil { display: none; }
+.home-logo-btn { all: unset; }
+
+@media (max-width: 768px) {
+  .home-hint, .home-veil { display: block; }
+
 /* =========================================================
    v6.5 ホーム：ロゴがボタン。押すとページのタイルが横から出て、背景はぼかした白
 ========================================================= */
@@ -3804,3 +3811,5 @@ body.page-home #mainvisual .home-tile .home-tile__video { transform: none; }
 
 /* v6.8.1 Tap Here：後ろのぼかし・帯はなし（文字だけ） */
 .home-hint { padding: 0; border: 0; border-radius: 0; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; text-shadow: 0 0 2px rgba(18, 33, 38, .55), 0 1px 14px rgba(18, 33, 38, .6); }
+
+}
