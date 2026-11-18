@@ -439,7 +439,7 @@ MEMBERS = [
     {
         "key": "natsume", "file": "natsume.html", "name": "natsume",
         "role": "Composer / Sound Designer / Music Producer / Manipulator",
-        "img": "images/artist/guitar_frame.jpg", "img_size": (430, 438),
+        "img": "images/artist/guitar.jpg", "img_size": (430, 430),
         "foriio": "https://www.foriio.com/natsume0465", "foriio_user": "natsume0465",
         "cats": ["作曲", "編曲", "Remix", "MIx - Mastering", "movie"],
         "form": "https://forms.gle/DxaPEA6bQQMPRxas5",
