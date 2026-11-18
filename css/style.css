@@ -3614,3 +3614,9 @@ body.page-home .header-right .contact-btn { display: none; }
   body.page-home #mainvisual .bg-video { top: 34%; bottom: auto; height: auto; aspect-ratio: 16 / 9; transform: translateY(-50%); object-fit: cover; }
   body.page-home .home-nav { bottom: 28px; }
 }
+@media (max-width: 760px) {
+  /* キービジュアル直後の余白を詰める */
+  #content > section:first-child { padding-top: 16px; }
+  /* Visualizer（coming soon）は縦長にしない */
+  .vis-stage:not(.is-running) { height: auto; min-height: 0; aspect-ratio: 4 / 3; }
+}
