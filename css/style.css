@@ -3539,3 +3539,6 @@ html.mw-lock { overflow: hidden; }
 /* 起動中は visualizer の中身の高さまで枠を伸ばす（中でスクロールさせない） */
 .vis-stage.is-running { height: auto; min-height: 0; overflow: visible; }
 .vis-stage.is-running .vis-frame { height: 100vh; }
+
+/* v5.9 natsume 画像は白枠ごと見せる */
+.member__img[src*="guitar_frame"] { object-fit: contain; border-radius: 0; }

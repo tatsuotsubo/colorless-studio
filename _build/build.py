@@ -252,7 +252,8 @@ def release_item(r, with_tracks=True):
         if r.get("credits"):
             slides.append(tracklist_slide(r["credits"], "credits"))
         slides += [track_slide(lab, ul) for lab, ul in r.get("tracks", [])]
-    date = f'\n          <span class="rel-date">{E(r["date"])}</span>' if r.get("date") else ""
+    dm = re.search(r"\d{4}\.\d{2}\.\d{2}", r.get("date") or "")
+    date = f'\n          <span class="rel-date">{dm.group(0)}</span>' if dm else ""
     href = r.get("href")
     open_tag = (f'<a class="rel-media click" href="{E(href)}" target="_blank" rel="noopener noreferrer">' if href
                 else '<div class="rel-media">')
@@ -284,10 +285,7 @@ def release_item(r, with_tracks=True):
       <!-- {E(r["title"])} -->
       <article class="{cls}" data-kind="{r["kind"]}" data-reveal>
         {media}
-        <div class="rel-meta">
-          <h3 class="rel-title">{E(r["title"])}</h3>
-          <span class="rel-kind">{KIND_LABEL[r["kind"]]}</span>{date}
-        </div>{tabs}
+        {('<div class="rel-meta">' + date + chr(10) + '        </div>') if date else ''}{tabs}
       </article>'''
 
 
@@ -441,7 +439,7 @@ MEMBERS = [
     {
         "key": "natsume", "file": "natsume.html", "name": "natsume",
         "role": "Composer / Sound Designer / Music Producer / Manipulator",
-        "img": "images/artist/guitar_crop.jpg", "img_size": (430, 430),
+        "img": "images/artist/guitar_frame.jpg", "img_size": (430, 438),
         "foriio": "https://www.foriio.com/natsume0465", "foriio_user": "natsume0465",
         "cats": ["作曲", "編曲", "Remix", "MIx - Mastering", "movie"],
         "form": "https://forms.gle/DxaPEA6bQQMPRxas5",
