@@ -73,6 +73,40 @@
   "date": "555 files"
  },
  {
+  "title": "for the little bird",
+  "kind": "movie",
+  "href": "https://www.youtube.com/watch?v=tq_p9odATYQ",
+  "img": "https://i.ytimg.com/vi/tq_p9odATYQ/maxresdefault.jpg",
+  "size": [
+   1280,
+   720
+  ],
+  "video": "videos/release/for_the_little_bird_HP.mp4",
+  "date": "2026.10.24 — EMOVE",
+  "credits": [
+   [
+    "Illust",
+    "Harui"
+   ],
+   [
+    "Music",
+    "ALNEAR"
+   ],
+   [
+    "Direction",
+    "NEQRE"
+   ],
+   [
+    "Design",
+    "PETTER"
+   ],
+   [
+    "Video",
+    "colorless studio"
+   ]
+  ]
+ },
+ {
   "title": "CS_SoundDesignRack1.0",
   "kind": "tool",
   "href": "https://colorless-studio.booth.pm/items/8377202",

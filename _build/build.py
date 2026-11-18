@@ -41,7 +41,7 @@ PAGES = [  # (key, file, label, no)
 FILE = {k: f for k, f, _, _ in PAGES}
 FILE["home"] = "index.html"
 
-KIND_LABEL = {"album": "album", "samplepack": "sample pack", "tool": "tool", "single": "single", "live": "live"}
+KIND_LABEL = {"album": "album", "samplepack": "sample pack", "tool": "tool", "single": "single", "live": "live", "movie": "movie"}
 
 SNS = [("X", "https://x.com/colorless_ST"), ("Instagram", "https://www.instagram.com/colorless.studio.official/"),
        ("TikTok", "https://www.tiktok.com/@colorless_studio"), ("YouTube", "https://www.youtube.com/@colorless_studio_official")]
@@ -249,6 +249,8 @@ def release_item(r, with_tracks=True):
     if with_tracks:
         if r.get("tracklist"):
             slides.append(tracklist_slide(r["tracklist"]))
+        if r.get("credits"):
+            slides.append(tracklist_slide(r["credits"], "credits"))
         slides += [track_slide(lab, ul) for lab, ul in r.get("tracks", [])]
     date = f'\n          <span class="rel-date">{E(r["date"])}</span>' if r.get("date") else ""
     href = r.get("href")
@@ -295,7 +297,7 @@ def release_grid(items, with_tracks=True):
 
 def release_filter():
     chips = '<button type="button" class="chip is-active" data-filter="all">All</button>'
-    for k in ["album", "samplepack", "tool", "single", "live"]:
+    for k in ["album", "samplepack", "tool", "single", "live", "movie"]:
         if any(r["kind"] == k for r in releases):
             chips += f'<button type="button" class="chip" data-filter="{k}">{KIND_LABEL[k]}</button>'
     return f'<div class="rel-filter" role="group" aria-label="filter">{chips}</div>'
@@ -441,7 +443,7 @@ MEMBERS = [
         "role": "Composer / Sound Designer / Music Producer / Manipulator",
         "img": "images/artist/guitar_crop.jpg", "img_size": (430, 430),
         "foriio": "https://www.foriio.com/natsume0465", "foriio_user": "natsume0465",
-        "cats": ["作曲", "編曲", "Remix", "MIx - Mastering"],
+        "cats": ["作曲", "編曲", "Remix", "MIx - Mastering", "movie"],
         "form": "https://forms.gle/DxaPEA6bQQMPRxas5",
         "works": [
             "Lir.E 2nd ワンマンライブ「愛について：REC」　Manipulator",
