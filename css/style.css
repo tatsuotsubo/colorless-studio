@@ -3580,3 +3580,8 @@ body.page-home:has(#mainvisual.is-previewing) .logo-image {
 /* v6.1 About us はロゴだけ */
 .about-image { display: flex; align-items: center; justify-content: center; }
 .about-image img.about-logo { width: min(60%, 320px); height: auto; aspect-ratio: 1 / 1; object-fit: contain; border-radius: 0; }
+
+/* v6.2 Home：Contact us ボタンとヘッダーの白い帯を消す（左上のメニューは残す） */
+body.page-home #header { border-bottom: 0; background: transparent; box-shadow: none; }
+body.page-home #header::before { display: none; }
+body.page-home .header-right .contact-btn { display: none; }
