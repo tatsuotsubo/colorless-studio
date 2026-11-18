@@ -3799,3 +3799,5 @@ body.page-home #mainvisual .home-tile .home-tile__video { transform: none; }
   body.page-home #mainvisual .home-tile.is-active { padding: 12px 16px; }
   body.page-home #mainvisual .home-tile__title { font-size: 22px; }
 }
+#mainvisual.menu-open .home-meta { opacity: 0; pointer-events: none; }
+.home-meta { transition: opacity .4s; }
