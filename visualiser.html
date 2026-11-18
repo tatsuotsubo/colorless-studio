@@ -10,12 +10,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/reset.css?v=20261118e">
-  <link rel="stylesheet" href="css/style.css?v=20261118e">
+  <link rel="stylesheet" href="css/reset.css?v=20261118g">
+  <link rel="stylesheet" href="css/style.css?v=20261118g">
   <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('cs-pt'))document.documentElement.classList.add('pt-enter')}catch(e){}</script>
-  <script src="js/site.js?v=20261118e" defer></script>
-  <script src="js/hamburger-menu.js?v=20261118e" defer></script>
-  <script src="js/visualiser-tab.js?v=20261118e" defer></script>
+  <script src="js/site.js?v=20261118g" defer></script>
+  <script src="js/hamburger-menu.js?v=20261118g" defer></script>
+  <script src="js/visualiser-tab.js?v=20261118g" defer></script>
 </head>
 <body class="page-visualiser">
 <!-- 背景：visualiser と同じ「ぼかした動画＋淡いスカイ」 -->
@@ -80,25 +80,14 @@
 <section id="visualiser">
 
   <div class="vis-panel" data-reveal>
-    <div class="vis-head">
-      <div class="vis-actions">
-        <button type="button" class="vis-btn primary" id="visLaunch">▶ Launch</button>
-        <button type="button" class="vis-btn" id="visClose" hidden>Close</button>
-        <a class="vis-btn" href="visualiser/index.html?v=386b830aab" target="_blank" rel="noopener">新しいタブで開く ↗</a>
-      </div>
-    </div>
-
     <div class="vis-stage" id="visStage">
-      <!-- 起動前のプレビュー（重いので、Launch を押すまで本体は読み込まない） -->
+      <!-- 公開準備中：起動ボタンは非活性（本体は読み込まない）。元の版は CS_HP/_moved/visualiser_part_before_comingsoon.html -->
       <div class="vis-cover" id="visCover">
         <video class="vis-cover__video" src="visualiser/v/sky_1.mp4" muted loop playsinline autoplay preload="metadata"></video>
-        <button type="button" class="vis-cover__play" id="visCoverPlay" aria-label="Visualizer を起動">
-          <span class="vis-cover__icon">▶</span>
-          <span>Launch visualizer</span>
+        <button type="button" class="vis-cover__play is-soon" disabled aria-disabled="true">
+          <span>coming soon</span>
         </button>
       </div>
-      <iframe class="vis-frame" id="visFrame" data-src="visualiser/index.html?v=386b830aab" title="colorless visualizer" hidden
-        allow="autoplay; microphone; camera; midi; fullscreen; display-capture; clipboard-write"></iframe>
     </div>
   </div>
 </section>

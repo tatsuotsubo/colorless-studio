@@ -3561,3 +3561,18 @@ body.page-home:has(#mainvisual.is-previewing) .logo-image {
   transition: opacity 1s ease;
 }
 .home-bg:has(.is-active) .home-bg__layer.is-leaving { opacity: 1; }
+
+/* v6.1 Visualizer は公開準備中：coming soon の非活性ボタン */
+.vis-cover__play.is-soon,
+.vis-cover__play.is-soon:hover {
+  padding: 12px 26px;
+  cursor: default;
+  opacity: .7;
+  transform: none;
+  box-shadow: none;
+  letter-spacing: .08em;
+}
+
+/* v6.2 About の映像は 16:9 のまま（切り抜かない） */
+.about-image .about-video { aspect-ratio: 16 / 9; object-fit: contain; background: transparent; }
+@media (max-width: 760px) { .about-image .about-video { aspect-ratio: 16 / 9; } }
