@@ -3719,3 +3719,7 @@ body.page-home .home-nav li {
 @media (max-height: 560px) and (max-width: 760px) {
   .home-hint { top: calc(50% + 58px); }
 }
+/* v6.6.1 tap here を読みやすく */
+.home-hint { font-size: 13px; text-shadow: 0 0 2px rgba(18, 33, 38, .55), 0 1px 14px rgba(18, 33, 38, .6); }
+@keyframes hintPulse { 0%, 100% { opacity: .6; } 50% { opacity: 1; } }
+@media (max-width: 760px) { .home-hint { top: calc(50% + 86px); } }
