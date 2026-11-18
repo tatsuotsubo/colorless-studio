@@ -315,6 +315,7 @@ def section_head(title, note=""):
 
 # ホームのタイル（kv.json の何本目の軽い映像を使うか）。
 # ホバー時の背景は videos/home/<key>.mp4（フルHD・切り抜きなし）＋ images/home/<key>.jpg
+HOME_FILE = {"artist": "artist_dj2"}  # videos/home/<名前>.mp4 のファイル名がキーと違うもの
 HOME_TILE = {"gallery": 0, "release": 1, "visualiser": 1, "artist": 1, "contact": 0}
 
 
@@ -325,9 +326,10 @@ def page_home():
     for k, f, lab, n in PAGES:
         vids = KV[k]["videos"]
         # 背景はホーム専用のフル解像度版（videos/home/<key>.mp4）。パネル用の切り抜き版は使わない（荒くなる）
-        bg = {"src": f"videos/home/{k}.mp4", "poster": f"images/home/{k}.jpg"}
+        hk = HOME_FILE.get(k, k)
+        bg = {"src": f"videos/home/{hk}.mp4", "poster": f"images/home/{hk}.jpg"}
         # タイルのサムネも背景と同じ映像（各ページの1枚目のビジュアル）の軽い版
-        tv = {"src": f"videos/home/{k}_tile.mp4", "poster": f"images/home/{k}_tile.jpg"}
+        tv = {"src": f"videos/home/{hk}_tile.mp4", "poster": f"images/home/{hk}_tile.jpg"}
         layers += (f'\n    <video class="home-bg__layer" data-key="{k}" muted loop playsinline preload="none"'
                    f' data-poster="{E(bg["poster"])}" src="{E(bg["src"])}"></video>')
         tiles += f'''

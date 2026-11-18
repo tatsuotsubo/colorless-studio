@@ -54,16 +54,12 @@
   ]
  },
  "artist": {
-  "layout": "split",
+  "layout": "single",
   "sub": "colorless studio のメンバー",
   "videos": [
    {
-    "src": "videos/kv/artist_1.mp4",
-    "poster": "images/kv/artist_1.jpg"
-   },
-   {
-    "src": "videos/kv/artist_2.mp4",
-    "poster": "images/kv/artist_2.jpg"
+    "src": "videos/home/artist_dj2.mp4",
+    "poster": "images/home/artist_dj2.jpg"
    }
   ]
  },
