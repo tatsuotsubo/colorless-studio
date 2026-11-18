@@ -15,6 +15,16 @@
   document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
 
+    /* ---------- 0) キービジュアル：スマホは切り抜かない全体の映像、PCはパネルの映像を読み込む ---------- */
+    const mobileKV = window.matchMedia('(max-width: 760px)').matches;
+    document.querySelectorAll('video[data-kv-src]').forEach((v) => {
+      if (!!v.closest('.kv__m') !== mobileKV) return;
+      v.src = v.dataset.kvSrc;
+      v.removeAttribute('data-kv-src');
+      v.play().catch(() => {});
+    });
+    if (mobileKV) document.querySelectorAll('.kv__media video[data-lazy-src]').forEach((v) => v.removeAttribute('data-lazy-src'));
+
     /* ---------- 1) ローダー ---------- */
     const loader = document.querySelector('.loader');
     if (loader) {

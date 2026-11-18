@@ -160,16 +160,21 @@ def kv(key):
     for i, v in enumerate(vids):
         poster = f' poster="{E(v["poster"])}"' if v.get("poster") else ""
         # 1本目だけすぐ読み込み、残りはページの読み込みが終わってから（回線の取り合いを避ける）
-        srcattr = f'src="{E(v["src"])}"' if i == 0 else f'preload="none" data-lazy-src="{E(v["src"])}"'
+        # 1本目は PC/スマホどちらで表示するか JS が決めてから読み込む（data-kv-src）
+        srcattr = f'preload="none" data-kv-src="{E(v["src"])}"' if i == 0 else f'preload="none" data-lazy-src="{E(v["src"])}"'
         panes += (f'\n    <div class="kv__pane" style="--d:{i}"><video autoplay muted loop playsinline'
                   f'{poster} {srcattr}></video></div>')
     no = next(n for kk, _, _, n in PAGES if kk == key)
     title = next(lab for kk, _, lab, _ in PAGES if kk == key)
+    # スマホ：切り抜かない全体の映像（ホームの背景と同じ＝各ページの1枚目のビジュアル）
+    hk = HOME_FILE.get(key, key)
+    msrc, mposter = f"videos/home/{hk}.mp4", f"images/home/{hk}.jpg"
     return f'''
 <!-- キービジュアル -->
 <section class="kv kv--{layout}" data-kv>
   <div class="kv__media">{panes}
   </div>
+  <div class="kv__m" style="--ar:{MOBILE_AR.get(key, "16 / 9")}"><video autoplay muted loop playsinline preload="none" poster="{E(mposter)}" data-kv-src="{E(msrc)}"></video></div>
   <div class="kv__veil"></div>
   <div class="kv__text">
     <h1 class="kv__title" data-split>{split(title)}</h1>
@@ -316,7 +321,8 @@ def section_head(title, note=""):
 
 # ホームのタイル（kv.json の何本目の軽い映像を使うか）。
 # ホバー時の背景は videos/home/<key>.mp4（フルHD・切り抜きなし）＋ images/home/<key>.jpg
-HOME_FILE = {"artist": "artist_dj2"}  # videos/home/<名前>.mp4 のファイル名がキーと違うもの
+HOME_FILE = {"artist": "artist_dj2"}
+MOBILE_AR = {"visualiser": "2 / 1"}  # スマホのキービジュアルの縦横比（ほかは 16 / 9）  # videos/home/<名前>.mp4 のファイル名がキーと違うもの
 HOME_TILE = {"gallery": 0, "release": 1, "visualiser": 1, "artist": 1, "contact": 0}
 
 
