@@ -96,6 +96,7 @@ def header(current):
       <!-- Menu -->
       <nav class="menu">
         <ul>{lis}
+          <li class="menu-sns">{"".join(f'<a href="{u}" target="_blank" rel="noopener">{n}</a>' for n, u in SNS)}</li>
         </ul>
       </nav>
     </div>
@@ -357,8 +358,6 @@ def page_home():
   <div class="home-meta">
     <p class="home-meta__name">colorless studio</p>
   </div>
-
-  <div class="home-sns">{sns}</div>
 </section>''', 1)
 
 

@@ -3585,3 +3585,8 @@ body.page-home:has(#mainvisual.is-previewing) .logo-image {
 body.page-home #header { border-bottom: 0; background: transparent; box-shadow: none; }
 body.page-home #header::before { display: none; }
 body.page-home .header-right .contact-btn { display: none; }
+
+/* v6.3 SNS はハンバーガーメニューの中に（メニューと同じ文字・色・動き） */
+.menu li.menu-sns { display: flex; flex-wrap: wrap; gap: 6px 28px; margin-top: 28px; }
+.menu li.menu-sns a { font-size: clamp(16px, 1.8vw, 22px); letter-spacing: .02em; }
+.menu.active li.menu-sns a { transition-delay: .35s, 0s; }
